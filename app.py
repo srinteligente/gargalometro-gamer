@@ -20,16 +20,20 @@ st.set_page_config(
     layout="wide"
 )
 
-# Carrega bancos de dados
-@st.cache_data
+# Carrega bancos de dados com leitura em tempo real
 def carregar_dados():
     with open("banco_hardware_completo.json", "r", encoding="utf-8") as f:
         dados_hw = json.load(f)
     
     dados_links = {}
     if os.path.exists("links.json"):
-        with open("links.json", "r", encoding="utf-8") as f:
-            dados_links = json.load(f)
+        try:
+            with open("links.json", "r", encoding="utf-8") as f:
+                dados_links = json.load(f)
+        except Exception as e:
+            st.error(f"Erro ao ler links.json: {e}")
+    else:
+        st.warning("⚠️ O ficheiro 'links.json' não foi encontrado na raiz do projeto!")
             
     return dados_hw, dados_links
 
