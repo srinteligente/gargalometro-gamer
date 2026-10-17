@@ -4,42 +4,49 @@ import os
 import re
 
 # ========================================================
-# 🛒 CENTRAL DE LINKS DE AFILIADOS & CUPONS REAIS
+# 🛒 CENTRAL DE LINKS DE AFILIADOS (EDITE COM OS SEUS LINKS)
+# Plataformas ativas: Mercado Livre, Amazon, KaBuM!, Shopee, TikTok Shop
 # ========================================================
 LINKS = {
-    # TikTok Shop & Vitrine Principal
-    "tiktok_shop": "https://www.tiktok.com",
-
+    # TikTok Shop & Canal
+    "tiktok_shop": "https://www.tiktok.com",  # Link da sua vitrine do TikTok Shop
+    
+    # --- KITS COMPLETOS (CPU + PLACA-MÃE + AIR COOLER) ---
+    "kit_am4_5500_ml": "https://mercadolivre.com/sec/SEU_LINK",       # Kit R5 5500 + A520M + Cooler
+    "kit_am4_5500_shopee": "https://s.shopee.com.br/SEU_LINK",       # Kit Shopee Cupons
+    "kit_am4_5600_kabum": "https://tidd.ly/SEU_LINK",                # Kit R5 5600 + B450M/B550M
+    "kit_am4_5600_ml": "https://mercadolivre.com/sec/SEU_LINK",
+    
+    # --- AIR COOLERS AVULSOS DE ALTA CONVERSÃO ---
+    "cooler_ag400_ml": "https://mercadolivre.com/sec/SEU_LINK",      # DeepCool AG400 / Custo-Benefício
+    "cooler_ag400_amazon": "https://amzn.to/SEU_LINK",
+    "cooler_custo_shopee": "https://s.shopee.com.br/SEU_LINK",       # Cooler barato 120mm Shopee
+    
     # --- PROCESSADORES AVULSOS ---
-    # Ryzen 5 5500
-    "r5_5500_ml": "https://meli.la/2QN5Pgh",          # Cupons: SITE50, OFFHOJE
-    "r5_5500_amazon": "https://link.amazon/B0arOOyDV",
-    "r5_5500_kabum": "https://tidd.ly/4dLyVMO",
-
-    # Ryzen 5 5500X3D
-    "r5_5500x3d_ml": "https://meli.la/1auyhNC",
-    "r5_5500x3d_shopee": "https://s.shopee.com.br/7fafWPpbIM?share_channel_code=1",
-
-    # Ryzen 5 5600X
-    "r5_5600x_amazon": "https://link.amazon/B0eGWwc2v",
-
-    # Ryzen 7 5700 & 5700X
-    "r7_5700_shopee": "https://s.shopee.com.br/80DVu4Gy5Z?share_channel_code=1",
-    "r7_5700x_amazon": "https://link.amazon/B089kG1h5",
-    "r7_5700x_kabum": "https://tidd.ly/4jsw27b",
-
-    # Ryzen 7 5800XT & 5800X3D
-    "r7_5800xt_kabum": "https://tidd.ly/4yYLn4m",     # Cupom: CPUAGORA
-    "r7_5800x3d_kabum": "https://tidd.y/4s7Amem",     # Cupom: CPUAGORA
-    "r7_5800x3d_ml": "https://meli.la/1MKXidT",
-
-    # --- KITS COMPLETOS (PLACA-MÃE + CPU + COOLER) ---
-    "kit_5500f_mach1": "https://tidd.ly/4jZfG6b",     # MSI A520M-A PRO + R5 5500F (PCIe 4.0) + Air Cooler MACH1
-    "kit_5500f_risemode": "https://tidd.ly/47oNTVy",  # MSI A520M-A PRO + R5 5500F (PCIe 4.0) + Rise Mode G700
-    "kit_5700x_watercooler": "https://tidd.ly/3TXWsn6",# MSI B550M WiFi6E + R7 5700X + Water Cooler 240mm
+    "cpu_5500_ml": "https://mercadolivre.com/sec/SEU_LINK",
+    "cpu_5500_shopee": "https://s.shopee.com.br/SEU_LINK",
+    "cpu_5500_kabum": "https://tidd.ly/SEU_LINK",
+    "cpu_5600_kabum": "https://tidd.ly/SEU_LINK",
+    "cpu_5600_shopee": "https://s.shopee.com.br/SEU_LINK",
+    "cpu_5700x3d_ml": "https://mercadolivre.com/sec/SEU_LINK",
+    "cpu_5700x3d_amazon": "https://amzn.to/SEU_LINK",
+    "cpu_am5_7600": "https://mercadolivre.com/sec/SEU_LINK",
+    
+    # --- PLACAS DE VÍDEO ---
+    "gpu_rtx4060_ml": "https://mercadolivre.com/sec/SEU_LINK",
+    "gpu_rtx4060_kabum": "https://tidd.ly/SEU_LINK",
+    "gpu_rx6600_amazon": "https://amzn.to/SEU_LINK",
+    "gpu_rx6600_shopee": "https://s.shopee.com.br/SEU_LINK",
+    
+    # --- MEMÓRIA RAM & SSD ---
+    "ram_ddr4_shopee": "https://s.shopee.com.br/SEU_LINK",
+    "ram_ddr4_ml": "https://mercadolivre.com/sec/SEU_LINK",
+    "ssd_nvme_ml": "https://mercadolivre.com/sec/SEU_LINK",
+    "ssd_nvme_amazon": "https://amzn.to/SEU_LINK",
+    "ssd_nvme_kabum": "https://tidd.ly/SEU_LINK",
 }
 
-# Identifica o ícone do sistema
+# Identifica o ficheiro da imagem na pasta
 nome_icone = None
 for arq in [
     "gargalo_detectado_ampliado.webp",
@@ -50,12 +57,14 @@ for arq in [
         nome_icone = arq
         break
 
+# Configuração da página e ícone da aba do navegador
 st.set_page_config(
     page_title="Gargalômetro Gamer",
     page_icon=nome_icone if nome_icone else "🖥️",
     layout="wide"
 )
 
+# Carrega a base local de hardware calibrada
 @st.cache_data
 def carregar_dados():
     with open("banco_hardware_completo.json", "r", encoding="utf-8") as f:
@@ -63,6 +72,7 @@ def carregar_dados():
 
 db = carregar_dados()
 
+# Função para identificar capacidade de vídeo integrado da CPU
 def detectar_video_integrado(cpu_obj):
     nome = cpu_obj["nome"]
     u = nome.upper()
@@ -126,7 +136,7 @@ with header_col1:
         st.image(nome_icone, width=90)
 with header_col2:
     st.title("Gargalômetro Gamer")
-    st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs[cite: 1, 2]")
+    st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs")
 
 st.divider()
 
@@ -142,6 +152,7 @@ with col_left:
     )
     eh_notebook = tipo_dispositivo == "💻 Notebook"
 
+    # Filtragem de GPUs
     if eh_notebook:
         gpu_lista = [g["nome"] for g in db["gpus"] if g.get("notebook", False)]
         gpu_opcoes = ["Nenhuma (Gráficos Integrados / APU)"] + gpu_lista
@@ -153,6 +164,7 @@ with col_left:
 
     gpu_sel = st.selectbox("Placa de Vídeo (GPU)", gpu_opcoes, index=padrao_gpu_idx)
 
+    # Filtragem de CPUs
     if eh_notebook:
         cpu_lista = [c["nome"] for c in db["cpus"] if c.get("notebook", False)]
         padrao_cpu_idx = next((i for i, n in enumerate(cpu_lista) if "Ryzen 7 170" in n or "7735" in n or "13700H" in n), 0)
@@ -210,7 +222,7 @@ with col_left:
 
     jogar_gta = st.checkbox("🎮 Pretendo jogar GTA VI nesta máquina", value=True)
 
-# Identificação de Vídeo Integrado
+# Lógica de Placa de Vídeo / Vídeo Integrado
 usando_igpu = (gpu_sel == "Nenhuma (Gráficos Integrados / APU)")
 tem_igpu, nota_igpu, msg_igpu = detectar_video_integrado(cpu_obj)
 
@@ -222,7 +234,7 @@ if usando_igpu:
 else:
     gpu_obj = next(g for g in db["gpus"] if g["nome"] == gpu_sel)
 
-# Cálculos Ponderados
+# Cálculos ponderados da nota geral
 fonte_nota = min(10.0, (fonte_w / 1200) * 10) if not eh_notebook else 8.5
 nota_calculada = (gpu_obj["nota"] * 0.50) + (cpu_obj["nota"] * 0.25) + (ram_nota * 0.15) + (ssd_nota * 0.05) + (fonte_nota * 0.05)
 
@@ -339,7 +351,7 @@ with col_right:
             st.warning("⚠️ **CONFIGURAÇÃO MÍNIMA ATENDIDA (30-45 FPS Médio/Baixo).**")
 
     # ========================================================
-    # 💰 HUB DE OFERTAS, KITS COMPLETOS E CUPONS
+    # 💰 HUB DE UPGRADE, KITS E OFERTAS AFILIADAS
     # ========================================================
     st.markdown("---")
     st.subheader("🛒 Melhores Ofertas de Upgrade")
@@ -349,78 +361,64 @@ with col_right:
     # 1. Recomendação de Kits e CPUs
     if (pct_gargalo >= 15.0 and componente_limitante == "Processador (CPU)") or precisa_trocar_plataforma:
         if precisa_trocar_plataforma:
-            st.markdown("##### 🛠️ Kits de Upgrade Prontos (Placa-Mãe + Processador + Cooler):")
-            st.info("💡 **Para quem sai de Xeon ou plataformas antigas:** Esses kits já vêm com placa-mãe compatível e cooler adequado, permitindo reaproveitar memórias DDR4.")
+            st.markdown("##### 🛠️ Kits de Upgrade Recomendados (Processador + Placa-Mãe + Cooler):")
+            st.info("💡 Como a sua plataforma atual é antiga (LGA 2011/DDR3), a melhor escolha é pegar um kit pronto para não ter dor de cabeça com compatibilidade.")
             
             k_col1, k_col2 = st.columns(2)
             with k_col1:
-                st.link_button("🔥 Kit R5 5500F (PCIe 4.0) + MSI A520M + Cooler MACH1", LINKS["kit_5500f_mach1"], use_container_width=True)
-                st.link_button("⚡ Kit R5 5500F (PCIe 4.0) + MSI A520M + Rise Mode G700", LINKS["kit_5500f_risemode"], use_container_width=True)
+                st.link_button("🔥 Kit Ryzen 5 5500 + A520M + Cooler (Mercado Livre)", LINKS["kit_am4_5500_ml"], use_container_width=True)
+                st.link_button("📦 Kit Ryzen 5 5600 + B450M/B550M (KaBuM!)", LINKS["kit_am4_5600_kabum"], use_container_width=True)
             with k_col2:
-                st.link_button("👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler 240mm", LINKS["kit_5700x_watercooler"], use_container_width=True)
+                st.link_button("🏷️ Kit Ryzen 5 5500 + Placa-Mãe (Shopee - Cupons)", LINKS["kit_am4_5500_shopee"], use_container_width=True)
+                st.link_button("⚡ Kit Ryzen 5 5600 + B550M + Cooler (Mercado Livre)", LINKS["kit_am4_5600_ml"], use_container_width=True)
 
-        st.markdown("##### ⚡ Processadores Avulsos Recomendados:")
-        
-        tab_custo, tab_performance, tab_topo = st.tabs(["🔥 Custo-Benefício (5500 / 5600X)", "⚡ Alto Desempenho (5700 / 5700X)", "👑 Topo AM4 (X3D / XT)"])
-        
-        with tab_custo:
-            st.caption("🏷️ Cupons ML: `SITE50` ou `OFFHOJE`")
-            c1_btn, c2_btn = st.columns(2)
-            with c1_btn:
-                st.link_button("🔥 Ryzen 5 5500 (Mercado Livre - Cupom SITE50)", LINKS["r5_5500_ml"], use_container_width=True)
-                st.link_button("📦 Ryzen 5 5500 (KaBuM!)", LINKS["r5_5500_kabum"], use_container_width=True)
-                st.link_button("🏷️ Ryzen 5 5500X3D (Shopee Cupons)", LINKS["r5_5500x3d_shopee"], use_container_width=True)
-            with c2_btn:
-                st.link_button("📦 Ryzen 5 5500 (Amazon Prime)", LINKS["r5_5500_amazon"], use_container_width=True)
-                st.link_button("⚡ Ryzen 5 5600X (Amazon)", LINKS["r5_5600x_amazon"], use_container_width=True)
-                st.link_button("🔥 Ryzen 5 5500X3D (Mercado Livre)", LINKS["r5_5500x3d_ml"], use_container_width=True)
-
-        with tab_performance:
-            st.caption("Excelentes para multitarefa, stream e jogos exigentes de CPU.")
-            p1_btn, p2_btn = st.columns(2)
-            with p1_btn:
-                st.link_button("🏷️ Ryzen 7 5700 (Shopee - Melhores Preços)", LINKS["r7_5700_shopee"], use_container_width=True)
-                st.link_button("💳 Ryzen 7 5700X (KaBuM!)", LINKS["r7_5700x_kabum"], use_container_width=True)
-            with p2_btn:
-                st.link_button("⚡ Ryzen 7 5700X (Amazon Prime)", LINKS["r7_5700x_amazon"], use_container_width=True)
-
-        with tab_topo:
-            st.caption("🏷️ Use o cupom `CPUAGORA` na KaBuM!")
-            t1_btn, t2_btn = st.columns(2)
-            with t1_btn:
-                st.link_button("🔥 Ryzen 7 5800XT (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800xt_kabum"], use_container_width=True)
-                st.link_button("👑 Ryzen 7 5800X3D (Mercado Livre)", LINKS["r7_5800x3d_ml"], use_container_width=True)
-            with t2_btn:
-                st.link_button("👑 Ryzen 7 5800X3D (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800x3d_kabum"], use_container_width=True)
+            st.markdown("##### ❄️ Air Coolers de Alta Eficiência (DeepCool / 120mm):")
+            ac1, ac2 = st.columns(2)
+            with ac1:
+                st.link_button("❄️ DeepCool AG400 120mm (Mercado Livre)", LINKS["cooler_ag400_ml"], use_container_width=True)
+            with ac2:
+                st.link_button("🏷️ Air Cooler 120mm Custo-Benefício (Shopee)", LINKS["cooler_custo_shopee"], use_container_width=True)
+        else:
+            st.markdown("##### ⚡ Upgrades de Processador Recomendados:")
+            if "RYZEN" in cpu_obj["nome"].upper() and any(g in cpu_obj["nome"] for g in [" 1", " 2", " 3", " 4", " 5"]):
+                c_btn1, c_btn2 = st.columns(2)
+                with c_btn1:
+                    st.link_button("🔥 Ryzen 7 5700X3D (Mercado Livre)", LINKS["cpu_5700x3d_ml"], use_container_width=True)
+                    st.link_button("📦 Ryzen 5 5600 (KaBuM!)", LINKS["cpu_5600_kabum"], use_container_width=True)
+                with c_btn2:
+                    st.link_button("⚡ Ryzen 7 5700X3D (Amazon)", LINKS["cpu_5700x3d_amazon"], use_container_width=True)
+                    st.link_button("🏷️ Ryzen 5 5500 / 5600 (Shopee - Cupons)", LINKS["cpu_5600_shopee"], use_container_width=True)
+            else:
+                st.link_button("🚀 Ver Processadores AM5 / Intel em Promoção (Mercado Livre)", LINKS["cpu_am5_7600"], use_container_width=True)
 
     # 2. Recomendação de GPU
     if gpu_obj["nota"] < 5.0 or usando_igpu:
         st.markdown("##### 🎮 Placas de Vídeo Recomendadas para Jogos Modernos:")
         g_btn1, g_btn2 = st.columns(2)
         with g_btn1:
-            st.link_button("🔥 RTX 4060 8GB (Mercado Livre)", "https://mercadolivre.com/sec/SEU_LINK", use_container_width=True)
-            st.link_button("⚡ RX 6600 8GB (Amazon Prime)", "https://amzn.to/SEU_LINK", use_container_width=True)
+            st.link_button("🔥 RTX 4060 8GB (Mercado Livre)", LINKS["gpu_rtx4060_ml"], use_container_width=True)
+            st.link_button("⚡ RX 6600 8GB (Amazon Prime)", LINKS["gpu_rx6600_amazon"], use_container_width=True)
         with g_btn2:
-            st.link_button("💳 RTX 4060 8GB (KaBuM!)", "https://tidd.ly/SEU_LINK", use_container_width=True)
-            st.link_button("🏷️ RX 6600 8GB (Shopee - Melhores Preços)", "https://s.shopee.com.br/SEU_LINK", use_container_width=True)
+            st.link_button("💳 RTX 4060 8GB (KaBuM!)", LINKS["gpu_rtx4060_kabum"], use_container_width=True)
+            st.link_button("🏷️ RX 6600 8GB (Shopee - Melhores Preços)", LINKS["gpu_rx6600_shopee"], use_container_width=True)
 
     # 3. Recomendação de RAM
     if "2 GB" in ram_sel or "4 GB" in ram_sel or "8 GB" in ram_sel:
         st.markdown("##### 🧠 Memória RAM (Mínimo 16GB / 32GB Recomendado):")
         r_btn1, r_btn2 = st.columns(2)
         with r_btn1:
-            st.link_button("📦 Kits 16GB/32GB DDR4 (Shopee)", "https://s.shopee.com.br/SEU_LINK", use_container_width=True)
+            st.link_button("📦 Kits 16GB/32GB DDR4 (Shopee)", LINKS["ram_ddr4_shopee"], use_container_width=True)
         with r_btn2:
-            st.link_button("⚡ Memórias RAM DDR4/DDR5 (Mercado Livre)", "https://mercadolivre.com/sec/SEU_LINK", use_container_width=True)
+            st.link_button("⚡ Memórias RAM DDR4/DDR5 (Mercado Livre)", LINKS["ram_ddr4_ml"], use_container_width=True)
 
     # 4. Recomendação de SSD
     if "Apenas HD Mecânico" in ssd_sel:
         st.markdown("##### 🚀 Troque o HD por um SSD NVMe Rápido:")
         s_btn1, s_btn2 = st.columns(2)
         with s_btn1:
-            st.link_button("🔥 SSD NVMe M.2 1TB (Mercado Livre)", "https://mercadolivre.com/sec/SEU_LINK", use_container_width=True)
+            st.link_button("🔥 SSD NVMe M.2 1TB (Mercado Livre)", LINKS["ssd_nvme_ml"], use_container_width=True)
         with s_btn2:
-            st.link_button("⚡ SSD NVMe 1TB (Amazon / KaBuM!)", "https://amzn.to/SEU_LINK", use_container_width=True)
+            st.link_button("⚡ SSD NVMe 1TB (Amazon / KaBuM!)", LINKS["ssd_nvme_amazon"], use_container_width=True)
 
     st.markdown("---")
     st.link_button("📱 Conheça as ofertas e promoções na nossa vitrine do TikTok Shop", LINKS["tiktok_shop"], use_container_width=True)
