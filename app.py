@@ -19,7 +19,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Leitura direta sem cache retido para refletir updates do links.json na hora
+# Carrega bancos de dados
 def carregar_dados():
     with open("banco_hardware_completo.json", "r", encoding="utf-8") as f:
         dados_hw = json.load(f)
@@ -401,7 +401,7 @@ with col_right:
                 st.link_button("👑 Ryzen 7 5800X3D (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800x3d_kabum"], use_container_width=True)
 
     with tab_cpu_am5:
-        st.caption("🚀 Plataforma AMD AM5 com memória DDR5, alto IPC e os novos reis do FPS (X3D)")
+        st.caption("🚀 Plataforma AMD AM5 com memória DDR5, alto IPC e processadores X3D")
         am5_1, am5_2 = st.columns(2)
         with am5_1:
             if "r5_8400f_ml" in LINKS:
@@ -516,7 +516,11 @@ with col_right:
                 st.link_button("⚡ MSI PRO B760M-A WIFI DDR5 (Amazon)", LINKS["mb_lga1700_b760_msi_a_amazon"], use_container_width=True)
 
     st.markdown("##### 🎮 Placas de Vídeo Recomendadas para Jogos Modernos:")
-    tab_gpu_custo, tab_gpu_inter = st.tabs(["⚡ Custo-Benefício (1080p Alto/Ultra)", "🔥 Intermediárias / Top 1440p"])
+    tab_gpu_custo, tab_gpu_inter, tab_gpu_high = st.tabs([
+        "⚡ Custo-Benefício (1080p Alto/Ultra)", 
+        "🔥 Intermediárias (1440p Quad HD)", 
+        "👑 High-End & Entusiasta (4K / Ray Tracing)"
+    ])
     
     with tab_gpu_custo:
         st.caption("🎯 **Melhores opções até R$ 2.000:** Ideal para rodar tudo em Full HD com alta taxa de FPS.")
@@ -533,16 +537,42 @@ with col_right:
                 st.link_button("🎮 MSI RTX 5060 Shadow 2X OC (Amazon)", LINKS["gpu_rtx5060_amazon"], use_container_width=True)
 
     with tab_gpu_inter:
-        st.caption("🚀 **Alta Performance:** Perfeitas para Quad HD (1440p) e Ray Tracing com folga.")
+        st.caption("🚀 **Alta Performance:** Perfeitas para Quad HD (1440p) competitivo e alta fluidez.")
         gi1_btn, gi2_btn = st.columns(2)
         with gi1_btn:
             if "gpu_rtx3070_kabum" in LINKS:
                 st.link_button("🔥 Husky Alpha RTX 3070 8GB GDDR6 (KaBuM!)", LINKS["gpu_rtx3070_kabum"], use_container_width=True)
             if "gpu_rtx5060ti_shopee" in LINKS:
                 st.link_button("🚀 INNO3D GeForce RTX 5060 Ti (Shopee Cupons)", LINKS["gpu_rtx5060ti_shopee"], use_container_width=True)
-        with gi2_btn:
             if "gpu_rx9060xt_shopee" in LINKS:
                 st.link_button("⚡ PowerColor Radeon RX 9060 XT 8GB (Shopee)", LINKS["gpu_rx9060xt_shopee"], use_container_width=True)
+        with gi2_btn:
+            if "gpu_rtx5060ti_pny_kabum" in LINKS:
+                st.link_button("⚡ PNY GeForce RTX 5060 Ti (KaBuM!)", LINKS["gpu_rtx5060ti_pny_kabum"], use_container_width=True)
+
+    with tab_gpu_high:
+        st.caption("🏷️ Cupom na KaBuM!: `SABADACOVGA10` para 10% OFF em modelos elegíveis")
+        gh1_btn, gh2_btn = st.columns(2)
+        with gh1_btn:
+            if "gpu_rtx5070_asus_kabum" in LINKS:
+                st.link_button("🔥 ASUS PRIME RTX 5070 OC 12G (KaBuM! - Cupom SABADACOVGA10)", LINKS["gpu_rtx5070_asus_kabum"], use_container_width=True)
+            if "gpu_rx9070_asrock_kabum" in LINKS:
+                st.link_button("❄️ ASRock Radeon RX 9070 Steel Legend (KaBuM!)", LINKS["gpu_rx9070_asrock_kabum"], use_container_width=True)
+            if "gpu_rx9070xt_powercolor_shopee" in LINKS:
+                st.link_button("🚀 PowerColor Radeon RX 9070 XT (Shopee)", LINKS["gpu_rx9070xt_powercolor_shopee"], use_container_width=True)
+            if "gpu_rtx5070ti_palit_kabum" in LINKS:
+                st.link_button("👑 Palit GeForce RTX 5070 Ti 16GB (KaBuM!)", LINKS["gpu_rtx5070ti_palit_kabum"], use_container_width=True)
+            if "gpu_rtx5080_palit_ml" in LINKS:
+                st.link_button("👑 Palit Infinity 3 RTX 5080 16GB GDDR7 (Mercado Livre)", LINKS["gpu_rtx5080_palit_ml"], use_container_width=True)
+        with gh2_btn:
+            if "gpu_rtx5070_palit_kabum" in LINKS:
+                st.link_button("🔥 Palit RTX 5070 INFINITY 3 (KaBuM! - Cupom SABADACOVGA10)", LINKS["gpu_rtx5070_palit_kabum"], use_container_width=True)
+            if "gpu_rx9070xt_asus_kabum" in LINKS:
+                st.link_button("🚀 ASUS Prime Radeon RX 9070 XT OC (KaBuM!)", LINKS["gpu_rx9070xt_asus_kabum"], use_container_width=True)
+            if "gpu_rtx5070ti_palit_ml" in LINKS:
+                st.link_button("👑 Palit RTX 5070 Ti GamingPro-S 16GB (Mercado Livre)", LINKS["gpu_rtx5070ti_palit_ml"], use_container_width=True)
+            if "gpu_rtx5080_msi_kabum" in LINKS:
+                st.link_button("👑 MSI RTX 5080 Ventus 3X OC 16GB (KaBuM!)", LINKS["gpu_rtx5080_msi_kabum"], use_container_width=True)
 
     if "tiktok_shop" in LINKS:
         st.markdown("---")
