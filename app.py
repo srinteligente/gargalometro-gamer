@@ -3,7 +3,43 @@ import json
 import os
 import re
 
-# Identifica o ficheiro da imagem na pasta
+# ========================================================
+# 🛒 CENTRAL DE LINKS DE AFILIADOS & CUPONS REAIS
+# ========================================================
+LINKS = {
+    # TikTok Shop & Vitrine Principal
+    "tiktok_shop": "https://www.tiktok.com",
+
+    # --- PROCESSADORES AVULSOS ---
+    # Ryzen 5 5500
+    "r5_5500_ml": "https://meli.la/2QN5Pgh",          # Cupons: SITE50, OFFHOJE
+    "r5_5500_amazon": "https://link.amazon/B0arOOyDV",
+    "r5_5500_kabum": "https://tidd.ly/4dLyVMO",
+
+    # Ryzen 5 5500X3D
+    "r5_5500x3d_ml": "https://meli.la/1auyhNC",
+    "r5_5500x3d_shopee": "https://s.shopee.com.br/7fafWPpbIM?share_channel_code=1",
+
+    # Ryzen 5 5600X
+    "r5_5600x_amazon": "https://link.amazon/B0eGWwc2v",
+
+    # Ryzen 7 5700 & 5700X
+    "r7_5700_shopee": "https://s.shopee.com.br/80DVu4Gy5Z?share_channel_code=1",
+    "r7_5700x_amazon": "https://link.amazon/B089kG1h5",
+    "r7_5700x_kabum": "https://tidd.ly/4jsw27b",
+
+    # Ryzen 7 5800XT & 5800X3D
+    "r7_5800xt_kabum": "https://tidd.ly/4yYLn4m",     # Cupom: CPUAGORA
+    "r7_5800x3d_kabum": "https://tidd.y/4s7Amem",     # Cupom: CPUAGORA
+    "r7_5800x3d_ml": "https://meli.la/1MKXidT",
+
+    # --- KITS COMPLETOS (PLACA-MÃE + CPU + COOLER) ---
+    "kit_5500f_mach1": "https://tidd.ly/4jZfG6b",     # MSI A520M-A PRO + R5 5500F (PCIe 4.0) + Air Cooler MACH1
+    "kit_5500f_risemode": "https://tidd.ly/47oNTVy",  # MSI A520M-A PRO + R5 5500F (PCIe 4.0) + Rise Mode G700
+    "kit_5700x_watercooler": "https://tidd.ly/3TXWsn6",# MSI B550M WiFi6E + R7 5700X + Water Cooler 240mm
+}
+
+# Identifica o ícone do sistema
 nome_icone = None
 for arq in [
     "gargalo_detectado_ampliado.webp",
@@ -14,14 +50,12 @@ for arq in [
         nome_icone = arq
         break
 
-# Configuração da página e ícone do separador do navegador
 st.set_page_config(
     page_title="Gargalômetro Gamer",
     page_icon=nome_icone if nome_icone else "🖥️",
     layout="wide"
 )
 
-# Carrega a base local de hardware calibrada
 @st.cache_data
 def carregar_dados():
     with open("banco_hardware_completo.json", "r", encoding="utf-8") as f:
@@ -29,25 +63,21 @@ def carregar_dados():
 
 db = carregar_dados()
 
-# Função para identificar capacidade de vídeo integrado da CPU
 def detectar_video_integrado(cpu_obj):
     nome = cpu_obj["nome"]
     u = nome.upper()
     
-    # 1. Se veio com informação direta da base da AMD
     gpu_int = cpu_obj.get("gpu_integrada", "")
     if gpu_int and "Requer placa de vídeo" in gpu_int:
         return False, 0.0, "Requer placa de vídeo dedicada (sem gráficos integrados)."
     
-    # 2. Processadores conhecidos SEM vídeo integrado
     if "XEON" in u:
         return False, 0.0, "Intel Xeon não possui vídeo integrado."
     if bool(re.search(r'\d{4,5}F\b', u)) or bool(re.search(r'\d{4,5}KF\b', u)):
         return False, 0.0, "Processadores Intel série 'F' / 'KF' não possuem vídeo integrado."
-    if "7500F" in u or "9500F" in u or "9700F" in u:
+    if "7500F" in u or "9500F" in u or "9700F" in u or "5500F" in u:
         return False, 0.0, f"O {nome} não possui vídeo integrado."
         
-    # 3. Ryzen das séries 1000 a 5000 desktop sem o sufixo G
     if "RYZEN" in u:
         eh_zen4_ou_novo = any(gen in u for gen in ["7600", "7700", "7800", "7900", "7950", "8500", "8600", "8700", "9600", "9700", "9800", "9900", "9950"])
         eh_mobile = cpu_obj.get("notebook", False) or any(u.endswith(m) or (m + " ") in u for m in ["U", "H", "HS", "HX", "C"])
@@ -56,15 +86,14 @@ def detectar_video_integrado(cpu_obj):
         if not (eh_zen4_ou_novo or eh_mobile or eh_g):
             return False, 0.0, "Processadores Ryzen desktop das séries 1000 a 5000 sem o sufixo 'G' não possuem vídeo integrado."
             
-        # Avaliação de APUs e gráficos mobile
         if "8065S" in gpu_int or "495" in u:
-            return True, 6.0, "Radeon 8065S (40 CUs - Nível de GPU dedicada potente)"
+            return True, 6.0, "Radeon 8065S (40 CUs - Nível de GPU potente)"
         if "8050S" in gpu_int or "490" in u or "485" in u:
             return True, 5.4, "Radeon 8050S (32 CUs - Desempenho gráfico elevado)"
         if "890M" in gpu_int or "475" in u or "470" in u:
-            return True, 5.0, "Radeon 890M (16 CUs - Excelente para jogos leves e médios)"
+            return True, 5.0, "Radeon 890M (16 CUs - Excelente para competitivos e leves)"
         if "780M" in gpu_int or "8700G" in u or "260" in u or "250" in u or "180" in u:
-            return True, 4.8, "Radeon 780M (Roda jogos competitivos e lançamentos em 1080p)"
+            return True, 4.8, "Radeon 780M (Roda competitivos e lançamentos em 1080p)"
         if "680M" in gpu_int or "170" in u or "160" in u:
             return True, 4.2, "Radeon 680M (Ótimo desempenho em 1080p para iGPU)"
         if "760M" in gpu_int or "8600G" in u or "230" in u or "165" in u:
@@ -80,7 +109,7 @@ def detectar_video_integrado(cpu_obj):
         if "4600G" in u or "4650G" in u or "4300G" in u:
             return True, 2.7, "Radeon Vega 6/7 Integrada"
         if eh_zen4_ou_novo:
-            return True, 2.0, "RDNA 2 Básica Integrada (Apenas exibição de ecrã)"
+            return True, 2.0, "RDNA 2 Básica Integrada (Apenas vídeo básico)"
         return True, 2.5, "Gráficos Integrados AMD Radeon"
 
     if "INTEL" in u:
@@ -90,14 +119,14 @@ def detectar_video_integrado(cpu_obj):
         
     return True, 1.8, "Vídeo Integrado Básico"
 
-# Topo do Programa com Imagem e Título Oficial
+# Topo do Programa
 header_col1, header_col2 = st.columns([1, 8])
 with header_col1:
     if nome_icone:
         st.image(nome_icone, width=90)
 with header_col2:
     st.title("Gargalômetro Gamer")
-    st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs")
+    st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs[cite: 1, 2]")
 
 st.divider()
 
@@ -106,7 +135,6 @@ col_left, col_right = st.columns([1.2, 1])
 with col_left:
     st.subheader("Configuração da Máquina")
 
-    # Seletor de Tipo de Máquina (Desktop vs Notebook)
     tipo_dispositivo = st.radio(
         "Tipo de Máquina",
         options=["🖥️ Desktop", "💻 Notebook"],
@@ -114,7 +142,6 @@ with col_left:
     )
     eh_notebook = tipo_dispositivo == "💻 Notebook"
 
-    # Filtragem de GPUs utilizando as tags diretas
     if eh_notebook:
         gpu_lista = [g["nome"] for g in db["gpus"] if g.get("notebook", False)]
         gpu_opcoes = ["Nenhuma (Gráficos Integrados / APU)"] + gpu_lista
@@ -126,7 +153,6 @@ with col_left:
 
     gpu_sel = st.selectbox("Placa de Vídeo (GPU)", gpu_opcoes, index=padrao_gpu_idx)
 
-    # Filtragem de CPUs utilizando as tags diretas
     if eh_notebook:
         cpu_lista = [c["nome"] for c in db["cpus"] if c.get("notebook", False)]
         padrao_cpu_idx = next((i for i, n in enumerate(cpu_lista) if "Ryzen 7 170" in n or "7735" in n or "13700H" in n), 0)
@@ -137,7 +163,6 @@ with col_left:
     cpu_sel = st.selectbox("Processador (CPU)", cpu_lista, index=padrao_cpu_idx)
     cpu_obj = next(c for c in db["cpus"] if c["nome"] == cpu_sel)
 
-    # Resolução Alvo de Jogo
     resolucao_sel = st.radio(
         "Resolução Principal de Jogo",
         options=["1080p (Full HD)", "1440p (Quad HD)", "4K (Ultra HD)"],
@@ -146,7 +171,6 @@ with col_left:
 
     c1, c2 = st.columns(2)
     with c1:
-        # Tabela Completa com DDR2, DDR3, DDR4 e DDR5
         ram_opcoes = {
             "2 GB DDR2 (Legado Extremo)": 1.0,
             "4 GB DDR2 (Básico Antigo)": 1.5,
@@ -182,11 +206,11 @@ with col_left:
     if not eh_notebook:
         fonte_w = st.slider("Fonte de Alimentação (Watts)", min_value=300, max_value=1600, value=650, step=50)
     else:
-        fonte_w = 230  # Carregador típico de portátil gamer
+        fonte_w = 230
 
     jogar_gta = st.checkbox("🎮 Pretendo jogar GTA VI nesta máquina", value=True)
 
-# Lógica de Placa de Vídeo / Vídeo Integrado
+# Identificação de Vídeo Integrado
 usando_igpu = (gpu_sel == "Nenhuma (Gráficos Integrados / APU)")
 tem_igpu, nota_igpu, msg_igpu = detectar_video_integrado(cpu_obj)
 
@@ -198,25 +222,22 @@ if usando_igpu:
 else:
     gpu_obj = next(g for g in db["gpus"] if g["nome"] == gpu_sel)
 
-# Cálculos ponderados da nota geral (0 a 10)
+# Cálculos Ponderados
 fonte_nota = min(10.0, (fonte_w / 1200) * 10) if not eh_notebook else 8.5
 nota_calculada = (gpu_obj["nota"] * 0.50) + (cpu_obj["nota"] * 0.25) + (ram_nota * 0.15) + (ssd_nota * 0.05) + (fonte_nota * 0.05)
 
-# Penalização de -0.2 caso utilize apenas HD Mecânico
 penalidade_hd = 0.2 if "Apenas HD Mecânico" in ssd_sel else 0.0
 nota_final = max(1.0, min(10.0, nota_calculada - penalidade_hd))
 
 consumo_estimado = gpu_obj["tdp"] + cpu_obj["tdp"] + (40 if eh_notebook else 75)
 fonte_recomendada = consumo_estimado * 1.35
 
-# CÁLCULO DE GARGALO POR RESOLUÇÃO
 pesos_resolucao = {
     "1080p (Full HD)": 0.80,
     "1440p (Quad HD)": 1.10,
     "4K (Ultra HD)":   1.50
 }
 
-# REGRA ESPECIAL XEON: Penalização de IPC em Full HD com placas médias/fortes
 eh_xeon = "XEON" in cpu_obj["nome"].upper()
 fator_xeon = 1.0
 if eh_xeon and resolucao_sel == "1080p (Full HD)" and gpu_obj["nota"] >= 5.0:
@@ -247,85 +268,159 @@ with col_right:
     if not eh_notebook:
         st.write(f"• **Fonte:** Nota {fonte_nota:.1f} ({fonte_w}W)")
 
-    # Alertas de Vídeo Integrado
     if usando_igpu:
         if not tem_igpu:
-            st.error(f"🚨 **SEM VÍDEO!** O processador `{cpu_obj['nome']}` não possui placa gráfica integrada. Este PC não apresentará imagem sem uma GPU dedicada!")
+            st.error(f"🚨 **SEM VÍDEO!** O processador `{cpu_obj['nome']}` não possui placa gráfica integrada.")
         else:
             st.info(f"🖥️ **Vídeo Integrado Ativo:** {msg_igpu}.")
 
     if penalidade_hd > 0:
-        st.warning("⚠️ **Penalização Aplicada (-0.2):** O uso exclusivo de HD mecânico gera travamentos (stuttering) e lentidão em jogos modernos.")
+        st.warning("⚠️ **Penalização Aplicada (-0.2):** O uso exclusivo de HD mecânico causa travamentos em jogos modernos.")
 
     if "DDR2" in ram_sel:
         st.error("🚨 **Memória DDR2:** Arquitetura obsoleta. Incompatível com jogos modernos.")
     elif "DDR3" in ram_sel:
-        st.warning("⚠️ **Memória DDR3:** Plataforma defasada. A largura de banda reduzida afeta a estabilidade do frametime.")
+        st.warning("⚠️ **Memória DDR3:** Plataforma defasada.")
 
-    # Diagnóstico da Fonte
     if not eh_notebook:
         st.markdown("---")
         if fonte_w < consumo_estimado:
-            st.error(f"🚨 **Fonte insuficiente:** Consumo estimado em pico é de ~{consumo_estimado}W e a sua fonte tem {fonte_w}W!")
+            st.error(f"🚨 **Fonte insuficiente:** Consumo estimado é de ~{consumo_estimado}W e sua fonte tem {fonte_w}W!")
         elif fonte_w < fonte_recomendada:
-            st.warning(f"⚠️ **Pouca folga:** Recomendável pelo menos {int(fonte_recomendada)}W de fonte para maior segurança.")
+            st.warning(f"⚠️ **Pouca folga:** Recomendável pelo menos {int(fonte_recomendada)}W.")
         else:
             st.success("✅ **Alimentação segura.**")
 
     st.markdown("---")
     st.subheader("Análise de Gargalo por Resolução")
 
-    # Alerta especial para Xeon
     if eh_xeon and resolucao_sel == "1080p (Full HD)" and gpu_obj["nota"] >= 5.0:
         if nome_icone:
             st.image(nome_icone, width=200)
         st.error("🚨 **GARGALO DE XEON EM FULL HD DETECTADO!**")
         st.write(f"**Gargalo estimado de CPU:** `{pct_gargalo}%`")
         st.progress(min(1.0, pct_gargalo / 100.0))
-        st.write(
-            f"O seu **{cpu_obj['nome']}** possui muitos núcleos, mas clock e instruções por ciclo (IPC) antigos. "
-            f"Em 1080p, ele vai limitar drasticamente a **{gpu_obj['nome']}**, causando engasgos em taxas altas de FPS."
-        )
+        st.write(f"O seu **{cpu_obj['nome']}** limita a **{gpu_obj['nome']}** em 1080p devido a clock e IPC antigos.")
     elif pct_gargalo >= 15.0 and componente_limitante == "Processador (CPU)":
         if nome_icone:
             st.image(nome_icone, width=200)
         st.error(f"🚨 **GARGALO DETECTADO EM {resolucao_sel.upper()}!**")
         st.write(f"**Gargalo estimado de CPU:** `{pct_gargalo}%`")
         st.progress(min(1.0, pct_gargalo / 100.0))
-        st.write(
-            f"O seu **{cpu_obj['nome']}** não consegue acompanhar a **{gpu_obj['nome']}** em {resolucao_sel}. "
-            "A placa de vídeo ficará subutilizada e terá oscilações de FPS nos jogos."
-        )
+        st.write(f"O seu **{cpu_obj['nome']}** não acompanha a **{gpu_obj['nome']}**.")
     elif pct_gargalo >= 25.0 and componente_limitante == "Placa de Vídeo (GPU)":
         st.info(f"💡 **Limite Gráfico em {resolucao_sel}:** Gargalo natural de GPU de `{pct_gargalo}%`.")
-        st.write(
-            f"O processador entrega com folga e a placa gráfica trabalhará a 99%/100% de carga, "
-            "comportamento ideal para a maioria dos videojogos."
-        )
+        st.write("A placa gráfica trabalhará a 99%/100% de uso, o comportamento esperado.")
     else:
-        st.success(f"🎯 **Setup Muito Equilibrado em {resolucao_sel}:** Variação residual de apenas `{pct_gargalo}%`. CPU e GPU em harmonia!")
+        st.success(f"🎯 **Setup Muito Equilibrado em {resolucao_sel}:** Variação de `{pct_gargalo}%`.")
 
-    # Teste de Prontidão para GTA VI
+    # GTA VI
     if jogar_gta:
         st.markdown("---")
         st.subheader("🌴 Teste de Prontidão: GTA VI")
-        
         tem_hd = "Apenas HD Mecânico" in ssd_sel
         gpu_n = gpu_obj["nota"]
         cpu_n = cpu_obj["nota"]
         
         if usando_igpu or not tem_igpu:
-            st.error("❌ **INCOMPATÍVEL COM GTA VI (Sem GPU Dedicada):** O jogo exigirá placa gráfica dedicada com VRAM física. Gráficos integrados convencionais não serão suportados.")
+            st.error("❌ **INCOMPATÍVEL COM GTA VI:** Exigirá GPU dedicada com VRAM física.")
         elif tem_hd:
-            st.error("❌ **INCOMPATÍVEL COM GTA VI (Armazenamento):** O mapa aberto de Leonida exige taxa de leitura contínua de SSD. O jogo não rodará em HD mecânico.")
+            st.error("❌ **INCOMPATÍVEL COM GTA VI (Armazenamento):** Exige SSD obrigatoriamente.")
         elif "2 GB" in ram_sel or "4 GB" in ram_sel or "8 GB" in ram_sel:
-            st.error("❌ **MEMÓRIA RAM INSUFICIENTE:** Menos de 16 GB causará travamento imediato por falta de memória ao carregar NPCs e física.")
+            st.error("❌ **MEMÓRIA RAM INSUFICIENTE:** Mínimo de 16 GB.")
         elif gpu_n < 5.0 or cpu_n < 4.5:
-            st.error(f"⚠️ **ABAIXO DO MÍNIMO ESTIMADO:** O seu hardware atual (GPU nota {gpu_n:.1f} / CPU nota {cpu_n:.1f}) ficará abaixo do chão necessário para segurar 30 FPS estáveis.")
+            st.error(f"⚠️ **ABAIXO DO MÍNIMO ESTIMADO:** GPU ({gpu_n:.1f}) / CPU ({cpu_n:.1f}).")
         elif gpu_n >= 8.0 and cpu_n >= 7.8 and ("32 GB" in ram_sel or "64 GB" in ram_sel):
             st.balloons()
-            st.success("👑 **PRONTO PARA O ULTRA / 4K:** Máquina de elite! Rodará GTA VI no talo com Ray Tracing avançado e altíssima estabilidade.")
+            st.success("👑 **PRONTO PARA O ULTRA / 4K!**")
         elif gpu_n >= 6.5 and cpu_n >= 6.0 and ("32 GB" in ram_sel or "64 GB" in ram_sel or "16 GB DDR5" in ram_sel):
-            st.success("✅ **CONFIGURAÇÃO RECOMENDADA ATENDIDA:** Rodará a 60 FPS estáveis em 1080p Alto ou 1440p com DLSS/FSR ativado sem engasgos.")
+            st.success("✅ **CONFIGURAÇÃO RECOMENDADA ATENDIDA (60 FPS Alto).**")
         else:
-            st.warning("⚠️ **CONFIGURAÇÃO MÍNIMA ATENDIDA:** O computador aguenta GTA VI, mirando entre 30 e 45 FPS em 1080p nos presets Baixo/Médio com upscaling ligado.")
+            st.warning("⚠️ **CONFIGURAÇÃO MÍNIMA ATENDIDA (30-45 FPS Médio/Baixo).**")
+
+    # ========================================================
+    # 💰 HUB DE OFERTAS, KITS COMPLETOS E CUPONS
+    # ========================================================
+    st.markdown("---")
+    st.subheader("🛒 Melhores Ofertas de Upgrade")
+
+    precisa_trocar_plataforma = eh_xeon or ("DDR2" in ram_sel) or ("DDR3" in ram_sel)
+
+    # 1. Recomendação de Kits e CPUs
+    if (pct_gargalo >= 15.0 and componente_limitante == "Processador (CPU)") or precisa_trocar_plataforma:
+        if precisa_trocar_plataforma:
+            st.markdown("##### 🛠️ Kits de Upgrade Prontos (Placa-Mãe + Processador + Cooler):")
+            st.info("💡 **Para quem sai de Xeon ou plataformas antigas:** Esses kits já vêm com placa-mãe compatível e cooler adequado, permitindo reaproveitar memórias DDR4.")
+            
+            k_col1, k_col2 = st.columns(2)
+            with k_col1:
+                st.link_button("🔥 Kit R5 5500F (PCIe 4.0) + MSI A520M + Cooler MACH1", LINKS["kit_5500f_mach1"], use_container_width=True)
+                st.link_button("⚡ Kit R5 5500F (PCIe 4.0) + MSI A520M + Rise Mode G700", LINKS["kit_5500f_risemode"], use_container_width=True)
+            with k_col2:
+                st.link_button("👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler 240mm", LINKS["kit_5700x_watercooler"], use_container_width=True)
+
+        st.markdown("##### ⚡ Processadores Avulsos Recomendados:")
+        
+        tab_custo, tab_performance, tab_topo = st.tabs(["🔥 Custo-Benefício (5500 / 5600X)", "⚡ Alto Desempenho (5700 / 5700X)", "👑 Topo AM4 (X3D / XT)"])
+        
+        with tab_custo:
+            st.caption("🏷️ Cupons ML: `SITE50` ou `OFFHOJE`")
+            c1_btn, c2_btn = st.columns(2)
+            with c1_btn:
+                st.link_button("🔥 Ryzen 5 5500 (Mercado Livre - Cupom SITE50)", LINKS["r5_5500_ml"], use_container_width=True)
+                st.link_button("📦 Ryzen 5 5500 (KaBuM!)", LINKS["r5_5500_kabum"], use_container_width=True)
+                st.link_button("🏷️ Ryzen 5 5500X3D (Shopee Cupons)", LINKS["r5_5500x3d_shopee"], use_container_width=True)
+            with c2_btn:
+                st.link_button("📦 Ryzen 5 5500 (Amazon Prime)", LINKS["r5_5500_amazon"], use_container_width=True)
+                st.link_button("⚡ Ryzen 5 5600X (Amazon)", LINKS["r5_5600x_amazon"], use_container_width=True)
+                st.link_button("🔥 Ryzen 5 5500X3D (Mercado Livre)", LINKS["r5_5500x3d_ml"], use_container_width=True)
+
+        with tab_performance:
+            st.caption("Excelentes para multitarefa, stream e jogos exigentes de CPU.")
+            p1_btn, p2_btn = st.columns(2)
+            with p1_btn:
+                st.link_button("🏷️ Ryzen 7 5700 (Shopee - Melhores Preços)", LINKS["r7_5700_shopee"], use_container_width=True)
+                st.link_button("💳 Ryzen 7 5700X (KaBuM!)", LINKS["r7_5700x_kabum"], use_container_width=True)
+            with p2_btn:
+                st.link_button("⚡ Ryzen 7 5700X (Amazon Prime)", LINKS["r7_5700x_amazon"], use_container_width=True)
+
+        with tab_topo:
+            st.caption("🏷️ Use o cupom `CPUAGORA` na KaBuM!")
+            t1_btn, t2_btn = st.columns(2)
+            with t1_btn:
+                st.link_button("🔥 Ryzen 7 5800XT (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800xt_kabum"], use_container_width=True)
+                st.link_button("👑 Ryzen 7 5800X3D (Mercado Livre)", LINKS["r7_5800x3d_ml"], use_container_width=True)
+            with t2_btn:
+                st.link_button("👑 Ryzen 7 5800X3D (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800x3d_kabum"], use_container_width=True)
+
+    # 2. Recomendação de GPU
+    if gpu_obj["nota"] < 5.0 or usando_igpu:
+        st.markdown("##### 🎮 Placas de Vídeo Recomendadas para Jogos Modernos:")
+        g_btn1, g_btn2 = st.columns(2)
+        with g_btn1:
+            st.link_button("🔥 RTX 4060 8GB (Mercado Livre)", "https://mercadolivre.com/sec/SEU_LINK", use_container_width=True)
+            st.link_button("⚡ RX 6600 8GB (Amazon Prime)", "https://amzn.to/SEU_LINK", use_container_width=True)
+        with g_btn2:
+            st.link_button("💳 RTX 4060 8GB (KaBuM!)", "https://tidd.ly/SEU_LINK", use_container_width=True)
+            st.link_button("🏷️ RX 6600 8GB (Shopee - Melhores Preços)", "https://s.shopee.com.br/SEU_LINK", use_container_width=True)
+
+    # 3. Recomendação de RAM
+    if "2 GB" in ram_sel or "4 GB" in ram_sel or "8 GB" in ram_sel:
+        st.markdown("##### 🧠 Memória RAM (Mínimo 16GB / 32GB Recomendado):")
+        r_btn1, r_btn2 = st.columns(2)
+        with r_btn1:
+            st.link_button("📦 Kits 16GB/32GB DDR4 (Shopee)", "https://s.shopee.com.br/SEU_LINK", use_container_width=True)
+        with r_btn2:
+            st.link_button("⚡ Memórias RAM DDR4/DDR5 (Mercado Livre)", "https://mercadolivre.com/sec/SEU_LINK", use_container_width=True)
+
+    # 4. Recomendação de SSD
+    if "Apenas HD Mecânico" in ssd_sel:
+        st.markdown("##### 🚀 Troque o HD por um SSD NVMe Rápido:")
+        s_btn1, s_btn2 = st.columns(2)
+        with s_btn1:
+            st.link_button("🔥 SSD NVMe M.2 1TB (Mercado Livre)", "https://mercadolivre.com/sec/SEU_LINK", use_container_width=True)
+        with s_btn2:
+            st.link_button("⚡ SSD NVMe 1TB (Amazon / KaBuM!)", "https://amzn.to/SEU_LINK", use_container_width=True)
+
+    st.markdown("---")
+    st.link_button("📱 Conheça as ofertas e promoções na nossa vitrine do TikTok Shop", LINKS["tiktok_shop"], use_container_width=True)
