@@ -21,8 +21,10 @@ st.set_page_config(
 
 # Carrega bancos de dados
 def carregar_dados():
-    with open("banco_hardware_completo.json", "r", encoding="utf-8") as f:
-        dados_hw = json.load(f)
+    dados_hw = {"gpus": [], "cpus": []}
+    if os.path.exists("banco_hardware_completo.json"):
+        with open("banco_hardware_completo.json", "r", encoding="utf-8") as f:
+            dados_hw = json.load(f)
     
     dados_links = {}
     if os.path.exists("links.json"):
@@ -31,8 +33,6 @@ def carregar_dados():
                 dados_links = json.load(f)
         except Exception as e:
             st.error(f"Erro ao ler links.json: {e}")
-    else:
-        st.warning("⚠️ Ficheiro 'links.json' não encontrado na raiz!")
             
     return dados_hw, dados_links
 
@@ -135,6 +135,23 @@ with header_col1:
 with header_col2:
     st.title("Gargalômetro Gamer")
     st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs")
+
+# ========================================================
+# 📢 DESTAQUES DO TOPO (LIVEPIX & TIKTOK)
+# ========================================================
+banner_col1, banner_col2 = st.columns(2)
+
+with banner_col1:
+    with st.container(border=True):
+        st.markdown("##### 🎙️ Quer furar a fila na Live?")
+        st.caption("Envie sua dúvida por mensagem de áudio em tempo real na tela da transmissão!")
+        st.link_button("⚡ Mandar Mensagem de Voz (LivePix)", "https://livepix.gg/srinteligente", use_container_width=True)
+
+with banner_col2:
+    with st.container(border=True):
+        st.markdown("##### 📱 Siga nosso perfil no TikTok!")
+        st.caption("Dicas de hardware, reviews, testes de performance e promoções exclusivas todo dia.")
+        st.link_button("🔥 Seguir @srinteligente.shop", "https://www.tiktok.com/@srinteligente.shop", use_container_width=True)
 
 st.divider()
 
@@ -573,7 +590,3 @@ with col_right:
                 st.link_button("👑 Palit RTX 5070 Ti GamingPro-S 16GB (Mercado Livre)", LINKS["gpu_rtx5070ti_palit_ml"], use_container_width=True)
             if "gpu_rtx5080_msi_kabum" in LINKS:
                 st.link_button("👑 MSI RTX 5080 Ventus 3X OC 16GB (KaBuM!)", LINKS["gpu_rtx5080_msi_kabum"], use_container_width=True)
-
-    if "tiktok_shop" in LINKS:
-        st.markdown("---")
-        st.link_button("📱 Conheça as ofertas e promoções na nossa vitrine do TikTok Shop", LINKS["tiktok_shop"], use_container_width=True)
