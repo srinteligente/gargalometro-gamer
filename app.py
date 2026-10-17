@@ -5,7 +5,6 @@ import re
 
 # ========================================================
 # 🛒 CENTRAL DE LINKS DE AFILIADOS & CUPONS REAIS
-# (Apenas produtos com links fornecidos)
 # ========================================================
 LINKS = {
     # TikTok Shop & Vitrine Principal
@@ -77,6 +76,40 @@ def carregar_dados():
 
 db = carregar_dados()
 
+def classificar_plataforma_cpu(nome_cpu):
+    u = nome_cpu.upper()
+    
+    # 1. Defasadas (Xeon, FX, Athlon, Core 2, APUs antigas)
+    if any(x in u for x in ["XEON", "FX-", "PHENOM", "ATHLON", "CORE2", "OPTERON", "SEMPRON", "A10-", "A8-", "A6-", "A4-"]):
+        return "DEFASADA"
+    
+    # Intel de 10ª e 11ª (LGA 1200) e 12ª a 14ª (LGA 1700)
+    m_intel_5d = re.search(r'I[3579]-(\d{2})\d{3}', u)
+    if m_intel_5d:
+        gen = int(m_intel_5d.group(1))
+        if gen in [10, 11]:
+            return "DEFASADA"
+        elif 12 <= gen <= 14:
+            return "LGA1700"
+
+    # Intel de 2ª a 9ª geração (LGA 1155, 1150, 1151)
+    if re.search(r'I[3579]-(\d)\d{3}', u) or re.search(r'I[3579]-\d{3}\b', u):
+        return "DEFASADA"
+
+    # AMD AM4 e AM5
+    if "RYZEN" in u:
+        m_ryzen = re.search(r'RYZEN\s+[3579]\s+(\d{4})', u)
+        if m_ryzen:
+            num = int(m_ryzen.group(1))
+            if 1000 <= num < 6000:
+                return "AM4"
+            elif num >= 7000:
+                return "AM5"
+        if any(f" {g}" in u for g in ["5500", "5600", "5700", "5800", "5900", "5950", "3600", "2600", "1600"]):
+            return "AM4"
+
+    return "OUTRA"
+
 def detectar_video_integrado(cpu_obj):
     nome = cpu_obj["nome"]
     u = nome.upper()
@@ -140,7 +173,7 @@ with header_col1:
         st.image(nome_icone, width=90)
 with header_col2:
     st.title("Gargalômetro Gamer")
-    st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs")
+    st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs")[cite: 1, 2]
 
 st.divider()
 
@@ -353,19 +386,25 @@ with col_right:
             st.warning("⚠️ **CONFIGURAÇÃO MÍNIMA ATENDIDA (30-45 FPS Médio/Baixo).**")
 
     # ========================================================
-    # 💰 HUB DE OFERTAS, GPUS, KITS E CUPONS REAIS
+    # 💰 HUB DE UPGRADE POR PLATAFORMA (LÓGICA INTELIGENTE)
     # ========================================================
     st.markdown("---")
     st.subheader("🛒 Melhores Ofertas de Upgrade")
 
-    precisa_trocar_plataforma = eh_xeon or ("DDR2" in ram_sel) or ("DDR3" in ram_sel)
+    plat_atual = classificar_plataforma_cpu(cpu_obj["nome"])
+    ram_antiga = ("DDR2" in ram_sel) or ("DDR3" in ram_sel)
+    precisa_trocar_plataforma = (plat_atual == "DEFASADA") or ram_antiga
 
-    # 1. Recomendação de Kits e CPUs (Apenas links fornecidos)
-    if (pct_gargalo >= 15.0 and componente_limitante == "Processador (CPU)") or precisa_trocar_plataforma:
+    tem_gargalo_cpu = (pct_gargalo >= 15.0 and componente_limitante == "Processador (CPU)")
+
+    # 1. Recomendação de CPU / Kits
+    if tem_gargalo_cpu or precisa_trocar_plataforma:
         if precisa_trocar_plataforma:
-            st.markdown("##### 🛠️ Kits de Upgrade Prontos (Placa-Mãe + Processador + Cooler):")
-            st.info("💡 **Para quem sai de Xeon ou plataformas antigas:** Esses kits já vêm com placa-mãe compatível e cooler adequado, permitindo reaproveitar memórias DDR4.")
-            
+            st.markdown("##### 🛠️ Migração de Plataforma Recomendada (Kits com Placa-Mãe + CPU + Cooler):")
+            st.info(
+                f"💡 A sua plataforma atual ({cpu_obj['nome']}) opera com IPC ou barramentos defasados. "
+                "Investir em processadores antigos dessa mesma placa não compensa o custo. A saída inteligente é migrar para um kit novo:"
+            )
             k_col1, k_col2 = st.columns(2)
             with k_col1:
                 st.link_button("🔥 Kit R5 5500F (PCIe 4.0) + MSI A520M + Cooler MACH1", LINKS["kit_5500f_mach1"], use_container_width=True)
@@ -373,54 +412,60 @@ with col_right:
             with k_col2:
                 st.link_button("👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler 240mm", LINKS["kit_5700x_watercooler"], use_container_width=True)
 
-        st.markdown("##### ⚡ Processadores Avulsos Recomendados:")
-        
-        tab_custo, tab_performance, tab_topo, tab_intel = st.tabs([
-            "🔥 Custo-Benefício AMD", 
-            "⚡ Alto Desempenho AMD", 
-            "👑 Topo AM4 (X3D / XT)",
-            "🔵 Intel 14ª Gen (LGA 1700)"
-        ])
-        
-        with tab_custo:
-            st.caption("🏷️ Cupons Mercado Livre: `SITE50` ou `OFFHOJE`")
-            c1_btn, c2_btn = st.columns(2)
-            with c1_btn:
-                st.link_button("🔥 Ryzen 5 5500 (Mercado Livre - Cupom SITE50)", LINKS["r5_5500_ml"], use_container_width=True)
-                st.link_button("📦 Ryzen 5 5500 (KaBuM!)", LINKS["r5_5500_kabum"], use_container_width=True)
-                st.link_button("🏷️ Ryzen 5 5500X3D (Shopee Cupons)", LINKS["r5_5500x3d_shopee"], use_container_width=True)
-            with c2_btn:
-                st.link_button("📦 Ryzen 5 5500 (Amazon Prime)", LINKS["r5_5500_amazon"], use_container_width=True)
-                st.link_button("⚡ Ryzen 5 5600X (Amazon)", LINKS["r5_5600x_amazon"], use_container_width=True)
-                st.link_button("🔥 Ryzen 5 5500X3D (Mercado Livre)", LINKS["r5_5500x3d_ml"], use_container_width=True)
-
-        with tab_performance:
-            st.caption("Excelentes para multitarefa, stream e jogos pesados.")
-            p1_btn, p2_btn = st.columns(2)
-            with p1_btn:
-                st.link_button("🏷️ Ryzen 7 5700 (Shopee - Melhores Preços)", LINKS["r7_5700_shopee"], use_container_width=True)
-                st.link_button("💳 Ryzen 7 5700X (KaBuM!)", LINKS["r7_5700x_kabum"], use_container_width=True)
-            with p2_btn:
-                st.link_button("⚡ Ryzen 7 5700X (Amazon Prime)", LINKS["r7_5700x_amazon"], use_container_width=True)
-
-        with tab_topo:
-            st.caption("🏷️ Use o cupom `CPUAGORA` na KaBuM!")
-            t1_btn, t2_btn = st.columns(2)
-            with t1_btn:
-                st.link_button("🔥 Ryzen 7 5800XT (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800xt_kabum"], use_container_width=True)
-                st.link_button("👑 Ryzen 7 5800X3D (Mercado Livre)", LINKS["r7_5800x3d_ml"], use_container_width=True)
-            with t2_btn:
-                st.link_button("👑 Ryzen 7 5800X3D (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800x3d_kabum"], use_container_width=True)
-
-        with tab_intel:
-            st.caption("🏷️ Use o cupom `CPUAGORA` na KaBuM! para desconto nos modelos K/KF")
+        elif plat_atual == "LGA1700":
+            st.markdown("##### 🔵 Upgrade Direto no seu Soquete Intel LGA 1700:")
+            st.info(
+                f"💡 Você já tem placa-mãe LGA 1700! Não troque placa-mãe nem memórias: "
+                "o salto ideal para empurrar qualquer placa de vídeo é subir para a linha i5 de 14ª geração desbloqueada."
+            )
             i1_btn, i2_btn = st.columns(2)
             with i1_btn:
                 st.link_button("🔵 Intel Core i5-14600KF 5.3GHz (KaBuM! - Cupom CPUAGORA)", LINKS["intel_i5_14600kf_kabum"], use_container_width=True)
             with i2_btn:
                 st.link_button("🔵 Intel Core i5-14600K 5.3GHz (KaBuM! - Cupom CPUAGORA)", LINKS["intel_i5_14600k_kabum"], use_container_width=True)
 
-    # 2. Recomendação de GPU (Apenas links fornecidos)
+        elif plat_atual == "AM4":
+            st.markdown("##### ⚡ Upgrade Direto na sua Placa-Mãe AM4 (Sem Trocar Placa):")
+            st.info(
+                f"💡 O seu processador atual ({cpu_obj['nome']}) é AM4! Basta atualizar a BIOS da sua placa-mãe "
+                "e colocar uma CPU com arquitetura Zen 3 ou cache 3D para eliminar o gargalo sem gastar com kit novo."
+            )
+            tab_custo, tab_performance, tab_topo = st.tabs([
+                "🔥 Custo-Benefício AM4", 
+                "⚡ Alto Desempenho AM4", 
+                "👑 Topo AM4 (X3D / XT)"
+            ])
+            with tab_custo:
+                st.caption("🏷️ Cupons Mercado Livre: `SITE50` ou `OFFHOJE`")
+                c1_btn, c2_btn = st.columns(2)
+                with c1_btn:
+                    st.link_button("🔥 Ryzen 5 5500 (Mercado Livre - Cupom SITE50)", LINKS["r5_5500_ml"], use_container_width=True)
+                    st.link_button("📦 Ryzen 5 5500 (KaBuM!)", LINKS["r5_5500_kabum"], use_container_width=True)
+                    st.link_button("🏷️ Ryzen 5 5500X3D (Shopee Cupons)", LINKS["r5_5500x3d_shopee"], use_container_width=True)
+                with c2_btn:
+                    st.link_button("📦 Ryzen 5 5500 (Amazon Prime)", LINKS["r5_5500_amazon"], use_container_width=True)
+                    st.link_button("⚡ Ryzen 5 5600X (Amazon)", LINKS["r5_5600x_amazon"], use_container_width=True)
+                    st.link_button("🔥 Ryzen 5 5500X3D (Mercado Livre)", LINKS["r5_5500x3d_ml"], use_container_width=True)
+
+            with tab_performance:
+                st.caption("Excelentes para multitarefa, stream e jogos pesados.")
+                p1_btn, p2_btn = st.columns(2)
+                with p1_btn:
+                    st.link_button("🏷️ Ryzen 7 5700 (Shopee - Melhores Preços)", LINKS["r7_5700_shopee"], use_container_width=True)
+                    st.link_button("💳 Ryzen 7 5700X (KaBuM!)", LINKS["r7_5700x_kabum"], use_container_width=True)
+                with p2_btn:
+                    st.link_button("⚡ Ryzen 7 5700X (Amazon Prime)", LINKS["r7_5700x_amazon"], use_container_width=True)
+
+            with tab_topo:
+                st.caption("🏷️ Use o cupom `CPUAGORA` na KaBuM!")
+                t1_btn, t2_btn = st.columns(2)
+                with t1_btn:
+                    st.link_button("🔥 Ryzen 7 5800XT (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800xt_kabum"], use_container_width=True)
+                    st.link_button("👑 Ryzen 7 5800X3D (Mercado Livre)", LINKS["r7_5800x3d_ml"], use_container_width=True)
+                with t2_btn:
+                    st.link_button("👑 Ryzen 7 5800X3D (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800x3d_kabum"], use_container_width=True)
+
+    # 2. Recomendação de GPU
     if gpu_obj["nota"] < 7.5 or usando_igpu:
         st.markdown("##### 🎮 Placas de Vídeo Recomendadas para Jogos Modernos:")
         
