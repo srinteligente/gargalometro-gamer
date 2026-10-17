@@ -26,7 +26,6 @@ def carregar_dados():
     with open("banco_hardware_completo.json", "r", encoding="utf-8") as f:
         dados_hw = json.load(f)
     
-    # Carrega links externos se existirem
     dados_links = {}
     if os.path.exists("links.json"):
         with open("links.json", "r", encoding="utf-8") as f:
@@ -126,7 +125,7 @@ def detectar_video_integrado(cpu_obj):
         
     return True, 1.8, "Vídeo Integrado Básico"
 
-# Topo do Programa
+# Cabeçalho da aplicação
 header_col1, header_col2 = st.columns([1, 8])
 with header_col1:
     if nome_icone:
@@ -305,4 +304,174 @@ with col_right:
         if nome_icone:
             st.image(nome_icone, width=200)
         st.error("🚨 **GARGALO DE XEON EM FULL HD DETECTADO!**")
-        st.write(f"**Gargalo estimado de
+        st.write(f"**Gargalo estimado de CPU:** `{pct_gargalo}%`")
+        st.progress(min(1.0, pct_gargalo / 100.0))
+        st.write(f"O seu **{cpu_obj['nome']}** limita a **{gpu_obj['nome']}** em 1080p devido a clock e IPC antigos.")
+    elif pct_gargalo >= 15.0 and componente_limitante == "Processador (CPU)":
+        if nome_icone:
+            st.image(nome_icone, width=200)
+        st.error(f"🚨 **GARGALO DETECTADO EM {resolucao_sel.upper()}!**")
+        st.write(f"**Gargalo estimado de CPU:** `{pct_gargalo}%`")
+        st.progress(min(1.0, pct_gargalo / 100.0))
+        st.write(f"O seu **{cpu_obj['nome']}** não acompanha a **{gpu_obj['nome']}**.")
+    elif pct_gargalo >= 25.0 and componente_limitante == "Placa de Vídeo (GPU)":
+        st.info(f"💡 **Limite Gráfico em {resolucao_sel}:** Gargalo natural de GPU de `{pct_gargalo}%`.")
+        st.write("A placa gráfica trabalhará a 99%/100% de uso, o comportamento esperado.")
+    else:
+        st.success(f"🎯 **Setup Muito Equilibrado em {resolucao_sel}:** Variação de `{pct_gargalo}%`.")
+
+    # GTA VI
+    if jogar_gta:
+        st.markdown("---")
+        st.subheader("🌴 Teste de Prontidão: GTA VI")
+        tem_hd = "Apenas HD Mecânico" in ssd_sel
+        gpu_n = gpu_obj["nota"]
+        cpu_n = cpu_obj["nota"]
+        
+        if usando_igpu or not tem_igpu:
+            st.error("❌ **INCOMPATÍVEL COM GTA VI:** Exigirá GPU dedicada com VRAM física.")
+        elif tem_hd:
+            st.error("❌ **INCOMPATÍVEL COM GTA VI (Armazenamento):** Exige SSD obrigatoriamente.")
+        elif "2 GB" in ram_sel or "4 GB" in ram_sel or "8 GB" in ram_sel:
+            st.error("❌ **MEMÓRIA RAM INSUFICIENTE:** Mínimo de 16 GB.")
+        elif gpu_n < 5.0 or cpu_n < 4.5:
+            st.error(f"⚠️ **ABAIXO DO MÍNIMO ESTIMADO:** GPU ({gpu_n:.1f}) / CPU ({cpu_n:.1f}).")
+        elif gpu_n >= 8.0 and cpu_n >= 7.8 and ("32 GB" in ram_sel or "64 GB" in ram_sel):
+            st.balloons()
+            st.success("👑 **PRONTO PARA O ULTRA / 4K!**")
+        elif gpu_n >= 6.5 and cpu_n >= 6.0 and ("32 GB" in ram_sel or "64 GB" in ram_sel or "16 GB DDR5" in ram_sel):
+            st.success("✅ **CONFIGURAÇÃO RECOMENDADA ATENDIDA (60 FPS Alto).**")
+        else:
+            st.warning("⚠️ **CONFIGURAÇÃO MÍNIMA ATENDIDA (30-45 FPS Médio/Baixo).**")
+
+    # ========================================================
+    # 💰 HUB DE UPGRADE POR PLATAFORMA (LÊ LINKS.JSON)
+    # ========================================================
+    if LINKS:
+        st.markdown("---")
+        st.subheader("🛒 Melhores Ofertas de Upgrade")
+
+        plat_atual = classificar_plataforma_cpu(cpu_obj["nome"])
+        ram_antiga = ("DDR2" in ram_sel) or ("DDR3" in ram_sel)
+        precisa_trocar_plataforma = (plat_atual == "DEFASADA") or ram_antiga
+        tem_gargalo_cpu = (pct_gargalo >= 15.0 and componente_limitante == "Processador (CPU)")
+
+        # 1. Recomendação de CPU / Kits
+        if tem_gargalo_cpu or precisa_trocar_plataforma:
+            if precisa_trocar_plataforma:
+                st.markdown("##### 🛠️ Migração de Plataforma Recomendada (Kits com Placa-Mãe + CPU + Cooler):")
+                st.info(
+                    f"💡 A sua plataforma atual ({cpu_obj['nome']}) opera com IPC ou barramentos defasados. "
+                    "Investir em processadores antigos dessa mesma placa não compensa o custo. A saída inteligente é migrar para um kit novo:"
+                )
+                k_col1, k_col2 = st.columns(2)
+                with k_col1:
+                    if "kit_5500f_mach1" in LINKS:
+                        st.link_button("🔥 Kit R5 5500F (PCIe 4.0) + MSI A520M + Cooler MACH1", LINKS["kit_5500f_mach1"], use_container_width=True)
+                    if "kit_5500f_risemode" in LINKS:
+                        st.link_button("⚡ Kit R5 5500F (PCIe 4.0) + MSI A520M + Rise Mode G700", LINKS["kit_5500f_risemode"], use_container_width=True)
+                with k_col2:
+                    if "kit_5700x_watercooler" in LINKS:
+                        st.link_button("👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler 240mm", LINKS["kit_5700x_watercooler"], use_container_width=True)
+
+            elif plat_atual == "LGA1700":
+                st.markdown("##### 🔵 Upgrade Direto no seu Soquete Intel LGA 1700:")
+                st.info(
+                    f"💡 Você já tem placa-mãe LGA 1700! Não troque placa-mãe nem memórias: "
+                    "o salto ideal para empurrar qualquer placa de vídeo é subir para a linha i5 de 14ª geração desbloqueada."
+                )
+                i1_btn, i2_btn = st.columns(2)
+                with i1_btn:
+                    if "intel_i5_14600kf_kabum" in LINKS:
+                        st.link_button("🔵 Intel Core i5-14600KF 5.3GHz (KaBuM! - Cupom CPUAGORA)", LINKS["intel_i5_14600kf_kabum"], use_container_width=True)
+                with i2_btn:
+                    if "intel_i5_14600k_kabum" in LINKS:
+                        st.link_button("🔵 Intel Core i5-14600K 5.3GHz (KaBuM! - Cupom CPUAGORA)", LINKS["intel_i5_14600k_kabum"], use_container_width=True)
+
+            elif plat_atual == "AM4":
+                st.markdown("##### ⚡ Upgrade Direto na sua Placa-Mãe AM4 (Sem Trocar Placa):")
+                st.info(
+                    f"💡 O seu processador atual ({cpu_obj['nome']}) é AM4! Basta atualizar a BIOS da sua placa-mãe "
+                    "e colocar uma CPU com arquitetura Zen 3 ou cache 3D para eliminar o gargalo sem gastar com kit novo."
+                )
+                tab_custo, tab_performance, tab_topo = st.tabs([
+                    "🔥 Custo-Benefício AM4", 
+                    "⚡ Alto Desempenho AM4", 
+                    "👑 Topo AM4 (X3D / XT)"
+                ])
+                with tab_custo:
+                    st.caption("🏷️ Cupons Mercado Livre: `SITE50` ou `OFFHOJE`")
+                    c1_btn, c2_btn = st.columns(2)
+                    with c1_btn:
+                        if "r5_5500_ml" in LINKS:
+                            st.link_button("🔥 Ryzen 5 5500 (Mercado Livre - Cupom SITE50)", LINKS["r5_5500_ml"], use_container_width=True)
+                        if "r5_5500_kabum" in LINKS:
+                            st.link_button("📦 Ryzen 5 5500 (KaBuM!)", LINKS["r5_5500_kabum"], use_container_width=True)
+                        if "r5_5500x3d_shopee" in LINKS:
+                            st.link_button("🏷️ Ryzen 5 5500X3D (Shopee Cupons)", LINKS["r5_5500x3d_shopee"], use_container_width=True)
+                    with c2_btn:
+                        if "r5_5500_amazon" in LINKS:
+                            st.link_button("📦 Ryzen 5 5500 (Amazon Prime)", LINKS["r5_5500_amazon"], use_container_width=True)
+                        if "r5_5600x_amazon" in LINKS:
+                            st.link_button("⚡ Ryzen 5 5600X (Amazon)", LINKS["r5_5600x_amazon"], use_container_width=True)
+                        if "r5_5500x3d_ml" in LINKS:
+                            st.link_button("🔥 Ryzen 5 5500X3D (Mercado Livre)", LINKS["r5_5500x3d_ml"], use_container_width=True)
+
+                with tab_performance:
+                    st.caption("Excelentes para multitarefa, stream e jogos pesados.")
+                    p1_btn, p2_btn = st.columns(2)
+                    with p1_btn:
+                        if "r7_5700_shopee" in LINKS:
+                            st.link_button("🏷️ Ryzen 7 5700 (Shopee - Melhores Preços)", LINKS["r7_5700_shopee"], use_container_width=True)
+                        if "r7_5700x_kabum" in LINKS:
+                            st.link_button("💳 Ryzen 7 5700X (KaBuM!)", LINKS["r7_5700x_kabum"], use_container_width=True)
+                    with p2_btn:
+                        if "r7_5700x_amazon" in LINKS:
+                            st.link_button("⚡ Ryzen 7 5700X (Amazon Prime)", LINKS["r7_5700x_amazon"], use_container_width=True)
+
+                with tab_topo:
+                    st.caption("🏷️ Use o cupom `CPUAGORA` na KaBuM!")
+                    t1_btn, t2_btn = st.columns(2)
+                    with t1_btn:
+                        if "r7_5800xt_kabum" in LINKS:
+                            st.link_button("🔥 Ryzen 7 5800XT (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800xt_kabum"], use_container_width=True)
+                        if "r7_5800x3d_ml" in LINKS:
+                            st.link_button("👑 Ryzen 7 5800X3D (Mercado Livre)", LINKS["r7_5800x3d_ml"], use_container_width=True)
+                    with t2_btn:
+                        if "r7_5800x3d_kabum" in LINKS:
+                            st.link_button("👑 Ryzen 7 5800X3D (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800x3d_kabum"], use_container_width=True)
+
+        # 2. Recomendação de GPU
+        if gpu_obj["nota"] < 7.5 or usando_igpu:
+            st.markdown("##### 🎮 Placas de Vídeo Recomendadas para Jogos Modernos:")
+            tab_gpu_custo, tab_gpu_inter = st.tabs(["⚡ Custo-Benefício (1080p Alto/Ultra)", "🔥 Intermediárias / Top 1440p"])
+            
+            with tab_gpu_custo:
+                st.caption("🎯 **Melhores opções até R$ 2.000:** Ideal para rodar tudo em Full HD com alta taxa de FPS.")
+                g1_btn, g2_btn = st.columns(2)
+                with g1_btn:
+                    if "gpu_rx7600_biostar_shopee" in LINKS:
+                        st.link_button("🏷️ RX 7600 Biostar 8GB (Shopee - PROMO R$ 1.800)", LINKS["gpu_rx7600_biostar_shopee"], use_container_width=True)
+                    if "gpu_rtx5050_shopee" in LINKS:
+                        st.link_button("🔥 MSI NVIDIA RTX 5050 (Shopee Cupons)", LINKS["gpu_rtx5050_shopee"], use_container_width=True)
+                with g2_btn:
+                    if "gpu_rx7600_amazon" in LINKS:
+                        st.link_button("⚡ ASRock RX 7600 Challenger 8GB (Amazon Prime)", LINKS["gpu_rx7600_amazon"], use_container_width=True)
+                    if "gpu_rtx5060_amazon" in LINKS:
+                        st.link_button("🎮 MSI RTX 5060 Shadow 2X OC (Amazon)", LINKS["gpu_rtx5060_amazon"], use_container_width=True)
+
+            with tab_gpu_inter:
+                st.caption("🚀 **Alta Performance:** Perfeitas para Quad HD (1440p) e Ray Tracing com folga.")
+                gi1_btn, gi2_btn = st.columns(2)
+                with gi1_btn:
+                    if "gpu_rtx3070_kabum" in LINKS:
+                        st.link_button("🔥 Husky Alpha RTX 3070 8GB GDDR6 (KaBuM!)", LINKS["gpu_rtx3070_kabum"], use_container_width=True)
+                    if "gpu_rtx5060ti_shopee" in LINKS:
+                        st.link_button("🚀 INNO3D GeForce RTX 5060 Ti (Shopee Cupons)", LINKS["gpu_rtx5060ti_shopee"], use_container_width=True)
+                with gi2_btn:
+                    if "gpu_rx9060xt_shopee" in LINKS:
+                        st.link_button("⚡ PowerColor Radeon RX 9060 XT 8GB (Shopee)", LINKS["gpu_rx9060xt_shopee"], use_container_width=True)
+
+        if "tiktok_shop" in LINKS:
+            st.markdown("---")
+            st.link_button("📱 Conheça as ofertas e promoções na nossa vitrine do TikTok Shop", LINKS["tiktok_shop"], use_container_width=True)
