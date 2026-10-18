@@ -371,7 +371,8 @@ with col_right:
         gpu_nome_u = gpu_obj["nome"].upper()
         gpu_eh_8gb_gddr6 = any(x in gpu_nome_u for x in ["2060 SUPER", "2060S", "6600", "3060", "4060", "7600", "5050", "3070", "4070", "4080", "4090", "5060", "5070", "5080"])
         
-        if usando_igpu or not tem_igpu:
+        # Corrigido: só acusa falta de GPU dedicada se REALMENTE estiver usando vídeo integrado
+        if usando_igpu:
             st.error("❌ **INCOMPATÍVEL COM GTA VI:** Exigirá GPU dedicada com VRAM física.")
         elif tem_hd:
             st.error("❌ **INCOMPATÍVEL COM GTA VI (Armazenamento):** Exige SSD obrigatoriamente.")
