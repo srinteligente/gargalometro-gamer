@@ -507,26 +507,40 @@ with st.container(border=True):
                     st.warning("⚠️ Por favor, informe pelo menos o seu WhatsApp e o orçamento disponível.")
                 else:
                     url_endpoint = "https://formsubmit.co/ajax/dwdistrito@gmail.com"
-                    dados_envio = {
-                        "Servico": "Solicitacao de Consultoria Gamer (R$ 20,00)",
-                        "Nome": nome_cli if nome_cli.strip() else "Nao informado",
-                        "WhatsApp": zap_cli,
-                        "Orcamento": orcamento_cli,
-                        "Mensagem": msg_cli if msg_cli.strip() else "Nao detalhado",
-                        "_subject": f"🔥 Nova Consultoria Solicitada: {zap_cli} (R$ {orcamento_cli})"
+                    payload = {
+                        "name": nome_cli if nome_cli.strip() else "Não informado",
+                        "whatsapp": zap_cli,
+                        "orcamento": orcamento_cli,
+                        "mensagem": msg_cli if msg_cli.strip() else "Não detalhado",
+                        "_subject": f"🔥 Nova Consultoria Solicitada: {zap_cli} (R$ {orcamento_cli})",
+                        "_captcha": "false",
+                        "_template": "table"
                     }
                     
                     try:
-                        data = urllib.parse.urlencode(dados_envio).encode("utf-8")
+                        data_bytes = json.dumps(payload).encode("utf-8")
                         req = urllib.request.Request(
-                            url_endpoint, 
-                            data=data, 
-                            headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
+                            url_endpoint,
+                            data=data_bytes,
+                            headers={
+                                "Content-Type": "application/json",
+                                "Accept": "application/json",
+                                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                                "Origin": "https://formsubmit.co",
+                                "Referer": "https://formsubmit.co/"
+                            }
                         )
-                        with urllib.request.urlopen(req, timeout=10) as response:
-                            if response.status == 200:
+                        
+                        with urllib.request.urlopen(req, timeout=15) as resp:
+                            resposta = json.loads(resp.read().decode("utf-8"))
+                            
+                            # Verifica se o FormSubmit devolveu sucesso
+                            if resp.status == 200 and str(resposta.get("success")).lower() == "true":
                                 st.success("✅ **Pedido enviado com sucesso!** Em breve entraremos em contato via WhatsApp.")
                             else:
-                                st.error("Ocorreu um erro temporário ao enviar. Tente novamente.")
-                    except Exception as e:
-                        st.error("Falha na conexão ao registrar o pedido. Tente novamente em instantes.")
+                                st.warning("⚠️ O pedido foi recebido, mas confirme se recebeu notificação no seu e-mail.")
+                                
+                    except urllib.error.HTTPError as err:
+                        st.error(f"Erro no envio ({err.code}). O serviço recusou temporariamente a requisição.")
+                    except Exception:
+                        st.error("Falha de comunicação no envio. Tente novamente.")
