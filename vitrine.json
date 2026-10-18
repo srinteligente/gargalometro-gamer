@@ -1,0 +1,143 @@
+{
+  "achados_do_dia": [
+    {
+      "titulo": "❄️ Gabinete Aquário por Menos de R$ 180!",
+      "descricao": "Hayom GB1796 com 4 FANS instaladas e vidro temperado no TikTok Shop",
+      "texto_botao": "🛒 Garantir Gabinete Aquário no TikTok",
+      "url": "https://vt.tiktok.com/ZS9UmFDYeJYut-WLOg4/"
+    }
+  ],
+  "kits_upgrade": [
+    {
+      "texto": "🔥 Kit R5 5500F (PCIe 4.0) + MSI A520M + Cooler MACH1",
+      "url": "https://mercadolivre.com"
+    },
+    {
+      "texto": "⚡ Kit R5 5500F (PCIe 4.0) + MSI A520M + Rise Mode G700",
+      "url": "https://mercadolivre.com"
+    },
+    {
+      "texto": "👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler 240mm",
+      "url": "https://mercadolivre.com"
+    }
+  ],
+  "cpus": {
+    "AM4": {
+      "cupom": "🏷️ Cupons Mercado Livre: SITE50, OFFHOJE, SEMDEMORA, VAIBARATO, DESCONTOSUPREMO, MEUVALEMELI",
+      "itens": [
+        {"texto": "📦 Ryzen 5 5500 (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "📦 Ryzen 5 5500 (Amazon Prime)", "url": "https://amazon.com.br"},
+        {"texto": "⚡ Ryzen 5 5600X (Amazon)", "url": "https://amazon.com.br"},
+        {"texto": "🏷️ Ryzen 5 5500X3D (Shopee Cupons)", "url": "https://shopee.com.br"},
+        {"texto": "🔥 Ryzen 5 5500X3D (Mercado Livre)", "url": "https://mercadolivre.com"},
+        {"texto": "🏷️ Ryzen 7 5700 (Shopee - Melhores Preços)", "url": "https://shopee.com.br"},
+        {"texto": "💳 Ryzen 7 5700X (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "🔥 Ryzen 7 5800XT (KaBuM! - Cupom CPUAGORA)", "url": "https://kabum.com.br"},
+        {"texto": "👑 Ryzen 7 5800X3D (Mercado Livre)", "url": "https://mercadolivre.com"},
+        {"texto": "👑 Ryzen 7 5800X3D (KaBuM! - Cupom CPUAGORA)", "url": "https://kabum.com.br"}
+      ]
+    },
+    "AM5": {
+      "cupom": "🚀 Plataforma AMD AM5 com memória DDR5, alto IPC e processadores X3D",
+      "itens": [
+        {"texto": "🔥 Ryzen 5 8400F (ML - Último em Estoque R$ 688,50)", "url": "https://mercadolivre.com"},
+        {"texto": "⚡ Ryzen 5 8400F (Amazon Prime)", "url": "https://amazon.com.br"},
+        {"texto": "📦 Ryzen 5 8500G com Vídeo Integrado (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "📦 Ryzen 5 8600G Radeon 760M (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "⚡ Ryzen 5 7600X (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "🎯 Ryzen 5 7600X3D (KaBuM! - Cache 3D Custo-Benefício)", "url": "https://kabum.com.br"},
+        {"texto": "🚀 Ryzen 5 9600X Zen 5 (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "⚡ Ryzen 7 8700F 8-Cores (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "📦 Ryzen 7 7700 (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "🚀 Ryzen 7 9700X Zen 5 (Amazon)", "url": "https://amazon.com.br"},
+        {"texto": "👑 Ryzen 7 7800X3D (KaBuM! - Rei do FPS)", "url": "https://kabum.com.br"},
+        {"texto": "👑 Ryzen 7 9800X3D (KaBuM! - O Mais Forte do Mundo)", "url": "https://kabum.com.br"},
+        {"texto": "👑 Ryzen 9 9900X Zen 5 (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "👑 Ryzen 9 9900X3D (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "👑 Ryzen 9 9950X Topo de Linha (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "👑 Ryzen 9 9950X3D (Amazon - Máxima Performance)", "url": "https://amazon.com.br"}
+      ]
+    },
+    "Intel LGA 1700": {
+      "cupom": "🏷️ Use o cupom CPUAGORA na KaBuM! para desconto nos modelos Intel K/KF",
+      "itens": [
+        {"texto": "🔵 Intel Core i5-14600KF 5.3GHz (KaBuM! - Cupom CPUAGORA)", "url": "https://kabum.com.br"},
+        {"texto": "🔵 Intel Core i5-14600K 5.3GHz (KaBuM! - Cupom CPUAGORA)", "url": "https://kabum.com.br"}
+      ]
+    }
+  },
+  "placas_mae": {
+    "AM4": {
+      "cupom": "🏷️ Use MELIOFERTAS no Mercado Livre ou CHEGOUMSI na KaBuM!",
+      "itens": [
+        {"texto": "📦 MSI A520M-A PRO (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "⚡ MSI A520M-A PRO (Amazon Prime)", "url": "https://amazon.com.br"},
+        {"texto": "🔥 Gigabyte Ultra Durable A520M (Mercado Livre)", "url": "https://mercadolivre.com"},
+        {"texto": "🔥 Gigabyte B550M Aorus Elite (ML - Cupom MELIOFERTAS)", "url": "https://mercadolivre.com"},
+        {"texto": "💳 MSI B550M Gaming Plus WiFi6E (KaBuM! - Cupom CHEGOUMSI)", "url": "https://kabum.com.br"},
+        {"texto": "⚡ Gigabyte B550M Aorus Elite (Amazon)", "url": "https://amazon.com.br"}
+      ]
+    },
+    "AM5": {
+      "cupom": "🚀 Plataforma Moderna AM5 com suporte a memória DDR5",
+      "itens": [
+        {"texto": "🔥 MSI Pro B840M-B AM5 (ML - R$ 469,20)", "url": "https://mercadolivre.com"},
+        {"texto": "⚡ MSI Pro B840M-B AM5 (Amazon - R$ 478,99)", "url": "https://amazon.com.br"},
+        {"texto": "🏷️ Asus B650M-AYW WiFi (Shopee - R$ 762,59)", "url": "https://shopee.com.br"},
+        {"texto": "📦 Asus B650M-AYW WiFi (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "📦 ASRock B650 Pro RS ATX (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "📦 ASRock B850M Pro RS AM5 (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "👑 MSI MPG B650 Edge WIFI (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "📦 ASRock B850M Pro-A (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "⚡ ASUS Prime B850-PLUS PCIe 5.0 (Amazon)", "url": "https://amazon.com.br"},
+        {"texto": "❄️ ASRock B850M Challenger WiFi BRANCA (Amazon)", "url": "https://amazon.com.br"},
+        {"texto": "👑 ASUS X870 MAX GAMING WiFi7 BRANCA (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "👑 ASUS X870 MAX GAMING WiFi7 (KaBuM!)", "url": "https://kabum.com.br"}
+      ]
+    },
+    "LGA 1700": {
+      "cupom": "🔵 Placas-mãe para processadores Intel 12ª, 13ª e 14ª Geração",
+      "itens": [
+        {"texto": "🔥 MSI Pro H610M-A DDR4 (Mercado Livre)", "url": "https://mercadolivre.com"},
+        {"texto": "📦 MSI PRO H610M-S DDR4 II (KaBuM! - R$ 489,99)", "url": "https://kabum.com.br"},
+        {"texto": "⚡ MSI PRO B760M-P DDR5 (Amazon - R$ 476,90)", "url": "https://amazon.com.br"},
+        {"texto": "⚡ MSI PRO B760M-A WIFI DDR5 (Amazon)", "url": "https://amazon.com.br"},
+        {"texto": "🔥 Gigabyte B760M Aorus Elite DDR5 (Mercado Livre)", "url": "https://mercadolivre.com"}
+      ]
+    }
+  },
+  "gpus": {
+    "Custo-Benefício": {
+      "cupom": "🎯 Melhores opções até R$ 2.000: Ideal para rodar tudo em Full HD com alta taxa de FPS.",
+      "itens": [
+        {"texto": "🏷️ RX 7600 Biostar 8GB (Shopee - PROMO R$ 1.800)", "url": "https://shopee.com.br"},
+        {"texto": "⚡ ASRock RX 7600 Challenger 8GB (Amazon Prime)", "url": "https://amazon.com.br"},
+        {"texto": "🔥 MSI NVIDIA RTX 5050 (Shopee Cupons)", "url": "https://shopee.com.br"},
+        {"texto": "🎮 MSI RTX 5060 Shadow 2X OC (Amazon)", "url": "https://amazon.com.br"}
+      ]
+    },
+    "Intermediárias": {
+      "cupom": "🚀 Alta Performance: Perfeitas para Quad HD (1440p) competitivo e alta fluidez.",
+      "itens": [
+        {"texto": "🔥 Husky Alpha RTX 3070 8GB GDDR6 (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "⚡ PNY GeForce RTX 5060 Ti (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "🚀 INNO3D GeForce RTX 5060 Ti (Shopee Cupons)", "url": "https://shopee.com.br"},
+        {"texto": "⚡ PowerColor Radeon RX 9060 XT 8GB (Shopee)", "url": "https://shopee.com.br"}
+      ]
+    },
+    "High-End": {
+      "cupom": "🏷️ Cupom na KaBuM!: SABADACOVGA10 para 10% OFF em modelos elegíveis",
+      "itens": [
+        {"texto": "🔥 ASUS PRIME RTX 5070 OC 12G (KaBuM! - Cupom SABADACOVGA10)", "url": "https://kabum.com.br"},
+        {"texto": "🔥 Palit RTX 5070 INFINITY 3 (KaBuM! - Cupom SABADACOVGA10)", "url": "https://kabum.com.br"},
+        {"texto": "❄️ ASRock Radeon RX 9070 Steel Legend (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "🚀 ASUS Prime Radeon RX 9070 XT OC (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "🚀 PowerColor Radeon RX 9070 XT (Shopee)", "url": "https://shopee.com.br"},
+        {"texto": "👑 Palit RTX 5070 Ti GamingPro-S 16GB (Mercado Livre)", "url": "https://mercadolivre.com"},
+        {"texto": "👑 Palit GeForce RTX 5070 Ti 16GB (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "👑 MSI RTX 5080 Ventus 3X OC 16GB (KaBuM!)", "url": "https://kabum.com.br"},
+        {"texto": "👑 Palit Infinity 3 RTX 5080 16GB GDDR7 (Mercado Livre)", "url": "https://mercadolivre.com"}
+      ]
+    }
+  }
+}
