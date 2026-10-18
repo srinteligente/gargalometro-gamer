@@ -264,7 +264,9 @@ nota_final = max(1.0, min(10.0, nota_calculada - penalidade_hd))
 consumo_estimado = gpu_obj["tdp"] + cpu_obj["tdp"] + (35 if eh_notebook else 75)
 fonte_recomendada = consumo_estimado * 1.35
 
-# Pesos de resolução calibrados para paridade realista
+# ========================================================
+# 🎯 CÁLCULO DE GARGALO CALIBRADO (PADRÃO DE MERCADO)
+# ========================================================
 pesos_resolucao = {
     "1080p (Full HD)": 1.00,
     "1440p (Quad HD)": 1.25,
@@ -276,7 +278,6 @@ fator_xeon = 1.0
 if eh_xeon and resolucao_sel == "1080p (Full HD)" and gpu_obj["nota"] >= 5.0:
     fator_xeon = 0.65
 
-# Cálculo de potencial relativo
 fps_potencial_gpu = gpu_obj["nota"] / pesos_resolucao[resolucao_sel]
 fps_potencial_cpu = (cpu_obj["nota"] * fator_xeon) / 1.00
 
@@ -327,7 +328,7 @@ with col_right:
         else:
             st.success("✅ **Alimentação segura.**")
 
-  st.markdown("---")
+    st.markdown("---")
     st.subheader("Análise de Gargalo por Resolução")
 
     if eh_xeon and resolucao_sel == "1080p (Full HD)" and gpu_obj["nota"] >= 5.0:
