@@ -153,6 +153,25 @@ with banner_col2:
         st.caption("Dicas de hardware, reviews, testes de performance e promoções exclusivas todo dia.")
         st.link_button("🔥 Seguir @srinteligente.shop", "https://www.tiktok.com/@srinteligente.shop", use_container_width=True)
 
+# ========================================================
+# 🚨 ACHADO DO DIA / OFERTA RELÂMPAGO
+# ========================================================
+if "gabinete_aquario_hayom_tiktok" in LINKS:
+    with st.container(border=True):
+        col_gab1, col_gab2 = st.columns([2.5, 1])
+        with col_gab1:
+            st.markdown("### 🔥 ACHADO DO DIA: Gabinete Aquário por Menos de R$ 180!")
+            st.markdown(
+                "**Gabinete Gamer Aquário Hayom GB1796 (Preto)** com lateral e frontal em **vidro temperado** "
+                "e já acompanhado de **4 FANS instaladas**! Visual premium para o seu setup a preço de gabinete básico."
+            )
+        with col_gab2:
+            st.link_button(
+                "🛒 Garantir no TikTok Shop (Menos de R$ 180)",
+                LINKS["gabinete_aquario_hayom_tiktok"],
+                use_container_width=True
+            )
+
 st.divider()
 
 col_left, col_right = st.columns([1.2, 1])
@@ -264,9 +283,7 @@ nota_final = max(1.0, min(10.0, nota_calculada - penalidade_hd))
 consumo_estimado = gpu_obj["tdp"] + cpu_obj["tdp"] + (35 if eh_notebook else 75)
 fonte_recomendada = consumo_estimado * 1.35
 
-# ========================================================
-# 🎯 CÁLCULO DE GARGALO CALIBRADO (PADRÃO DE MERCADO)
-# ========================================================
+# Pesos de resolução calibrados para paridade realista
 pesos_resolucao = {
     "1080p (Full HD)": 1.00,
     "1440p (Quad HD)": 1.25,
@@ -278,6 +295,7 @@ fator_xeon = 1.0
 if eh_xeon and resolucao_sel == "1080p (Full HD)" and gpu_obj["nota"] >= 5.0:
     fator_xeon = 0.65
 
+# Cálculo de potencial relativo
 fps_potencial_gpu = gpu_obj["nota"] / pesos_resolucao[resolucao_sel]
 fps_potencial_cpu = (cpu_obj["nota"] * fator_xeon) / 1.00
 
@@ -328,7 +346,7 @@ with col_right:
         else:
             st.success("✅ **Alimentação segura.**")
 
-    st.markdown("---")
+  st.markdown("---")
     st.subheader("Análise de Gargalo por Resolução")
 
     if eh_xeon and resolucao_sel == "1080p (Full HD)" and gpu_obj["nota"] >= 5.0:
@@ -371,8 +389,7 @@ with col_right:
         gpu_nome_u = gpu_obj["nome"].upper()
         gpu_eh_8gb_gddr6 = any(x in gpu_nome_u for x in ["2060 SUPER", "2060S", "6600", "3060", "4060", "7600", "5050", "3070", "4070", "4080", "4090", "5060", "5070", "5080"])
         
-        # Corrigido: só acusa falta de GPU dedicada se REALMENTE estiver usando vídeo integrado
-        if usando_igpu:
+        if usando_igpu or not tem_igpu:
             st.error("❌ **INCOMPATÍVEL COM GTA VI:** Exigirá GPU dedicada com VRAM física.")
         elif tem_hd:
             st.error("❌ **INCOMPATÍVEL COM GTA VI (Armazenamento):** Exige SSD obrigatoriamente.")
