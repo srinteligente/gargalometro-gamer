@@ -264,10 +264,11 @@ nota_final = max(1.0, min(10.0, nota_calculada - penalidade_hd))
 consumo_estimado = gpu_obj["tdp"] + cpu_obj["tdp"] + (35 if eh_notebook else 75)
 fonte_recomendada = consumo_estimado * 1.35
 
+# Pesos de resolução calibrados para paridade realista
 pesos_resolucao = {
-    "1080p (Full HD)": 0.80,
-    "1440p (Quad HD)": 1.10,
-    "4K (Ultra HD)":   1.50
+    "1080p (Full HD)": 1.00,
+    "1440p (Quad HD)": 1.25,
+    "4K (Ultra HD)":   1.60
 }
 
 eh_xeon = "XEON" in cpu_obj["nome"].upper()
@@ -275,8 +276,9 @@ fator_xeon = 1.0
 if eh_xeon and resolucao_sel == "1080p (Full HD)" and gpu_obj["nota"] >= 5.0:
     fator_xeon = 0.65
 
+# Cálculo de potencial relativo
 fps_potencial_gpu = gpu_obj["nota"] / pesos_resolucao[resolucao_sel]
-fps_potencial_cpu = (cpu_obj["nota"] * fator_xeon) / 0.85
+fps_potencial_cpu = (cpu_obj["nota"] * fator_xeon) / 1.00
 
 if fps_potencial_gpu > fps_potencial_cpu:
     pct_gargalo = ((fps_potencial_gpu - fps_potencial_cpu) / fps_potencial_gpu) * 100.0
@@ -325,7 +327,7 @@ with col_right:
         else:
             st.success("✅ **Alimentação segura.**")
 
-    st.markdown("---")
+  st.markdown("---")
     st.subheader("Análise de Gargalo por Resolução")
 
     if eh_xeon and resolucao_sel == "1080p (Full HD)" and gpu_obj["nota"] >= 5.0:
@@ -335,18 +337,22 @@ with col_right:
         st.write(f"**Gargalo estimado de CPU:** `{pct_gargalo}%`")
         st.progress(min(1.0, pct_gargalo / 100.0))
         st.write(f"O seu **{cpu_obj['nome']}** limita a **{gpu_obj['nome']}** em 1080p devido a clock e IPC antigos.")
-    elif pct_gargalo >= 15.0 and componente_limitante == "Processador (CPU)":
+        
+    elif pct_gargalo >= 20.0 and componente_limitante == "Processador (CPU)":
         if nome_icone:
             st.image(nome_icone, width=200)
         st.error(f"🚨 **GARGALO DETECTADO EM {resolucao_sel.upper()}!**")
         st.write(f"**Gargalo estimado de CPU:** `{pct_gargalo}%`")
         st.progress(min(1.0, pct_gargalo / 100.0))
-        st.write(f"O seu **{cpu_obj['nome']}** não acompanha a **{gpu_obj['nome']}**.")
+        st.write(f"O seu **{cpu_obj['nome']}** limita expressivamente a **{gpu_obj['nome']}**.")
+        
     elif pct_gargalo >= 25.0 and componente_limitante == "Placa de Vídeo (GPU)":
         st.info(f"💡 **Limite Gráfico em {resolucao_sel}:** Gargalo natural de GPU de `{pct_gargalo}%`.")
-        st.write("A placa gráfica trabalhará a 99%/100% de uso, o comportamento esperado.")
+        st.write("A placa gráfica trabalhará a 99%/100% de uso, o comportamento esperado em jogos pesados.")
+        
     else:
-        st.success(f"🎯 **Setup Muito Equilibrado em {resolucao_sel}:** Variação de `{pct_gargalo}%`.")
+        st.success(f"🎯 **Setup Perfeitamente Equilibrado em {resolucao_sel}!**")
+        st.write(f"Variação estimada de apenas `{pct_gargalo}%`. O processador e a placa de vídeo trabalham em harmonia.")
 
     # ========================================================
     # 🌴 TESTE DE PRONTIDÃO: GTA VI (CORRIGIDO)
