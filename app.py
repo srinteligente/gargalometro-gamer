@@ -144,17 +144,17 @@ banner_col1, banner_col2 = st.columns(2)
 with banner_col1:
     with st.container(border=True):
         st.markdown("##### 🎙️ Quer furar a fila na Live?")
-        st.caption("Envie sua dúvida por mensagem de áudio em tempo real na tela da transmissão!")
+        st.caption("Envie a sua dúvida por mensagem de áudio em tempo real no ecrã da transmissão!")
         st.link_button("⚡ Mandar Mensagem de Voz (LivePix)", "https://livepix.gg/srinteligente", use_container_width=True)
 
 with banner_col2:
     with st.container(border=True):
-        st.markdown("##### 📱 Siga nosso perfil no TikTok!")
-        st.caption("Dicas de hardware, reviews, testes de performance e promoções exclusivas todo dia.")
+        st.markdown("##### 📱 Siga o nosso perfil no TikTok!")
+        st.caption("Dicas de hardware, análises, testes de desempenho e promoções exclusivas todos os dias.")
         st.link_button("🔥 Seguir @srinteligente.shop", "https://www.tiktok.com/@srinteligente.shop", use_container_width=True)
 
 # ========================================================
-# 🚨 ACHADO DO DIA / OFERTA RELÂMPAGO
+# 🚨 ACHADO DO DIA / OFERTA RELÂMPAGO (GABINETE AQUÁRIO)
 # ========================================================
 if "gabinete_aquario_hayom_tiktok" in LINKS:
     with st.container(border=True):
@@ -283,7 +283,9 @@ nota_final = max(1.0, min(10.0, nota_calculada - penalidade_hd))
 consumo_estimado = gpu_obj["tdp"] + cpu_obj["tdp"] + (35 if eh_notebook else 75)
 fonte_recomendada = consumo_estimado * 1.35
 
-# Pesos de resolução calibrados para paridade realista
+# ========================================================
+# 🎯 CÁLCULO DE GARGALO CALIBRADO (PADRÃO DE MERCADO)
+# ========================================================
 pesos_resolucao = {
     "1080p (Full HD)": 1.00,
     "1440p (Quad HD)": 1.25,
@@ -295,7 +297,6 @@ fator_xeon = 1.0
 if eh_xeon and resolucao_sel == "1080p (Full HD)" and gpu_obj["nota"] >= 5.0:
     fator_xeon = 0.65
 
-# Cálculo de potencial relativo
 fps_potencial_gpu = gpu_obj["nota"] / pesos_resolucao[resolucao_sel]
 fps_potencial_cpu = (cpu_obj["nota"] * fator_xeon) / 1.00
 
@@ -340,13 +341,13 @@ with col_right:
     if not eh_notebook:
         st.markdown("---")
         if fonte_w < consumo_estimado:
-            st.error(f"🚨 **Fonte insuficiente:** Consumo estimado é de ~{consumo_estimado}W e sua fonte tem {fonte_w}W!")
+            st.error(f"🚨 **Fonte insuficiente:** Consumo estimado é de ~{consumo_estimado}W e a sua fonte tem {fonte_w}W!")
         elif fonte_w < fonte_recomendada:
             st.warning(f"⚠️ **Pouca folga:** Recomendável pelo menos {int(fonte_recomendada)}W.")
         else:
             st.success("✅ **Alimentação segura.**")
 
-  st.markdown("---")
+    st.markdown("---")
     st.subheader("Análise de Gargalo por Resolução")
 
     if eh_xeon and resolucao_sel == "1080p (Full HD)" and gpu_obj["nota"] >= 5.0:
@@ -389,7 +390,7 @@ with col_right:
         gpu_nome_u = gpu_obj["nome"].upper()
         gpu_eh_8gb_gddr6 = any(x in gpu_nome_u for x in ["2060 SUPER", "2060S", "6600", "3060", "4060", "7600", "5050", "3070", "4070", "4080", "4090", "5060", "5070", "5080"])
         
-        if usando_igpu or not tem_igpu:
+        if usando_igpu:
             st.error("❌ **INCOMPATÍVEL COM GTA VI:** Exigirá GPU dedicada com VRAM física.")
         elif tem_hd:
             st.error("❌ **INCOMPATÍVEL COM GTA VI (Armazenamento):** Exige SSD obrigatoriamente.")
