@@ -5,6 +5,24 @@
       "descricao": "Hayom GB1796 com 4 FANS instaladas e vidro temperado no TikTok Shop",
       "texto_botao": "🛒 Garantir Gabinete Aquário no TikTok",
       "url": "https://vt.tiktok.com/ZS9UmFDYeJYut-WLOg4/"
+    },
+    {
+      "titulo": "⚡ Memória RAM CUSU 16GB (2x8GB) 3200MHz",
+      "descricao": "R$ 693,64 (Já com Impostos Inclusos) • Alta velocidade para jogos e multitarefa no AliExpress",
+      "texto_botao": "📦 Garantir Memórias CUSU 2x8GB (AliExpress)",
+      "url": "https://s.click.aliexpress.com/e/_mqwSXIn"
+    },
+    {
+      "titulo": "🌪️ Kit 3 Ventoinhas ARGB 120mm + Controladora",
+      "descricao": "Apenas R$ 94,52 na Shopee • 1200 RPM, alta refrigeração (Preta e Branca)",
+      "texto_botao": "🔥 Garantir Kit 3 Fans ARGB (R$ 94,52)",
+      "url": "https://s.shopee.com.br/113naNsF0M"
+    },
+    {
+      "titulo": "🌈 Kit 3 a 10 Fans RGB Hayom + Controladora",
+      "descricao": "A partir de R$ 116,77 na Shopee • Disponível em preto e branco com controle remoto",
+      "texto_botao": "🛒 Garantir Kit Fans Hayom (Shopee)",
+      "url": "https://s.shopee.com.br/8V9oW32BhQ"
     }
   ],
   "kits_upgrade": [
@@ -23,7 +41,7 @@
   ],
   "cpus": {
     "🔴 AMD AM4 (DDR4)": {
-      "cupom": "🏷️ Cupons Mercado Livre: SITE50, OFFHOJE, SEMDEMORA, VAIBARATO, DESCONTOSUPREMO, MEUVALEMELI",
+      "cupom": "🏷️ Cupons Shopee: resgate aqui https://s.shopee.com.br/8AWy3SxAKW | Cupons ML: SITE50, OFFHOJE, VAIBARATO",
       "itens": [
         {
           "texto": "🔥 Ryzen 5 5500 (Mercado Livre)",
@@ -50,6 +68,10 @@
           "url": "https://meli.la/1auyhNC"
         },
         {
+          "texto": "🔥 Ryzen 7 5700 (ML - Promo R$ 936,99)",
+          "url": "https://meli.la/1kdoiYp"
+        },
+        {
           "texto": "🏷️ Ryzen 7 5700 (Shopee - Melhores Preços)",
           "url": "https://s.shopee.com.br/80DVu4Gy5Z?share_channel_code=1"
         },
@@ -70,8 +92,8 @@
           "url": "https://meli.la/1MKXidT"
         },
         {
-          "texto": "👑 Ryzen 7 5800X3D (KaBuM! - Cupom CPUAGORA)",
-          "url": "https://tidd.y/4s7Amem"
+          "texto": "👑 Ryzen 7 5800X3D (Shopee)",
+          "url": "https://s.shopee.com.br/5AtMTuN8PW?share_channel_code=1"
         }
       ]
     },
@@ -244,6 +266,10 @@
     "🔵 Intel LGA 1700 (DDR4 / DDR5)": {
       "cupom": "🔵 Placas-mãe para processadores Intel 12ª, 13ª e 14ª Geração",
       "itens": [
+        {
+          "texto": "🔥 MSI Pro B760M-P DDR4 (ML - R$ 717,59)",
+          "url": "https://meli.la/33z6D9n"
+        },
         {
           "texto": "🔥 MSI Pro H610M-A DDR4 (Mercado Livre)",
           "url": "https://meli.la/2MhnnbT"
