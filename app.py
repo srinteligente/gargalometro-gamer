@@ -26,18 +26,29 @@ def carregar_dados():
         with open("banco_hardware_completo.json", "r", encoding="utf-8") as f:
             dados_hw = json.load(f)
     
-    dados_links = {}
-    if os.path.exists("links.json"):
+    dados_vitrine = {}
+    # Suporta o novo vitrine.json ou o links.json antigo caso ainda exista
+    arq_vitrine = "vitrine.json" if os.path.exists("vitrine.json") else "links.json"
+    if os.path.exists(arq_vitrine):
         try:
-            with open("links.json", "r", encoding="utf-8") as f:
-                dados_links = json.load(f)
+            with open(arq_vitrine, "r", encoding="utf-8") as f:
+                dados_vitrine = json.load(f)
         except Exception as e:
-            st.error(f"Erro ao ler links.json: {e}")
+            st.error(f"Erro ao ler {arq_vitrine}: {e}")
             
-    return dados_hw, dados_links
+    return dados_hw, dados_vitrine
 
-db, LINKS = carregar_dados()
-st.sidebar.caption(f"🔗 Links Ativos: {len(LINKS)}")
+db, VITRINE = carregar_dados()
+
+def renderizar_botoes_em_colunas(itens):
+    """Gera botões organizados automaticamente em 2 colunas"""
+    if not itens:
+        return
+    c1, c2 = st.columns(2)
+    for i, item in enumerate(itens):
+        col = c1 if i % 2 == 0 else c2
+        with col:
+            st.link_button(item["texto"], item["url"], use_container_width=True)
 
 def classificar_plataforma_cpu(nome_cpu):
     u = nome_cpu.upper()
@@ -144,34 +155,28 @@ banner_col1, banner_col2 = st.columns(2)
 with banner_col1:
     with st.container(border=True):
         st.markdown("##### 🎙️ Quer furar a fila na Live?")
-        st.caption("Envie a sua dúvida por mensagem de áudio em tempo real na tela da transmissão!")
+        st.caption("Envie sua dúvida por mensagem de áudio em tempo real na tela da transmissão!")
         st.link_button("⚡ Mandar Mensagem de Voz (LivePix)", "https://livepix.gg/srinteligente", use_container_width=True)
 
 with banner_col2:
     with st.container(border=True):
-        st.markdown("##### 📱 Siga o nosso perfil no TikTok!")
-        st.caption("Dicas de hardware, análises, testes de desempenho e promoções exclusivas todo dia.")
+        st.markdown("##### 📱 Siga nosso perfil no TikTok!")
+        st.caption("Dicas de hardware, análises, testes de performance e promoções exclusivas todo dia.")
         st.link_button("🔥 Seguir @srinteligente.shop", "https://www.tiktok.com/@srinteligente.shop", use_container_width=True)
 
 # ========================================================
-# 🚨 ACHADOS DO DIA / OFERTAS RELÂMPAGO
+# 🚨 ACHADOS DO DIA DINÂMICOS (LÊ VITRINE.JSON)
 # ========================================================
-st.markdown("#### ⚡ Achados do Dia com Menor Preço Histórico:")
-promo_col1, promo_col2 = st.columns(2)
-
-with promo_col1:
-    with st.container(border=True):
-        st.markdown("##### 🚀 Ryzen 5 5500 por R$ 449,00!")
-        st.caption("6 Cores / 12 Threads • Menor preço no Mercado Livre (Queima de Estoque)")
-        url_r5 = LINKS.get("r5_5500_ml_promo", "https://meli.la/1AqHwhD")
-        st.link_button("🔥 Garantir R5 5500 por R$ 449 (Mercado Livre)", url_r5, use_container_width=True)
-
-with promo_col2:
-    with st.container(border=True):
-        st.markdown("##### ❄️ Gabinete Aquário por Menos de R$ 180!")
-        st.caption("Hayom GB1796 com 4 FANS instaladas e vidro temperado no TikTok Shop")
-        url_gab = LINKS.get("gabinete_aquario_hayom_tiktok", "https://vt.tiktok.com/ZS9UmFDYeJYut-WLOg4/")
-        st.link_button("🛒 Garantir Gabinete Aquário no TikTok", url_gab, use_container_width=True)
+achados = VITRINE.get("achados_do_dia", [])
+if achados:
+    st.markdown("#### ⚡ Achados do Dia com Menor Preço Histórico:")
+    colunas_achados = st.columns(len(achados))
+    for idx, achado in enumerate(achados):
+        with colunas_achados[idx]:
+            with st.container(border=True):
+                st.markdown(f"##### {achado.get('titulo', 'Oferta Imperdível')}")
+                st.caption(achado.get('descricao', ''))
+                st.link_button(achado.get('texto_botao', 'Conferir Oferta'), achado.get('url', '#'), use_container_width=True)
 
 st.divider()
 
@@ -408,7 +413,7 @@ with col_right:
             st.warning("⚠️ **CONFIGURAÇÃO MÍNIMA ATENDIDA (1080p 30-45+ FPS em qualidade Normal).**")
 
     # ========================================================
-    # 💰 HUB DE UPGRADE POR PLATAFORMA (LÊ LINKS.JSON)
+    # 💰 HUB DE UPGRADE 100% DINÂMICO (LÊ VITRINE.JSON)
     # ========================================================
     st.markdown("---")
     st.subheader("🛒 Melhores Ofertas de Upgrade")
@@ -417,223 +422,44 @@ with col_right:
     ram_antiga = ("DDR2" in ram_sel) or ("DDR3" in ram_sel)
     precisa_trocar_plataforma = (plat_atual == "DEFASADA") or ram_antiga
 
-    if precisa_trocar_plataforma:
+    kits = VITRINE.get("kits_upgrade", [])
+    if precisa_trocar_plataforma and kits:
         st.markdown("##### 🛠️ Migração de Plataforma Recomendada (Kits com Placa-Mãe + CPU + Cooler):")
         st.info(
             f"💡 A sua plataforma atual ({cpu_obj['nome']}) opera com barramentos ou IPC antigos. "
             "A saída inteligente é migrar para um kit novo:"
         )
-        k_col1, k_col2 = st.columns(2)
-        with k_col1:
-            if "kit_5500f_mach1" in LINKS:
-                st.link_button("🔥 Kit R5 5500F (PCIe 4.0) + MSI A520M + Cooler MACH1", LINKS["kit_5500f_mach1"], use_container_width=True)
-            if "kit_5500f_risemode" in LINKS:
-                st.link_button("⚡ Kit R5 5500F (PCIe 4.0) + MSI A520M + Rise Mode G700", LINKS["kit_5500f_risemode"], use_container_width=True)
-        with k_col2:
-            if "kit_5700x_watercooler" in LINKS:
-                st.link_button("👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler 240mm", LINKS["kit_5700x_watercooler"], use_container_width=True)
+        renderizar_botoes_em_colunas(kits)
 
-    st.markdown("##### ⚡ Processadores Recomendados por Plataforma:")
-    tab_cpu_am4, tab_cpu_am5, tab_cpu_intel = st.tabs(["🔴 AMD AM4 (DDR4)", "🟣 AMD AM5 (DDR5 - Nova Geração)", "🔵 Intel LGA 1700"])
+    # Processadores por Aba Dinâmica
+    cpus_dict = VITRINE.get("cpus", {})
+    if cpus_dict:
+        st.markdown("##### ⚡ Processadores Recomendados por Plataforma:")
+        abas_cpu = st.tabs(list(cpus_dict.keys()))
+        for idx, (nome_aba, dados) in enumerate(cpus_dict.items()):
+            with abas_cpu[idx]:
+                if "cupom" in dados and dados["cupom"]:
+                    st.caption(dados["cupom"])
+                renderizar_botoes_em_colunas(dados.get("itens", []))
 
-    with tab_cpu_am4:
-        st.caption("🏷️ Cupons Mercado Livre: `SITE50`, `OFFHOJE`, `SEMDEMORA`, `VAIBARATO`, `DESCONTOSUPREMO`, `MEUVALEMELI`")
-        c1_btn, c2_btn = st.columns(2)
-        with c1_btn:
-            url_r5_ml = LINKS.get("r5_5500_ml_promo", LINKS.get("r5_5500_ml", "https://meli.la/1AqHwhD"))
-            st.link_button("🔥 Ryzen 5 5500 (ML - Promoção R$ 449,00)", url_r5_ml, use_container_width=True)
-            if "r5_5500_kabum" in LINKS:
-                st.link_button("📦 Ryzen 5 5500 (KaBuM!)", LINKS["r5_5500_kabum"], use_container_width=True)
-            if "r5_5500x3d_shopee" in LINKS:
-                st.link_button("🏷️ Ryzen 5 5500X3D (Shopee Cupons)", LINKS["r5_5500x3d_shopee"], use_container_width=True)
-            if "r7_5700_shopee" in LINKS:
-                st.link_button("🏷️ Ryzen 7 5700 (Shopee - Melhores Preços)", LINKS["r7_5700_shopee"], use_container_width=True)
-            if "r7_5800xt_kabum" in LINKS:
-                st.link_button("🔥 Ryzen 7 5800XT (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800xt_kabum"], use_container_width=True)
-        with c2_btn:
-            if "r5_5500_amazon" in LINKS:
-                st.link_button("📦 Ryzen 5 5500 (Amazon Prime)", LINKS["r5_5500_amazon"], use_container_width=True)
-            if "r5_5600x_amazon" in LINKS:
-                st.link_button("⚡ Ryzen 5 5600X (Amazon)", LINKS["r5_5600x_amazon"], use_container_width=True)
-            if "r5_5500x3d_ml" in LINKS:
-                st.link_button("🔥 Ryzen 5 5500X3D (Mercado Livre)", LINKS["r5_5500x3d_ml"], use_container_width=True)
-            if "r7_5700x_kabum" in LINKS:
-                st.link_button("💳 Ryzen 7 5700X (KaBuM!)", LINKS["r7_5700x_kabum"], use_container_width=True)
-            if "r7_5800x3d_ml" in LINKS:
-                st.link_button("👑 Ryzen 7 5800X3D (Mercado Livre)", LINKS["r7_5800x3d_ml"], use_container_width=True)
-            if "r7_5800x3d_kabum" in LINKS:
-                st.link_button("👑 Ryzen 7 5800X3D (KaBuM! - Cupom CPUAGORA)", LINKS["r7_5800x3d_kabum"], use_container_width=True)
+    # Placas-Mãe por Aba Dinâmica
+    mbs_dict = VITRINE.get("placas_mae", {})
+    if mbs_dict:
+        st.markdown("##### 🧩 Placas-Mãe Recomendadas:")
+        abas_mb = st.tabs(list(mbs_dict.keys()))
+        for idx, (nome_aba, dados) in enumerate(mbs_dict.items()):
+            with abas_mb[idx]:
+                if "cupom" in dados and dados["cupom"]:
+                    st.caption(dados["cupom"])
+                renderizar_botoes_em_colunas(dados.get("itens", []))
 
-    with tab_cpu_am5:
-        st.caption("🚀 Plataforma AMD AM5 com memória DDR5, alto IPC e processadores X3D")
-        am5_1, am5_2 = st.columns(2)
-        with am5_1:
-            if "r5_8400f_ml" in LINKS:
-                st.link_button("🔥 Ryzen 5 8400F (ML - Último em Estoque R$ 688,50)", LINKS["r5_8400f_ml"], use_container_width=True)
-            if "r5_8500g_kabum" in LINKS:
-                st.link_button("📦 Ryzen 5 8500G com Vídeo Integrado (KaBuM!)", LINKS["r5_8500g_kabum"], use_container_width=True)
-            if "r5_7600x_kabum" in LINKS:
-                st.link_button("⚡ Ryzen 5 7600X (KaBuM!)", LINKS["r5_7600x_kabum"], use_container_width=True)
-            if "r5_9600x_kabum" in LINKS:
-                st.link_button("🚀 Ryzen 5 9600X Zen 5 (KaBuM!)", LINKS["r5_9600x_kabum"], use_container_width=True)
-            if "r7_7700_kabum" in LINKS:
-                st.link_button("📦 Ryzen 7 7700 (KaBuM!)", LINKS["r7_7700_kabum"], use_container_width=True)
-            if "r7_7800x3d_kabum" in LINKS:
-                st.link_button("👑 Ryzen 7 7800X3D (KaBuM! - Rei do FPS)", LINKS["r7_7800x3d_kabum"], use_container_width=True)
-            if "r9_9900x_kabum" in LINKS:
-                st.link_button("👑 Ryzen 9 9900X Zen 5 (KaBuM!)", LINKS["r9_9900x_kabum"], use_container_width=True)
-            if "r9_9950x_kabum" in LINKS:
-                st.link_button("👑 Ryzen 9 9950X Topo de Linha (KaBuM!)", LINKS["r9_9950x_kabum"], use_container_width=True)
-        with am5_2:
-            if "r5_8400f_amazon" in LINKS:
-                st.link_button("⚡ Ryzen 5 8400F (Amazon Prime)", LINKS["r5_8400f_amazon"], use_container_width=True)
-            if "r5_8600g_kabum" in LINKS:
-                st.link_button("📦 Ryzen 5 8600G Radeon 760M (KaBuM!)", LINKS["r5_8600g_kabum"], use_container_width=True)
-            if "r5_7600x3d_kabum" in LINKS:
-                st.link_button("🎯 Ryzen 5 7600X3D (KaBuM! - Cache 3D Custo-Benefício)", LINKS["r5_7600x3d_kabum"], use_container_width=True)
-            if "r7_8700f_kabum" in LINKS:
-                st.link_button("⚡ Ryzen 7 8700F 8-Cores (KaBuM!)", LINKS["r7_8700f_kabum"], use_container_width=True)
-            if "r7_9700x_kabum" in LINKS:
-                st.link_button("🚀 Ryzen 7 9700X Zen 5 (Amazon)", LINKS["r7_9700x_kabum"], use_container_width=True)
-            if "r7_9800x3d_kabum" in LINKS:
-                st.link_button("👑 Ryzen 7 9800X3D (KaBuM! - O Mais Forte do Mundo)", LINKS["r7_9800x3d_kabum"], use_container_width=True)
-            if "r9_9900x3d_kabum" in LINKS:
-                st.link_button("👑 Ryzen 9 9900X3D (KaBuM!)", LINKS["r9_9900x3d_kabum"], use_container_width=True)
-            if "r9_9950x3d_amazon" in LINKS:
-                st.link_button("👑 Ryzen 9 9950X3D (Amazon - Máxima Performance)", LINKS["r9_9950x3d_amazon"], use_container_width=True)
-
-    with tab_cpu_intel:
-        st.caption("🏷️ Use o cupom `CPUAGORA` na KaBuM! para desconto nos modelos Intel K/KF")
-        i1_btn, i2_btn = st.columns(2)
-        with i1_btn:
-            if "intel_i5_14600kf_kabum" in LINKS:
-                st.link_button("🔵 Intel Core i5-14600KF 5.3GHz (KaBuM! - Cupom CPUAGORA)", LINKS["intel_i5_14600kf_kabum"], use_container_width=True)
-        with i2_btn:
-            if "intel_i5_14600k_kabum" in LINKS:
-                st.link_button("🔵 Intel Core i5-14600K 5.3GHz (KaBuM! - Cupom CPUAGORA)", LINKS["intel_i5_14600k_kabum"], use_container_width=True)
-
-    st.markdown("##### 🧩 Placas-Mãe Recomendadas (AM4, AM5 e LGA 1700):")
-    tab_mb_am4, tab_mb_am5, tab_mb_lga = st.tabs(["🔴 AMD AM4 (DDR4)", "🟣 AMD AM5 (DDR5)", "🔵 Intel LGA 1700 (DDR4 / DDR5)"])
-
-    with tab_mb_am4:
-        st.caption("🏷️ Use `MELIOFERTAS` no Mercado Livre ou `CHEGOUMSI` na KaBuM!")
-        mb4_1, mb4_2 = st.columns(2)
-        with mb4_1:
-            if "mb_am4_a520_kabum" in LINKS:
-                st.link_button("📦 MSI A520M-A PRO (KaBuM!)", LINKS["mb_am4_a520_kabum"], use_container_width=True)
-            if "mb_am4_a520_ml" in LINKS:
-                st.link_button("🔥 Gigabyte Ultra Durable A520M (Mercado Livre)", LINKS["mb_am4_a520_ml"], use_container_width=True)
-            if "mb_am4_b550_msi_kabum" in LINKS:
-                st.link_button("💳 MSI B550M Gaming Plus WiFi6E (KaBuM! - Cupom CHEGOUMSI)", LINKS["mb_am4_b550_msi_kabum"], use_container_width=True)
-        with mb4_2:
-            if "mb_am4_a520_amazon" in LINKS:
-                st.link_button("⚡ MSI A520M-A PRO (Amazon Prime)", LINKS["mb_am4_a520_amazon"], use_container_width=True)
-            if "mb_am4_b550_aorus_ml" in LINKS:
-                st.link_button("🔥 Gigabyte B550M Aorus Elite (ML - Cupom MELIOFERTAS)", LINKS["mb_am4_b550_aorus_ml"], use_container_width=True)
-            if "mb_am4_b550_aorus_amazon" in LINKS:
-                st.link_button("⚡ Gigabyte B550M Aorus Elite (Amazon)", LINKS["mb_am4_b550_aorus_amazon"], use_container_width=True)
-
-    with tab_mb_am5:
-        st.caption("🚀 Plataforma Moderna AM5 com suporte a memória DDR5")
-        mb5_1, mb5_2 = st.columns(2)
-        with mb5_1:
-            if "mb_am5_b840_ml" in LINKS:
-                st.link_button("🔥 MSI Pro B840M-B AM5 (ML - R$ 469,20)", LINKS["mb_am5_b840_ml"], use_container_width=True)
-            if "mb_am5_b650_ayw_shopee" in LINKS:
-                st.link_button("🏷️ Asus B650M-AYW WiFi (Shopee - R$ 762,59)", LINKS["mb_am5_b650_ayw_shopee"], use_container_width=True)
-            if "mb_am5_b650_asrock_rs_kabum" in LINKS:
-                st.link_button("📦 ASRock B650 Pro RS ATX (KaBuM!)", LINKS["mb_am5_b650_asrock_rs_kabum"], use_container_width=True)
-            if "mb_am5_b650_edge_wifi_kabum" in LINKS:
-                st.link_button("👑 MSI MPG B650 Edge WIFI (KaBuM!)", LINKS["mb_am5_b650_edge_wifi_kabum"], use_container_width=True)
-            if "mb_am5_b850_prime_amazon" in LINKS:
-                st.link_button("⚡ ASUS Prime B850-PLUS PCIe 5.0 (Amazon)", LINKS["mb_am5_b850_prime_amazon"], use_container_width=True)
-            if "mb_am5_x870_white_kabum" in LINKS:
-                st.link_button("👑 ASUS X870 MAX GAMING WiFi7 BRANCA (KaBuM!)", LINKS["mb_am5_x870_white_kabum"], use_container_width=True)
-        with mb5_2:
-            if "mb_am5_b840_amazon" in LINKS:
-                st.link_button("⚡ MSI Pro B840M-B AM5 (Amazon - R$ 478,99)", LINKS["mb_am5_b840_amazon"], use_container_width=True)
-            if "mb_am5_b650_ayw_kabum" in LINKS:
-                st.link_button("📦 Asus B650M-AYW WiFi (KaBuM!)", LINKS["mb_am5_b650_ayw_kabum"], use_container_width=True)
-            if "mb_am5_b850_asrock_rs_kabum" in LINKS:
-                st.link_button("📦 ASRock B850M Pro RS AM5 (KaBuM!)", LINKS["mb_am5_b850_asrock_rs_kabum"], use_container_width=True)
-            if "mb_am5_b850_pro_a_kabum" in LINKS:
-                st.link_button("📦 ASRock B850M Pro-A (KaBuM!)", LINKS["mb_am5_b850_pro_a_kabum"], use_container_width=True)
-            if "mb_am5_b850_challenger_white_amazon" in LINKS:
-                st.link_button("❄️ ASRock B850M Challenger WiFi BRANCA (Amazon)", LINKS["mb_am5_b850_challenger_white_amazon"], use_container_width=True)
-            if "mb_am5_x870_kabum" in LINKS:
-                st.link_button("👑 ASUS X870 MAX GAMING WiFi7 (KaBuM!)", LINKS["mb_am5_x870_kabum"], use_container_width=True)
-
-    with tab_mb_lga:
-        st.caption("🔵 Placas-mãe para processadores Intel 12ª, 13ª e 14ª Geração")
-        mbl_1, mbl_2 = st.columns(2)
-        with mbl_1:
-            if "mb_lga1700_h610_ml" in LINKS:
-                st.link_button("🔥 MSI Pro H610M-A DDR4 (Mercado Livre)", LINKS["mb_lga1700_h610_ml"], use_container_width=True)
-            if "mb_lga1700_b760_msi_p_amazon" in LINKS:
-                st.link_button("⚡ MSI PRO B760M-P DDR5 (Amazon - R$ 476,90)", LINKS["mb_lga1700_b760_msi_p_amazon"], use_container_width=True)
-            if "mb_lga1700_b760_aorus_ml" in LINKS:
-                st.link_button("🔥 Gigabyte B760M Aorus Elite DDR5 (Mercado Livre)", LINKS["mb_lga1700_b760_aorus_ml"], use_container_width=True)
-        with mbl_2:
-            if "mb_lga1700_h610_kabum" in LINKS:
-                st.link_button("📦 MSI PRO H610M-S DDR4 II (KaBuM! - R$ 489,99)", LINKS["mb_lga1700_h610_kabum"], use_container_width=True)
-            if "mb_lga1700_b760_msi_a_amazon" in LINKS:
-                st.link_button("⚡ MSI PRO B760M-A WIFI DDR5 (Amazon)", LINKS["mb_lga1700_b760_msi_a_amazon"], use_container_width=True)
-
-    st.markdown("##### 🎮 Placas de Vídeo Recomendadas para Jogos Modernos:")
-    tab_gpu_custo, tab_gpu_inter, tab_gpu_high = st.tabs([
-        "⚡ Custo-Benefício (1080p Alto/Ultra)", 
-        "🔥 Intermediárias (1440p Quad HD)", 
-        "👑 High-End & Entusiasta (4K / Ray Tracing)"
-    ])
-    
-    with tab_gpu_custo:
-        st.caption("🎯 **Melhores opções até R$ 2.000:** Ideal para rodar tudo em Full HD com alta taxa de FPS.")
-        g1_btn, g2_btn = st.columns(2)
-        with g1_btn:
-            if "gpu_rx7600_biostar_shopee" in LINKS:
-                st.link_button("🏷️ RX 7600 Biostar 8GB (Shopee - PROMO R$ 1.800)", LINKS["gpu_rx7600_biostar_shopee"], use_container_width=True)
-            if "gpu_rtx5050_shopee" in LINKS:
-                st.link_button("🔥 MSI NVIDIA RTX 5050 (Shopee Cupons)", LINKS["gpu_rtx5050_shopee"], use_container_width=True)
-        with g2_btn:
-            if "gpu_rx7600_amazon" in LINKS:
-                st.link_button("⚡ ASRock RX 7600 Challenger 8GB (Amazon Prime)", LINKS["gpu_rx7600_amazon"], use_container_width=True)
-            if "gpu_rtx5060_amazon" in LINKS:
-                st.link_button("🎮 MSI RTX 5060 Shadow 2X OC (Amazon)", LINKS["gpu_rtx5060_amazon"], use_container_width=True)
-
-    with tab_gpu_inter:
-        st.caption("🚀 **Alta Performance:** Perfeitas para Quad HD (1440p) competitivo e alta fluidez.")
-        gi1_btn, gi2_btn = st.columns(2)
-        with gi1_btn:
-            if "gpu_rtx3070_kabum" in LINKS:
-                st.link_button("🔥 Husky Alpha RTX 3070 8GB GDDR6 (KaBuM!)", LINKS["gpu_rtx3070_kabum"], use_container_width=True)
-            if "gpu_rtx5060ti_shopee" in LINKS:
-                st.link_button("🚀 INNO3D GeForce RTX 5060 Ti (Shopee Cupons)", LINKS["gpu_rtx5060ti_shopee"], use_container_width=True)
-            if "gpu_rx9060xt_shopee" in LINKS:
-                st.link_button("⚡ PowerColor Radeon RX 9060 XT 8GB (Shopee)", LINKS["gpu_rx9060xt_shopee"], use_container_width=True)
-        with gi2_btn:
-            if "gpu_rtx5060ti_pny_kabum" in LINKS:
-                st.link_button("⚡ PNY GeForce RTX 5060 Ti (KaBuM!)", LINKS["gpu_rtx5060ti_pny_kabum"], use_container_width=True)
-
-    with tab_gpu_high:
-        st.caption("🏷️ Cupom na KaBuM!: `SABADACOVGA10` para 10% OFF em modelos elegíveis")
-        gh1_btn, gh2_btn = st.columns(2)
-        with gh1_btn:
-            if "gpu_rtx5070_asus_kabum" in LINKS:
-                st.link_button("🔥 ASUS PRIME RTX 5070 OC 12G (KaBuM! - Cupom SABADACOVGA10)", LINKS["gpu_rtx5070_asus_kabum"], use_container_width=True)
-            if "gpu_rx9070_asrock_kabum" in LINKS:
-                st.link_button("❄️ ASRock Radeon RX 9070 Steel Legend (KaBuM!)", LINKS["gpu_rx9070_asrock_kabum"], use_container_width=True)
-            if "gpu_rx9070xt_powercolor_shopee" in LINKS:
-                st.link_button("🚀 PowerColor Radeon RX 9070 XT (Shopee)", LINKS["gpu_rx9070xt_powercolor_shopee"], use_container_width=True)
-            if "gpu_rtx5070ti_palit_kabum" in LINKS:
-                st.link_button("👑 Palit GeForce RTX 5070 Ti 16GB (KaBuM!)", LINKS["gpu_rtx5070ti_palit_kabum"], use_container_width=True)
-            if "gpu_rtx5080_palit_ml" in LINKS:
-                st.link_button("👑 Palit Infinity 3 RTX 5080 16GB GDDR7 (Mercado Livre)", LINKS["gpu_rtx5080_palit_ml"], use_container_width=True)
-        with gh2_btn:
-            if "gpu_rtx5070_palit_kabum" in LINKS:
-                st.link_button("🔥 Palit RTX 5070 INFINITY 3 (KaBuM! - Cupom SABADACOVGA10)", LINKS["gpu_rtx5070_palit_kabum"], use_container_width=True)
-            if "gpu_rx9070xt_asus_kabum" in LINKS:
-                st.link_button("🚀 ASUS Prime Radeon RX 9070 XT OC (KaBuM!)", LINKS["gpu_rx9070xt_asus_kabum"], use_container_width=True)
-            if "gpu_rtx5070ti_palit_ml" in LINKS:
-                st.link_button("👑 Palit RTX 5070 Ti GamingPro-S 16GB (Mercado Livre)", LINKS["gpu_rtx5070ti_palit_ml"], use_container_width=True)
-            if "gpu_rtx5080_msi_kabum" in LINKS:
-                st.link_button("👑 MSI RTX 5080 Ventus 3X OC 16GB (KaBuM!)", LINKS["gpu_rtx5080_msi_kabum"], use_container_width=True)
+    # Placas de Vídeo por Aba Dinâmica
+    gpus_dict = VITRINE.get("gpus", {})
+    if gpus_dict:
+        st.markdown("##### 🎮 Placas de Vídeo Recomendadas para Jogos Modernos:")
+        abas_gpu = st.tabs(list(gpus_dict.keys()))
+        for idx, (nome_aba, dados) in enumerate(gpus_dict.items()):
+            with abas_gpu[idx]:
+                if "cupom" in dados and dados["cupom"]:
+                    st.caption(dados["cupom"])
+                renderizar_botoes_em_colunas(dados.get("itens", []))
