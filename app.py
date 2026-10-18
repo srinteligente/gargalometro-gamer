@@ -170,7 +170,7 @@ with col_left:
     if eh_notebook:
         gpu_lista = [g["nome"] for g in db["gpus"] if g.get("notebook", False)]
         gpu_opcoes = ["Nenhuma (Gráficos Integrados / APU)"] + gpu_lista
-        padrao_gpu_idx = next((i for i, n in enumerate(gpu_opcoes) if "RTX 4050 Mobile" in n or "4050" in n), 0)
+        padrao_gpu_idx = next((i for i, n in enumerate(gpu_opcoes) if "RTX 4080 Mobile" in n or "4080" in n or "4060" in n), 0)
     else:
         gpu_lista = [g["nome"] for g in db["gpus"] if g.get("desktop", True)]
         gpu_opcoes = ["Nenhuma (Gráficos Integrados / APU)"] + gpu_lista
@@ -180,7 +180,7 @@ with col_left:
 
     if eh_notebook:
         cpu_lista = [c["nome"] for c in db["cpus"] if c.get("notebook", False)]
-        padrao_cpu_idx = next((i for i, n in enumerate(cpu_lista) if "Ryzen 7 170" in n or "7735" in n or "13700H" in n), 0)
+        padrao_cpu_idx = next((i for i, n in enumerate(cpu_lista) if "13700H" in n or "Ryzen 7 170" in n or "7735" in n), 0)
     else:
         cpu_lista = [c["nome"] for c in db["cpus"] if c.get("desktop", True)]
         padrao_cpu_idx = next((i for i, n in enumerate(cpu_lista) if "Ryzen 5 5600" in n and "5600G" not in n), 0)
@@ -203,11 +203,13 @@ with col_left:
             "8 GB DDR3 (Obsoleto)": 2.8,
             "16 GB DDR3 (Defasado)": 3.5,
             "8 GB DDR4 (Apertado)": 4.0,
-            "16 GB DDR4 (Básico Atual)": 6.0,
-            "32 GB DDR4 (Confortável DDR4)": 7.5,
-            "64 GB DDR4 (Sobra em DDR4)": 8.0,
-            "16 GB DDR5 (Entrada Nova Geração)": 7.0,
-            "32 GB DDR5 (Padrão Ouro Atual)": 9.0,
+            "16 GB DDR4 (Básico Atual)": 6.5,
+            "32 GB DDR4 (Confortável DDR4)": 8.0,
+            "48 GB DDR4 (Capacidade Alta DDR4)": 8.3,
+            "64 GB DDR4 (Sobra em DDR4)": 8.5,
+            "16 GB DDR5 (Entrada Nova Geração)": 7.5,
+            "32 GB DDR5 (Padrão Ouro Atual)": 9.5,
+            "48 GB DDR5 (Alta Performance 2x24GB)": 9.8,
             "64 GB DDR5 (Topo Absoluto)": 10.0,
             "128 GB+ DDR5 (Workstation)": 10.0
         }
@@ -231,7 +233,7 @@ with col_left:
     if not eh_notebook:
         fonte_w = st.slider("Fonte de Alimentação (Watts)", min_value=300, max_value=1600, value=650, step=50)
     else:
-        fonte_w = 230
+        fonte_w = 280
 
     jogar_gta = st.checkbox("🎮 Pretendo jogar GTA VI nesta máquina", value=True)
 
@@ -246,13 +248,20 @@ if usando_igpu:
 else:
     gpu_obj = next(g for g in db["gpus"] if g["nome"] == gpu_sel)
 
-fonte_nota = min(10.0, (fonte_w / 1200) * 10) if not eh_notebook else 8.5
-nota_calculada = (gpu_obj["nota"] * 0.50) + (cpu_obj["nota"] * 0.25) + (ram_nota * 0.15) + (ssd_nota * 0.05) + (fonte_nota * 0.05)
+# ========================================================
+# ⚖️ CÁLCULO DE NOTA RECALIBRADO (DESKTOP & NOTEBOOK)
+# ========================================================
+if eh_notebook:
+    nota_calculada = (gpu_obj["nota"] * 0.60) + (cpu_obj["nota"] * 0.30) + (ram_nota * 0.07) + (ssd_nota * 0.03)
+    fonte_nota = 9.5
+else:
+    fonte_nota = min(10.0, (fonte_w / 1200) * 10)
+    nota_calculada = (gpu_obj["nota"] * 0.50) + (cpu_obj["nota"] * 0.25) + (ram_nota * 0.15) + (ssd_nota * 0.05) + (fonte_nota * 0.05)
 
-penalidade_hd = 0.2 if "Apenas HD Mecânico" in ssd_sel else 0.0
+penalidade_hd = 0.5 if "Apenas HD Mecânico" in ssd_sel else 0.0
 nota_final = max(1.0, min(10.0, nota_calculada - penalidade_hd))
 
-consumo_estimado = gpu_obj["tdp"] + cpu_obj["tdp"] + (40 if eh_notebook else 75)
+consumo_estimado = gpu_obj["tdp"] + cpu_obj["tdp"] + (35 if eh_notebook else 75)
 fonte_recomendada = consumo_estimado * 1.35
 
 pesos_resolucao = {
@@ -286,10 +295,12 @@ with col_right:
 
     st.write(f"• **GPU:** Nota {gpu_obj['nota']:.1f} ({gpu_obj['tdp']}W)")
     st.write(f"• **CPU:** Nota {cpu_obj['nota']:.1f} ({cpu_obj['tdp']}W)")
-    st.write(f"• **RAM:** Nota {ram_nota:.1f} ({ram_sel.split(' ')[2]})")
+    st.write(f"• **RAM:** Nota {ram_nota:.1f} ({ram_sel.split(' ')[0]} GB)")
     st.write(f"• **Armazenamento:** Nota {ssd_nota:.1f}")
     if not eh_notebook:
         st.write(f"• **Fonte:** Nota {fonte_nota:.1f} ({fonte_w}W)")
+    else:
+        st.caption("⚡ Notebook Gamer: gerenciamento de energia e arrefecimento integrado de fábrica.")
 
     if usando_igpu:
         if not tem_igpu:
@@ -298,7 +309,7 @@ with col_right:
             st.info(f"🖥️ **Vídeo Integrado Ativo:** {msg_igpu}.")
 
     if penalidade_hd > 0:
-        st.warning("⚠️ **Penalização Aplicada (-0.2):** O uso exclusivo de HD mecânico causa travamentos em jogos modernos.")
+        st.warning("⚠️ **Penalização Aplicada (-0.5):** O uso exclusivo de HD mecânico causará congelamentos em jogos modernos.")
 
     if "DDR2" in ram_sel:
         st.error("🚨 **Memória DDR2:** Arquitetura obsoleta. Incompatível com jogos modernos.")
@@ -337,6 +348,9 @@ with col_right:
     else:
         st.success(f"🎯 **Setup Muito Equilibrado em {resolucao_sel}:** Variação de `{pct_gargalo}%`.")
 
+    # ========================================================
+    # 🌴 TESTE DE PRONTIDÃO: GTA VI (CORRIGIDO)
+    # ========================================================
     if jogar_gta:
         st.markdown("---")
         st.subheader("🌴 Teste de Prontidão: GTA VI")
@@ -344,21 +358,27 @@ with col_right:
         gpu_n = gpu_obj["nota"]
         cpu_n = cpu_obj["nota"]
         
+        m_ram = re.search(r'(\d+)\s*GB', ram_sel)
+        gb_ram = int(m_ram.group(1)) if m_ram else 16
+
+        gpu_nome_u = gpu_obj["nome"].upper()
+        gpu_eh_8gb_gddr6 = any(x in gpu_nome_u for x in ["2060 SUPER", "2060S", "6600", "3060", "4060", "7600", "5050", "3070", "4070", "4080", "4090", "5060", "5070", "5080"])
+        
         if usando_igpu or not tem_igpu:
             st.error("❌ **INCOMPATÍVEL COM GTA VI:** Exigirá GPU dedicada com VRAM física.")
         elif tem_hd:
             st.error("❌ **INCOMPATÍVEL COM GTA VI (Armazenamento):** Exige SSD obrigatoriamente.")
-        elif "2 GB" in ram_sel or "4 GB" in ram_sel or "8 GB" in ram_sel:
-            st.error("❌ **MEMÓRIA RAM INSUFICIENTE:** Mínimo de 16 GB.")
-        elif gpu_n < 5.0 or cpu_n < 4.5:
+        elif gb_ram < 16:
+            st.error(f"❌ **MEMÓRIA RAM INSUFICIENTE ({gb_ram} GB):** GTA VI exigirá no mínimo 16 GB.")
+        elif (gpu_n < 4.2 and not gpu_eh_8gb_gddr6) or cpu_n < 3.8:
             st.error(f"⚠️ **ABAIXO DO MÍNIMO ESTIMADO:** GPU ({gpu_n:.1f}) / CPU ({cpu_n:.1f}).")
-        elif gpu_n >= 8.0 and cpu_n >= 7.8 and ("32 GB" in ram_sel or "64 GB" in ram_sel):
+        elif gpu_n >= 7.8 and cpu_n >= 7.0 and gb_ram >= 16:
             st.balloons()
-            st.success("👑 **PRONTO PARA O ULTRA / 4K!**")
-        elif gpu_n >= 6.5 and cpu_n >= 6.0 and ("32 GB" in ram_sel or "64 GB" in ram_sel or "16 GB DDR5" in ram_sel):
-            st.success("✅ **CONFIGURAÇÃO RECOMENDADA ATENDIDA (60 FPS Alto).**")
+            st.success("👑 **PRONTO PARA O ALTO / ULTRA EM ALTA TAXA DE FPS!** A sua máquina roda com folga.")
+        elif (gpu_n >= 5.8 or gpu_eh_8gb_gddr6) and cpu_n >= 5.0 and gb_ram >= 16:
+            st.success("✅ **CONFIGURAÇÃO RECOMENDADA ATENDIDA (60 FPS 1080p/1440p).**")
         else:
-            st.warning("⚠️ **CONFIGURAÇÃO MÍNIMA ATENDIDA (30-45 FPS Médio/Baixo).**")
+            st.warning("⚠️ **CONFIGURAÇÃO MÍNIMA ATENDIDA (1080p 30-45+ FPS em qualidade Normal).**")
 
     # ========================================================
     # 💰 HUB DE UPGRADE POR PLATAFORMA (LÊ LINKS.JSON)
