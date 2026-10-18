@@ -2,6 +2,8 @@ import streamlit as st
 import json
 import os
 import re
+import urllib.request
+import urllib.parse
 
 nome_icone = None
 for arq in [
@@ -27,7 +29,6 @@ def carregar_dados():
             dados_hw = json.load(f)
     
     dados_vitrine = {}
-    # Suporta o novo vitrine.json ou o links.json antigo caso ainda exista
     arq_vitrine = "vitrine.json" if os.path.exists("vitrine.json") else "links.json"
     if os.path.exists(arq_vitrine):
         try:
@@ -463,3 +464,69 @@ with col_right:
                 if "cupom" in dados and dados["cupom"]:
                     st.caption(dados["cupom"])
                 renderizar_botoes_em_colunas(dados.get("itens", []))
+
+# ========================================================
+# 💼 CONSULTORIA PERSONALIZADA DE SETUP (R$ 20,00)
+# ========================================================
+st.markdown("---")
+st.subheader("🎯 Consultoria VIP para Montagem de PC")
+
+with st.container(border=True):
+    col_info, col_form = st.columns([1, 1.2])
+    
+    with col_info:
+        st.markdown("### Monte o PC Perfeito Sem Errar!")
+        st.write(
+            "Quer ajuda personalizada para escolher as melhores peças dentro do seu orçamento, "
+            "evitar gargalos e garantir as melhores ofertas do dia?"
+        )
+        st.markdown("#### **Valor simbólico: R$ 20,00**")
+        st.caption("Receba uma lista balanceada de peças sob medida direto no seu WhatsApp.")
+        
+        st.info(
+            "📱 **Como funciona:**\n\n"
+            "1. Preencha seus dados ao lado.\n"
+            "2. Envie o formulário.\n"
+            "3. Você será chamado diretamente no WhatsApp para iniciarmos a montagem!"
+        )
+
+    with col_form:
+        with st.form("form_consultoria", clear_on_submit=True):
+            nome_cli = st.text_input("Seu Nome:")
+            zap_cli = st.text_input("Seu WhatsApp (com DDD):", placeholder="(61) 99999-9999")
+            orcamento_cli = st.text_input("Quanto pretende investir no total (R$)?", placeholder="Ex: R$ 3.500,00")
+            msg_cli = st.text_area(
+                "O que pretende jogar ou trabalhar?", 
+                placeholder="Ex: Quero jogar Warzone e GTA VI em 1080p, preciso apenas do gabinete completo."
+            )
+            
+            btn_enviar = st.form_submit_button("🚀 Solicitar Consultoria (R$ 20,00)", use_container_width=True)
+            
+            if btn_enviar:
+                if not zap_cli.strip() or not orcamento_cli.strip():
+                    st.warning("⚠️ Por favor, informe pelo menos o seu WhatsApp e o orçamento disponível.")
+                else:
+                    url_endpoint = "https://formsubmit.co/ajax/dwdistrito@gmail.com"
+                    dados_envio = {
+                        "Servico": "Solicitacao de Consultoria Gamer (R$ 20,00)",
+                        "Nome": nome_cli if nome_cli.strip() else "Nao informado",
+                        "WhatsApp": zap_cli,
+                        "Orcamento": orcamento_cli,
+                        "Mensagem": msg_cli if msg_cli.strip() else "Nao detalhado",
+                        "_subject": f"🔥 Nova Consultoria Solicitada: {zap_cli} (R$ {orcamento_cli})"
+                    }
+                    
+                    try:
+                        data = urllib.parse.urlencode(dados_envio).encode("utf-8")
+                        req = urllib.request.Request(
+                            url_endpoint, 
+                            data=data, 
+                            headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
+                        )
+                        with urllib.request.urlopen(req, timeout=10) as response:
+                            if response.status == 200:
+                                st.success("✅ **Pedido enviado com sucesso!** Em breve entraremos em contato via WhatsApp.")
+                            else:
+                                st.error("Ocorreu um erro temporário ao enviar. Tente novamente.")
+                    except Exception as e:
+                        st.error("Falha na conexão ao registrar o pedido. Tente novamente em instantes.")
