@@ -600,5 +600,81 @@
         }
       ]
     }
+  },
+  "armazenamento": {
+    "⚡ SSDs M.2 NVMe (Custo-Benefício e Entrada)": {
+      "cupom": "🏷️ Use o cupom KT0240 no AliExpress para desconto com frete grátis",
+      "itens": [
+        {
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 512GB 2100MB/s (AliExpress - Cupom KT0240)",
+          "url": "https://s.click.aliexpress.com/e/_m0x8qkP"
+        }
+      ]
+    },
+    "🚀 SSDs M.2 NVMe de Alta Performance e Capacidade (1TB / 2TB)": {
+      "cupom": "🏷️ Cupons Mercado Livre: SITE150TODO ou OFFHOJENOML",
+      "itens": [
+        {
+          "texto": "🚀 SSD WD SN3000 1TB PCIe 4.0 5000MB/s (ML - R$ 801,90)",
+          "url": "https://meli.la/1NV45Pt"
+        },
+        {
+          "texto": "🚀 SSD Kingston NV3 1TB PCIe 4.0 6000MB/s (ML - No Pix com Cupom)",
+          "url": "https://meli.la/2vEmbrU"
+        },
+        {
+          "texto": "⚡ SSD Kingston NV3 1TB PCIe 4.0 NVMe (Amazon Prime - R$ 978,49)",
+          "url": "https://link.amazon/B07A6Uj5J"
+        },
+        {
+          "texto": "📦 SSD WD Green SN350 2TB NVMe M.2 (ML - Cupons SITE150TODO / OFFHOJENOML)",
+          "url": "https://meli.la/1DZTq6k"
+        }
+      ]
+    },
+    "💾 SSDs SATA III 2.5\" (Armazenamento Secundário / Entrada)": {
+      "cupom": "📦 Opções econômicas para jogos extras ou expansão de espaço",
+      "itens": [
+        {
+          "texto": "📦 SSD SATA III Kootion X12 512GB (AliExpress - Estoque Brasil)",
+          "url": "https://s.click.aliexpress.com/e/_mtKSuUX"
+        },
+        {
+          "texto": "📦 SSD SATA III CUSU 512GB (AliExpress)",
+          "url": "https://s.click.aliexpress.com/e/_mrTrOX9"
+        }
+      ]
+    }
+  },
+  "memorias_ram": {
+    "🟣 Memórias DDR5 (Alta Velocidade - AM5 / LGA 1700)": {
+      "cupom": "🚀 Módulos modernos de alta frequência (5600MHz / 6000MHz) para máxima performance",
+      "itens": [
+        {
+          "texto": "⚡ Samsung 16GB DDR5 5600MHz OEM (ML - R$ 1.430,10 - Mais Barata)",
+          "url": "https://meli.la/1hohmr1"
+        },
+        {
+          "texto": "⚡ Anubis UP Gamer 16GB DDR5 6000MHz c/ Dissipador (ML - R$ 1.529,99)",
+          "url": "https://meli.la/1BrKyKg"
+        },
+        {
+          "texto": "⚡ Corsair Vengeance RGB 16GB DDR5 5600MHz (ML - R$ 1.612,52 Última Unidade)",
+          "url": "https://meli.la/1X2yV29"
+        },
+        {
+          "texto": "⚡ XPG Lancer Blade RGB 16GB DDR5 6000MHz CL48 (KaBuM!)",
+          "url": "https://tidd.ly/4ytMJCW"
+        },
+        {
+          "texto": "👑 Kit ADATA XPG Lancer 32GB (2x16GB) DDR5 6000MHz (ML - R$ 3.679,00)",
+          "url": "https://meli.la/1EZzgaV"
+        },
+        {
+          "texto": "❄️ Kit XPG Lancer Blade 32GB (2x16GB) DDR5 6000MHz BRANCO (KaBuM! - R$ 3.959,99)",
+          "url": "https://tidd.ly/4scRFL3"
+        }
+      ]
+    }
   }
 }
