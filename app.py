@@ -14,18 +14,21 @@ for arq in [
     if os.path.exists(arq):
         nome_icone = arq
         break
-
-st.set_page_config(
-    page_title="Gargalômetro Gamer",
-    page_icon=nome_icone if nome_icone else "🖥️",
-    layout="wide"
-)
-
+        
 st.set_page_config(
     page_title="Gargalômetro Gamer - Calculadora de Gargalo de PC e Setup",
     page_icon=nome_icone if nome_icone else "🖥️",
     layout="wide"
 )
+
+# Ocultar o menu lateral de páginas do Streamlit
+st.markdown("""
+    <style>
+        [data-testid="stSidebarNav"] {
+            display: none !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 # Injeção de Meta Tags de SEO e Google Search Console
 st.markdown("""
