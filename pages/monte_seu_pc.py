@@ -25,6 +25,15 @@ VITRINE = carregar_vitrine()
 st.title("🎯 Monte seu PC Gamer no GARGALÔMETRO")
 st.caption("Escolha a sua faixa de investimento e veja a configuração recomendada equilibrada (Zero Gargalo)!")
 
+# ⬅️ BOTÃO PARA VOLTAR
+st.page_link(
+    "app.py", 
+    label="⬅️ Voltar para a Calculadora de Gargalo do Setup", 
+    icon="🖥️", 
+    use_container_width=True
+)
+st.divider()
+
 faixas = [
     "🥉 R$ 2.000 a R$ 2.800 (Entrada / Competitivos Leves)",
     "🥈 R$ 3.000 a R$ 4.200 (Custo-Benefício 1080p Alto)",
