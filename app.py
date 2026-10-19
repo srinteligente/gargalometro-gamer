@@ -21,6 +21,25 @@ st.set_page_config(
     layout="wide"
 )
 
+st.set_page_config(
+    page_title="Gargalômetro Gamer - Calculadora de Gargalo de PC e Setup",
+    page_icon=nome_icone if nome_icone else "🖥️",
+    layout="wide"
+)
+
+# Injeção de Meta Tags de SEO e Google Search Console
+st.markdown("""
+    <head>
+        <meta name="description" content="Descubra se o seu processador limita sua placa de vídeo. Calculadora precisa de gargalo (bottleneck) para PC Desktop e Notebook Gamer.">
+        <meta name="keywords" content="calculadora de gargalo, bottleneck calculator pc, gargalômetro, teste gargalo gpu cpu, gta vi requisitos pc">
+        <meta name="robots" content="index, follow">
+        <meta property="og:title" content="Gargalômetro Gamer - Calculadora de Gargalo CPU e GPU">
+        <meta property="og:description" content="Avalie o equilíbrio do seu setup gamer de 0 a 10 e veja testes de prontidão para jogos pesados.">
+        <meta property="og:url" content="https://gargalometro.com.br/">
+        <meta property="og:type" content="website">
+    </head>
+""", unsafe_allow_html=True)
+
 # Carrega bancos de dados
 def carregar_dados():
     dados_hw = {"gpus": [], "cpus": []}
