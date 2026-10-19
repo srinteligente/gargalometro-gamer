@@ -13,10 +13,10 @@
       "url": "https://s.shopee.com.br/2VscFbQS1o?share_channel_code=1"
     },
     {
-      "titulo": "🛍️ Vitrine Oficial no TikTok Shop",
-      "descricao": "Confira nossa seleção completa de hardware, gabinetes, ventoinhas e periféricos com desconto",
-      "texto_botao": "🔥 Acessar Vitrine do TikTok Shop",
-      "url": "https://vt.tiktok.com/ZS9UxmrGDV3L6-cSWOZ/"
+      "titulo": "🟣 Placa-Mãe MSI Pro B840M-B AM5 por R$ 477,48!",
+      "descricao": "Para quem quer começar no AM5 pagando barato no Mercado Livre • Use o cupom MELIHOJE",
+      "texto_botao": "🛒 Garantir MSI B840M AM5 (Mercado Livre)",
+      "url": "https://meli.la/1w3FWwd"
     },
     {
       "titulo": "⚡ Memória RAM CUSU 16GB (2x8GB) 3200MHz",
@@ -185,7 +185,7 @@
         }
       ]
     }
-  },
+  ],
   "placas_mae": {
     "🔴 AMD AM4 (DDR4)": {
       "cupom": "🏷️ Use MELIOFERTAS no Mercado Livre ou CHEGOUMSI na KaBuM!",
@@ -217,11 +217,11 @@
       ]
     },
     "🟣 AMD AM5 (DDR5)": {
-      "cupom": "🚀 Plataforma Moderna AM5 com suporte a memória DDR5",
+      "cupom": "🚀 Plataforma Moderna AM5 com suporte a memória DDR5 • Use o cupom MELIHOJE no Mercado Livre",
       "itens": [
         {
-          "texto": "🔥 MSI Pro B840M-B AM5 (ML - R$ 469,20)",
-          "url": "https://meli.la/25CSpwy"
+          "texto": "🔥 MSI Pro B840M-B AM5 (ML - Cupom MELIHOJE R$ 477,48)",
+          "url": "https://meli.la/1w3FWwd"
         },
         {
           "texto": "⚡ MSI Pro B840M-B AM5 (Amazon - R$ 478,99)",
@@ -384,4 +384,5 @@
       ]
     }
   }
-}
+  }
+  
