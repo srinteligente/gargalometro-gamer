@@ -647,6 +647,15 @@
     }
   },
   "memorias_ram": {
+    "🔴 Memórias DDR4 (AM4 / LGA 1700 DDR4)": {
+      "cupom": "📦 Custo-benefício para AM4 e placas DDR4 com impostos inclusos",
+      "itens": [
+        {
+          "texto": "⚡ Kit CUSU 16GB (2x8GB) DDR4 3200MHz CL22 (AliExpress - R$ 691,03 com Impostos)",
+          "url": "https://s.click.aliexpress.com/e/_m04M97h"
+        }
+      ]
+    },
     "🟣 Memórias DDR5 (Alta Velocidade - AM5 / LGA 1700)": {
       "cupom": "🚀 Módulos modernos de alta frequência (5600MHz / 6000MHz) para máxima performance",
       "itens": [
@@ -677,4 +686,3 @@
       ]
     }
   }
-}
