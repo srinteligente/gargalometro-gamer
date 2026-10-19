@@ -168,6 +168,19 @@ with header_col1:
         st.image(nome_icone, width=90)
 with header_col2:
     st.title("Gargalômetro Gamer")
+    
+    # 📱 Link do TikTok logo abaixo da palavra Gargalômetro Gamer
+    st.markdown(
+        """
+        <div style="margin-top: -10px; margin-bottom: 8px;">
+            <a href="https://www.tiktok.com/@srinteligente" target="_blank" style="text-decoration: none; font-weight: 700; font-size: 1.05rem; color: #ff0050;">
+                📱 Siga nosso perfil no TikTok (@srinteligente) 🚀
+            </a>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
     st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs")
 
 # 🚀 BOTÃO DE NAVEGAÇÃO GIGANTE & DESTACADO
