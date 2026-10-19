@@ -259,3 +259,26 @@ with st.container(border=True):
                     st.link_button("Comprar 🔗", link, use_container_width=True)
             else:
                 st.write(f"• **{cat}:** *(Pendente de escolha)*")
+
+st.divider()
+
+# ----------------------------------------------------
+# 6. PERIFÉRICOS & ACESSÓRIOS (TIKTOK SHOP)
+# ----------------------------------------------------
+st.markdown("### 🎧 Complete seu Setup com Periféricos Gamer")
+
+with st.container(border=True):
+    col_perif_txt, col_perif_btn = st.columns([2.5, 1.2])
+    with col_perif_txt:
+        st.markdown("#### 🖱️ Mouse, Teclado, Headset, Microfone e Webcam")
+        st.write(
+            "Já escolheu as peças do seu PC? "
+            "Confira na nossa vitrine da **TikTok Shop** as melhores opções de mouses sem fio, teclados mecânicos, headsets e acessórios testados e aprovados nas nossas lives!"
+        )
+    with col_perif_btn:
+        st.write("")
+        st.link_button(
+            "🔥 Acessar TikTok Shop", 
+            "https://vt.tiktok.com/ZS9UXjfYhhqnB-PcwuJ/", 
+            use_container_width=True
+        )
