@@ -170,21 +170,43 @@ with header_col2:
     st.title("Gargalômetro Gamer")
     st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs")
 
-# 🚀 BOTÃO DE NAVEGAÇÃO DESTACADO
+# 🚀 BOTÃO DE NAVEGAÇÃO GIGANTE & DESTACADO
 st.markdown("""
     <style>
-        div[data-testid="stPageLink-NavLink"] p {
-            font-size: 1.25rem !important;
-            font-weight: 800 !important;
-            letter-spacing: 0.5px;
+        /* Aumenta o texto do link */
+        div[data-testid="stPageLink-NavLink"] p,
+        div[data-testid="stPageLink-NavLink"] span {
+            font-size: 1.65rem !important;
+            font-weight: 900 !important;
+            line-height: 1.4 !important;
+        }
+        /* Aumenta o ícone nativo */
+        div[data-testid="stPageLink-NavLink"] svg,
+        div[data-testid="stPageLink-NavLink"] img {
+            width: 2rem !important;
+            height: 2rem !important;
+        }
+        /* Aumenta a área de clique, espaçamento e dá destaque */
+        div[data-testid="stPageLink-NavLink"] {
+            padding: 14px 20px !important;
+            background: linear-gradient(90deg, #1e293b, #0f172a) !important;
+            border: 2px solid #3b82f6 !important;
+            border-radius: 12px !important;
+            text-align: center !important;
+            justify-content: center !important;
+            transition: all 0.2s ease-in-out !important;
+        }
+        div[data-testid="stPageLink-NavLink"]:hover {
+            border-color: #60a5fa !important;
+            transform: scale(1.01) !important;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4) !important;
         }
     </style>
 """, unsafe_allow_html=True)
 
 st.page_link(
     "pages/monte_seu_pc.py", 
-    label="🎯 MONTE SEU PC GAMER NO GARGALOMETRO!", 
-    icon="🛠️", 
+    label="🛠️🎯 MONTE SEU PC GAMER NO GARGALOMETRO!", 
     use_container_width=True
 )
 st.divider()
