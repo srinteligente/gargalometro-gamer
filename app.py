@@ -173,8 +173,8 @@ with header_col2:
     st.markdown(
         """
         <div style="margin-top: -10px; margin-bottom: 8px;">
-            <a href="https://www.tiktok.com/@srinteligente" target="_blank" style="text-decoration: none; font-weight: 700; font-size: 1.05rem; color: #ff0050;">
-                📱 Siga nosso perfil no TikTok (@srinteligente) 🚀
+            <a href="https://www.tiktok.com/@srinteligente.shop" target="_blank" style="text-decoration: none; font-weight: 700; font-size: 1.05rem; color: #ff0050;">
+                📱 Siga nosso perfil no TikTok (@srinteligente.shop) 🚀
             </a>
         </div>
         """,
