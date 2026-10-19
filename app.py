@@ -225,21 +225,12 @@ st.page_link(
 st.divider()
 
 # ========================================================
-# 📢 DESTAQUES DO TOPO (LIVEPIX & TIKTOK)
+# 📢 DESTAQUE: LIVEPIX (FURAR FILA NA LIVE)
 # ========================================================
-banner_col1, banner_col2 = st.columns(2)
-
-with banner_col1:
-    with st.container(border=True):
-        st.markdown("##### 🎙️ Quer furar a fila na Live?")
-        st.caption("Envie sua dúvida por mensagem de áudio em tempo real na tela da transmissão!")
-        st.link_button("⚡ Mandar Mensagem de Voz (LivePix)", "https://livepix.gg/srinteligente", use_container_width=True)
-
-with banner_col2:
-    with st.container(border=True):
-        st.markdown("##### 📱 Siga nosso perfil no TikTok!")
-        st.caption("Dicas de hardware, análises, testes de performance e promoções exclusivas todo dia.")
-        st.link_button("🔥 Seguir @srinteligente.shop", "https://www.tiktok.com/@srinteligente.shop", use_container_width=True)
+with st.container(border=True):
+    st.markdown("##### 🎙️ Quer furar a fila na Live?")
+    st.caption("Envie sua dúvida por mensagem de áudio em tempo real na tela da transmissão!")
+    st.link_button("⚡ Mandar Mensagem de Voz (LivePix)", "https://livepix.gg/srinteligente", use_container_width=True)
 
 # ========================================================
 # 🚨 ACHADOS DO DIA DINÂMICOS (LÊ VITRINE.JSON)
