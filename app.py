@@ -167,9 +167,7 @@ with header_col2:
     st.title("Gargalômetro Gamer")
     st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs")
 
-# ========================================================
-# 🚀 NAVEGAÇÃO DIRETA ENTRE FERRAMENTAS
-# ========================================================
+# 🚀 BOTÃO DE NAVEGAÇÃO DIRETA
 st.page_link(
     "pages/monte_seu_pc.py", 
     label="🎯 Quer montar um PC do zero? Clique aqui para acessar o MONTE SEU PC GAMER!", 
