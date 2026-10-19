@@ -390,45 +390,40 @@
       ]
     }
   },
-  "gabinetes": {
-    "⚫ Gabinetes Pretos (Airflow & Espaço)": {
-      "cupom": "🎯 Modelos com ventoinhas inclusas, vidro temperado e excelente fluxo de ar",
+ "gabinetes": {
+    "📦 Gabinetes Gamer": {
+      "cupom": "🎯 Modelos com ventoinhas inclusas, excelente airflow e suporte a placas grandes",
       "itens": [
         {
-          "texto": "🌪️ Mancer CV450 Preto (Mid-Tower • 3 Fans Inclusas • Suporta até 320mm - R$ 199,90)",
+          "texto": "🌪️ Mancer CV450 Preto (Mid-Tower • 3 Fans • Até 320mm - R$ 199,90)",
           "url": "https://tidd.ly/cv450"
         },
         {
-          "texto": "🌪️ Hayom GB1796 Mesh Preto (4 Fans RGB Inclusas • Suporta até 310mm - R$ 239,90)",
+          "texto": "🌪️ Hayom GB1796 Mesh Preto (4 Fans RGB • Até 310mm - R$ 239,90)",
           "url": "https://link.amazon/gb1796"
         },
         {
-          "texto": "🌪️ Mancer Hemlok Vidro Temperado (4 Fans ARGB Inclusas • Suporta até 330mm - R$ 289,90)",
+          "texto": "🌪️ Mancer Hemlok Preto Vidro (4 Fans ARGB • Até 330mm - R$ 289,90)",
           "url": "https://tidd.ly/hemlok"
         },
         {
-          "texto": "🌪️ Pichau Atom X Lateral Vidro (Gabinete Compacto M-ATX • Sem Fans • Suporta até 280mm - R$ 149,90)",
+          "texto": "🌪️ Pichau Atom X Preto (Compacto M-ATX • Sem Fans • Até 280mm - R$ 149,90)",
           "url": "https://tidd.ly/atom-x"
         },
         {
-          "texto": "👑 Mancer Mugen Full-Tower Gigante (7 Fans ARGB Inclusas • Suporta GPUs até 400mm / RTX 5080/5090 - R$ 499,90)",
+          "texto": "👑 Mancer Mugen Full-Tower Preto (7 Fans ARGB • Até 400mm / RTX 5080 - R$ 499,90)",
           "url": "https://tidd.ly/mugen-ft"
-        }
-      ]
-    },
-    "⚪ Gabinetes Brancos (White Build & Aquário)": {
-      "cupom": "❄️ Modelos brancos e estilo aquário panorâmico com ventoinhas",
-      "itens": [
+        },
         {
-          "texto": "❄️ Mancer CV100 Purple Edition Branco (3 Fans RGB Inclusas • Suporta até 310mm - R$ 219,90)",
+          "texto": "❄️ Mancer CV100 Branco (3 Fans RGB • Até 310mm - R$ 219,90)",
           "url": "https://tidd.ly/cv100-purple"
         },
         {
-          "texto": "❄️ Aigo Darkflash Durin D275M Branco (M-ATX Compacto • Sem Fans • Suporta até 290mm - R$ 179,90)",
+          "texto": "❄️ Aigo Darkflash Durin D275M Branco (Compacto M-ATX • Sem Fans • Até 290mm - R$ 179,90)",
           "url": "https://meli.la/durin-d275m"
         },
         {
-          "texto": "❄️ Acegeek Mercury R425 Branco Aquário Panorâmico (6 Fans ARGB Inclusas • Suporta até 360mm - R$ 389,90)",
+          "texto": "❄️ Acegeek Mercury R425 Branco Aquário (6 Fans ARGB • Até 360mm - R$ 389,90)",
           "url": "https://tidd.ly/mercury-r425"
         }
       ]
