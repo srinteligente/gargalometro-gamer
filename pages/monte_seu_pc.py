@@ -10,6 +10,15 @@ st.set_page_config(
     layout="wide"
 )
 
+# Ocultar o menu lateral de navegação do Streamlit
+st.markdown("""
+    <style>
+        [data-testid="stSidebarNav"] {
+            display: none !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 def carregar_vitrine():
     arq = "vitrine.json" if os.path.exists("vitrine.json") else "links.json"
     if os.path.exists(arq):
