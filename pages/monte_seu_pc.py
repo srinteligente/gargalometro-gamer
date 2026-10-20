@@ -33,14 +33,15 @@ def extrair_preco(texto):
 
 @st.cache_data
 def carregar_vitrine():
-    # Procura prioritariamente vitrine.json e vitrine_2.json
-    for arq in ["vitrine.json", "vitrine_2.json", "vitrine_3.json", "links.json"]:
-        if os.path.exists(arq):
-            try:
-                with open(arq, "r", encoding="utf-8") as f:
-                    return json.load(f)
-            except Exception:
-                pass
+    # Lê exclusivamente o arquivo oficial vitrine.json
+    caminho = "vitrine.json"
+    if os.path.exists(caminho):
+        try:
+            with open(caminho, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            st.error(f"Erro ao ler vitrine.json: {e}")
+            return {}
     return {}
 
 vitrine = carregar_vitrine()
@@ -53,7 +54,7 @@ st.title("🛠️ Monte seu PC Gamer com Validação Técnica")
 st.caption("Montagem segura com travas automáticas de RAM, VRM da Placa-Mãe, Tamanho de GPU vs Gabinete e Orçamento em tempo real!")
 
 if not vitrine:
-    st.error("⚠️ Base de dados (`vitrine.json` ou `vitrine_2.json`) não encontrada na raiz do projeto.")
+    st.error("⚠️ Base de dados (`vitrine.json`) não encontrada na raiz do projeto.")
     st.stop()
 
 def extrair_opcoes(categoria_dict):
@@ -65,6 +66,13 @@ def extrair_opcoes(categoria_dict):
         for it in itens:
             opcoes.append((f"[{subcat}] {it['texto']}", it["url"], subcat, it["texto"]))
     return opcoes
+
+# Busca flexível por palavras-chave para evitar incompatibilidade de emojis/espaços
+def buscar_itens_por_chave(dicionario, termo):
+    for k, v in dicionario.items():
+        if termo.upper() in k.upper():
+            return v.get("itens", []) if isinstance(v, dict) else v
+    return []
 
 # ----------------------------------------------------
 # 1. PLATAFORMA & PROCESSADOR / PLACA-MÃE
@@ -87,14 +95,6 @@ eh_intel = "Intel" in plataforma
 eh_xeon = "Xeon" in plataforma
 
 placas_dict = vitrine.get("placas_mae", {})
-
-# Busca flexível por palavras-chave para evitar incompatibilidade de emojis/espaços
-def buscar_itens_por_chave(dicionario, termo):
-    for k, v in dicionario.items():
-        if termo.upper() in k.upper():
-            return v.get("itens", []) if isinstance(v, dict) else v
-    return []
-
 c_cpu, c_mb = st.columns(2)
 
 if eh_xeon:
@@ -244,21 +244,21 @@ with c_fonte:
     sel_fonte_txt = st.selectbox("Selecione a Fonte:", [op[0] for op in opcoes_fonte])
     fonte_item = next((op for op in opcoes_fonte if op[0] == sel_fonte_txt and op[1]), None)
 
-# --- Verificação de compatibilidade física (Water Cooler 360mm e GPU Longa) ---
+# Identificação se escolheu Water Cooler de 360mm
 cooler_nome_u = (cooler_item[3] if cooler_item else "").upper()
 eh_wc_360 = "360" in cooler_nome_u
 
 todos_gabinetes = extrair_opcoes(vitrine.get("gabinetes", {}))
 gabinetes_filtrados = todos_gabinetes
 
-# Trava 1: Se escolheu Water Cooler de 360mm, restringe aos gabinetes que aceitam 360mm
+# Trava 1: Se escolheu WC de 360mm, restringe aos gabinetes compatíveis com radiador 360mm
 if eh_wc_360:
     gabinetes_filtrados = [
         g for g in gabinetes_filtrados 
         if "360MM" in g[0].upper() or "360" in g[0].upper() or g[1] == ""
     ]
 
-# Trava 2: Se escolheu GPU triplo fan / gigante, restringe gabinetes compactos
+# Trava 2: Se escolheu GPU longa/triplo fan, restringe gabinetes compactos
 if eh_gpu_gigante:
     gabinetes_filtrados = [
         g for g in gabinetes_filtrados 
