@@ -403,13 +403,13 @@
       ]
     }
   },
- "gabinetes": {
+  "gabinetes": {
     "📦 Gabinetes Gamer": {
-      "cupom": "🎯 Modelos com ventoinhas inclusas, excelente airflow e suporte a placas grandes",
+      "cupom": "🎯 Modelos com ventoinhas inclusas, excelente airflow e suporte a radiadores e placas grandes",
       "itens": [
         {
-          "texto": "🌪️ Mancer CV450 Preto (Mid-Tower • 3 Fans • Até 320mm - R$ 199,90)",
-          "url": "https://tidd.ly/cv450"
+          "texto": "🌪️ Liketec Mad Rock Preto (M-ATX • Até 9 Fans • Suporta Radiador 360mm e GPU até 400mm - R$ 249,90)",
+          "url": "https://tidd.ly/4yvGMp4"
         },
         {
           "texto": "🌪️ Hayom GB1796 Mesh Preto (4 Fans RGB • Até 310mm - R$ 239,90)",
@@ -424,7 +424,7 @@
           "url": "https://tidd.ly/atom-x"
         },
         {
-          "texto": "👑 Mancer Mugen Full-Tower Preto (7 Fans ARGB • Até 400mm / RTX 5080 - R$ 499,90)",
+          "texto": "👑 Mancer Mugen Full-Tower Preto (7 Fans ARGB • Suporta Radiador 360mm e GPU até 400mm - R$ 499,90)",
           "url": "https://tidd.ly/mugen-ft"
         },
         {
@@ -436,7 +436,7 @@
           "url": "https://meli.la/durin-d275m"
         },
         {
-          "texto": "❄️ Acegeek Mercury R425 Branco Aquário (6 Fans ARGB • Até 360mm - R$ 389,90)",
+          "texto": "❄️ Acegeek Mercury R425 Branco Aquário (6 Fans ARGB • Suporta Radiador 360mm e GPU até 360mm - R$ 389,90)",
           "url": "https://tidd.ly/mercury-r425"
         }
       ]
@@ -447,8 +447,8 @@
       "cupom": "🏷️ KaBuM!: Cupom KABUM10 para 10% OFF em modelos selecionados",
       "itens": [
         {
-          "texto": "📦 Rise Mode Zeus 500W Bronze (KaBuM! - R$ 239,99)",
-          "url": "https://tidd.ly/zeus-500w"
+          "texto": "📦 Rise Mode Zeus 500W Bronze (KaBuM! - R$ 199,99)",
+          "url": "https://tidd.ly/4iw4ufh"
         },
         {
           "texto": "🛡️ Rise Mode Zeus 500W Selo TecLab (Amazon - R$ 249,00)",
@@ -583,8 +583,12 @@
   },
   "coolers": {
     "🌪️ Air Coolers de Alta Performance": {
-      "cupom": "🚀 Dissipação pesada com 8 heatpipes e TDP de até 280W para AMD e Intel",
+      "cupom": "🚀 Dissipação pesada com heatpipes e alto TDP para AMD e Intel",
       "itens": [
+        {
+          "texto": "🌪️ Air Cooler MACH1 BOREAL Digital 120mm 220W TDP (KaBuM! - R$ 113,99)",
+          "url": "https://tidd.ly/4yUaTYo"
+        },
         {
           "texto": "🌪️ Air Cooler Rise Mode Storm 8 Black ARGB 280W TDP (KaBuM! - R$ 179,99)",
           "url": "https://tidd.ly/4yEDvVr"
@@ -592,11 +596,23 @@
       ]
     },
     "💧 Water Coolers com Display LCD / ARGB": {
-      "cupom": "❄️ Máxima performance térmica e visual com tela LCD na bomba",
+      "cupom": "❄️ Máxima performance térmica e visual com radiadores de 240mm e 360mm",
       "itens": [
+        {
+          "texto": "💧 Water Cooler Gigabyte Gaming 360 ARGB (KaBuM! - R$ 399,99)",
+          "url": "https://tidd.ly/4i79CpB"
+        },
         {
           "texto": "💧 Water Cooler Kalkan Aura LCD 240 ARGB Preto (KaBuM! - R$ 429,99)",
           "url": "https://tidd.ly/4dsJ019"
+        },
+        {
+          "texto": "💧 Water Cooler MACH1 POLAR ARGB 360mm Preto (KaBuM! - Cupom POLAR15 - R$ 688,00)",
+          "url": "https://tidd.ly/47qrDum"
+        },
+        {
+          "texto": "❄️ Water Cooler MACH1 POLAR ARGB 360mm Branco (KaBuM! - Cupom POLAR15 - R$ 688,00)",
+          "url": "https://tidd.ly/3W0yOXC"
         },
         {
           "texto": "💧 Water Cooler Kalkan Aura LCD 360 ARGB Preto (Mercado Livre - R$ 589,00)",
