@@ -66,54 +66,88 @@ def extrair_opcoes(categoria_dict):
     return opcoes
 
 # ----------------------------------------------------
-# 1. PLATAFORMA & PROCESSADOR
+# 1. PLATAFORMA & PROCESSADOR / PLACA-MÃE
 # ----------------------------------------------------
 st.markdown("### 1️⃣ Plataforma e Processador")
 plataforma = st.radio(
     "Escolha a arquitetura:",
-    ["🔴 AMD AM4 (DDR4 - Máximo Custo-Benefício)", "🟣 AMD AM5 (DDR5 - Nova Geração & Longevidade)", "🔵 Intel LGA 1700 (DDR4 / DDR5)"],
+    [
+        "🔴 AMD AM4 (DDR4 - Máximo Custo-Benefício)", 
+        "🟣 AMD AM5 (DDR5 - Nova Geração & Longevidade)", 
+        "🔵 Intel LGA 1700 (DDR4 / DDR5)",
+        "🟡 Kit Xeon Baratíssimo (CPU + Placa Inclusos)"
+    ],
     horizontal=True
 )
 
 eh_am4 = "AM4" in plataforma
 eh_am5 = "AM5" in plataforma
 eh_intel = "Intel" in plataforma
+eh_xeon = "Xeon" in plataforma
 
-chave_cpu = "🔴 AMD AM4 (DDR4)" if eh_am4 else ("🟣 AMD AM5 (DDR5 - Nova Geração)" if eh_am5 else "🔵 Intel LGA 1700")
-cpus_disp = vitrine.get("cpus", {}).get(chave_cpu, {}).get("itens", [])
+# Placas-mãe disponíveis por plataforma
+if eh_am4:
+    chave_mb = "🔴 AMD AM4 (DDR4)"
+elif eh_am5:
+    chave_mb = "🟣 AMD AM5 (DDR5)"
+elif eh_intel:
+    chave_mb = "🔵 Intel LGA 1700 (DDR4 / DDR5)"
+else:
+    chave_mb = "🟡 Kits Baratíssimos Xeon (CPU + Placa Inclusos)"
+
+mbs_disp = vitrine.get("placas_mae", {}).get(chave_mb, {}).get("itens", [])
 
 c_cpu, c_mb = st.columns(2)
 
-with c_cpu:
-    st.markdown("#### ⚡ Processador (CPU)")
-    opcoes_cpu = ["Selecione o processador..."] + [c["texto"] for c in cpus_disp]
-    sel_cpu = st.selectbox("Processadores Disponíveis:", opcoes_cpu)
-    cpu_item = next((c for c in cpus_disp if c["texto"] == sel_cpu), None)
+if eh_xeon:
+    with c_mb:
+        st.markdown("#### 🧩 Kit Combinado (Placa-Mãe + Processador)")
+        opcoes_mb = ["Selecione o kit..."] + [m["texto"] for m in mbs_disp]
+        sel_mb = st.selectbox("Kits Disponíveis:", opcoes_mb)
+        mb_item = next((m for m in mbs_disp if m["texto"] == sel_mb), None)
 
-# Lógica de detecção de consumo e VRM
-cpu_nome_u = (cpu_item["texto"] if cpu_item else "").upper()
-eh_am4_pesado = eh_am4 and any(x in cpu_nome_u for x in ["5700", "5800", "5900", "5950"])
-eh_am5_pesado = eh_am5 and any(x in cpu_nome_u for x in ["7700", "9700", "7800", "9800", "9900", "9950"])
+    is_xeon_d3 = "X79" in (mb_item["texto"] if mb_item else "")
+    is_xeon_d4 = "X99" in (mb_item["texto"] if mb_item else "")
 
-chave_mb = "🔴 AMD AM4 (DDR4)" if eh_am4 else ("🟣 AMD AM5 (DDR5)" if eh_am5 else "🔵 Intel LGA 1700 (DDR4 / DDR5)")
-mbs_disp = vitrine.get("placas_mae", {}).get(chave_mb, {}).get("itens", [])
+    with c_cpu:
+        st.markdown("#### ⚡ Processador (CPU)")
+        if mb_item:
+            st.info("💡 **Processador Incluso:** O CPU Xeon já acompanha a placa-mãe selecionada!")
+            cpu_item = {"texto": f"Processador Incluso no {mb_item['texto'].split('(')[0].strip()} (R$ 0,00)", "url": ""}
+        else:
+            st.caption("👈 Escolha primeiro o Kit Xeon ao lado.")
+            cpu_item = None
+else:
+    chave_cpu = "🔴 AMD AM4 (DDR4)" if eh_am4 else ("🟣 AMD AM5 (DDR5 - Nova Geração)" if eh_am5 else "🔵 Intel LGA 1700")
+    cpus_disp = vitrine.get("cpus", {}).get(chave_cpu, {}).get("itens", [])
 
-# Travas de VRM
-if eh_am4_pesado:
-    mbs_disp = [m for m in mbs_disp if "A520" not in m["texto"].upper()]
-elif eh_am5_pesado:
-    mbs_disp = [m for m in mbs_disp if "B840" not in m["texto"].upper()]
+    with c_cpu:
+        st.markdown("#### ⚡ Processador (CPU)")
+        opcoes_cpu = ["Selecione o processador..."] + [c["texto"] for c in cpus_disp]
+        sel_cpu = st.selectbox("Processadores Disponíveis:", opcoes_cpu)
+        cpu_item = next((c for c in cpus_disp if c["texto"] == sel_cpu), None)
 
-with c_mb:
-    st.markdown("#### 🧩 Placa-Mãe Compatível")
+    # Detecção de consumo e VRM
+    cpu_nome_u = (cpu_item["texto"] if cpu_item else "").upper()
+    eh_am4_pesado = eh_am4 and any(x in cpu_nome_u for x in ["5700", "5800", "5900", "5950"])
+    eh_am5_pesado = eh_am5 and any(x in cpu_nome_u for x in ["7700", "9700", "7800", "9800", "9900", "9950"])
+
+    # Travas de VRM
     if eh_am4_pesado:
-        st.warning("⚠️ **Trava de VRM Ativa (AM4):** CPUs Ryzen 7 e Ryzen 9 exigem placa com dissipador de calor no VRM. Placas A520 foram ocultadas para evitar throttling térmico; recomendamos B550.")
+        mbs_disp = [m for m in mbs_disp if "A520" not in m["texto"].upper()]
     elif eh_am5_pesado:
-        st.warning("⚠️ **Trava de VRM Ativa (AM5):** CPUs 8-Core, Ryzen 9 e X3D exigem VRM robusto. A placa de entrada B840 foi ocultada; recomendamos B650, B850 ou X870.")
-    
-    opcoes_mb = ["Selecione a placa-mãe..."] + [m["texto"] for m in mbs_disp]
-    sel_mb = st.selectbox("Placas-Mãe Recomendadas:", opcoes_mb)
-    mb_item = next((m for m in mbs_disp if m["texto"] == sel_mb), None)
+        mbs_disp = [m for m in mbs_disp if "B840" not in m["texto"].upper()]
+
+    with c_mb:
+        st.markdown("#### 🧩 Placa-Mãe Compatível")
+        if eh_am4_pesado:
+            st.warning("⚠️ **Trava de VRM Ativa (AM4):** CPUs Ryzen 7 e Ryzen 9 exigem placa com dissipador de calor no VRM. Placas A520 foram ocultadas; recomendamos B550.")
+        elif eh_am5_pesado:
+            st.warning("⚠️ **Trava de VRM Ativa (AM5):** CPUs 8-Core, Ryzen 9 e X3D exigem VRM robusto. A placa B840 foi ocultada; recomendamos B650, B850 ou X870.")
+        
+        opcoes_mb = ["Selecione a placa-mãe..."] + [m["texto"] for m in mbs_disp]
+        sel_mb = st.selectbox("Placas-Mãe Recomendadas:", opcoes_mb)
+        mb_item = next((m for m in mbs_disp if m["texto"] == sel_mb), None)
 
 st.divider()
 
@@ -137,7 +171,17 @@ eh_gpu_gigante = any(x in gpu_txt_u for x in ["5070 TI", "5080", "9070 XT", "307
 mems_dict = vitrine.get("memorias_ram", {})
 itens_ram_filtrados = []
 
-if eh_am4:
+if eh_xeon:
+    if is_xeon_d3:
+        itens_ram_filtrados = mems_dict.get("🟡 Memórias DDR3 (Kits Xeon X79)", {}).get("itens", [])
+    elif is_xeon_d4:
+        itens_ram_filtrados = mems_dict.get("🔴 Memórias DDR4 (AM4 / LGA 1700 DDR4)", {}).get("itens", [])
+    else:
+        itens_ram_filtrados = (
+            mems_dict.get("🟡 Memórias DDR3 (Kits Xeon X79)", {}).get("itens", []) +
+            mems_dict.get("🔴 Memórias DDR4 (AM4 / LGA 1700 DDR4)", {}).get("itens", [])
+        )
+elif eh_am4:
     itens_ram_filtrados = mems_dict.get("🔴 Memórias DDR4 (AM4 / LGA 1700 DDR4)", {}).get("itens", [])
 elif eh_am5:
     itens_ram_filtrados = mems_dict.get("🟣 Memórias DDR5 (Alta Velocidade - AM5 / LGA 1700)", {}).get("itens", [])
@@ -152,10 +196,15 @@ else:
 
 with c_ram:
     st.markdown("#### ⚡ Memória RAM")
-    if eh_am4:
+    if eh_xeon and is_xeon_d3:
+        st.caption("🔒 **Filtro:** Exibindo apenas memórias **DDR3** compatíveis com o kit Xeon X79.")
+    elif eh_xeon and is_xeon_d4:
+        st.caption("🔒 **Filtro:** Exibindo apenas memórias **DDR4** compatíveis com o kit Xeon X99.")
+    elif eh_am4:
         st.caption("🔒 **Filtro:** Exibindo apenas memórias **DDR4** para AM4.")
     elif eh_am5:
         st.caption("🔒 **Filtro:** Exibindo apenas memórias **DDR5** para AM5.")
+
     opcoes_ram = ["Selecione a memória RAM..."] + [r["texto"] for r in itens_ram_filtrados]
     sel_ram_txt = st.selectbox("Módulos Compatíveis:", opcoes_ram)
     ram_item = next((r for r in itens_ram_filtrados if r["texto"] == sel_ram_txt), None)
@@ -247,16 +296,22 @@ with st.container(border=True):
         st.info("👆 Selecione as peças nos menus acima para montar o setup e calcular o custo total.")
     else:
         for cat, nome, link in itens_finais:
-            if nome and link:
+            if nome:
                 preco_item = extrair_preco(nome)
                 preco_badge = f"**R$ {preco_item:,.2f}**".replace(",", "X").replace(".", ",").replace("X", ".") if preco_item > 0 else "*(Preço no link)*"
+                if cat == "Processador (CPU)" and eh_xeon:
+                    preco_badge = "*(Incluso no Kit)*"
+                
                 c_desc, c_val, c_btn = st.columns([3, 1, 1])
                 with c_desc:
                     st.write(f"• **{cat}:** {nome}")
                 with c_val:
                     st.write(preco_badge)
                 with c_btn:
-                    st.link_button("Comprar 🔗", link, use_container_width=True)
+                    if link:
+                        st.link_button("Comprar 🔗", link, use_container_width=True)
+                    else:
+                        st.write("—")
             else:
                 st.write(f"• **{cat}:** *(Pendente de escolha)*")
 
