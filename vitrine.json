@@ -408,36 +408,36 @@
       "cupom": "🎯 Modelos com ventoinhas inclusas, excelente airflow e suporte a radiadores e placas grandes",
       "itens": [
         {
-          "texto": "🌪️ Liketec Mad Rock Preto (M-ATX • Até 9 Fans • Suporta Radiador 360mm e GPU até 400mm - R$ 249,90)",
-          "url": "https://tidd.ly/4yvGMp4"
-        },
-        {
-          "texto": "🌪️ Hayom GB1796 Mesh Preto (4 Fans RGB • Até 310mm - R$ 239,90)",
-          "url": "https://link.amazon/gb1796"
-        },
-        {
-          "texto": "🌪️ Mancer Hemlok Preto Vidro (4 Fans ARGB • Até 330mm - R$ 289,90)",
-          "url": "https://tidd.ly/hemlok"
-        },
-        {
-          "texto": "🌪️ Pichau Atom X Preto (Compacto M-ATX • Sem Fans • Até 280mm - R$ 149,90)",
+          "texto": "1️⃣ Pichau Atom X Preto (Compacto M-ATX • Sem Fans • Até 280mm - R$ 149,90)",
           "url": "https://tidd.ly/atom-x"
         },
         {
-          "texto": "👑 Mancer Mugen Full-Tower Preto (7 Fans ARGB • Suporta Radiador 360mm e GPU até 400mm - R$ 499,90)",
-          "url": "https://tidd.ly/mugen-ft"
-        },
-        {
-          "texto": "❄️ Mancer CV100 Branco (3 Fans RGB • Até 310mm - R$ 219,90)",
-          "url": "https://tidd.ly/cv100-purple"
-        },
-        {
-          "texto": "❄️ Aigo Darkflash Durin D275M Branco (Compacto M-ATX • Sem Fans • Até 290mm - R$ 179,90)",
+          "texto": "2️⃣ Aigo Darkflash Durin D275M Branco (Compacto M-ATX • Sem Fans • Até 290mm - R$ 179,90)",
           "url": "https://meli.la/durin-d275m"
         },
         {
-          "texto": "❄️ Acegeek Mercury R425 Branco Aquário (6 Fans ARGB • Suporta Radiador 360mm e GPU até 360mm - R$ 389,90)",
+          "texto": "3️⃣ Mancer CV100 Branco (3 Fans RGB • Até 310mm - R$ 219,90)",
+          "url": "https://tidd.ly/cv100-purple"
+        },
+        {
+          "texto": "4️⃣ Hayom GB1796 Mesh Preto (4 Fans RGB • Até 310mm - R$ 239,90)",
+          "url": "https://link.amazon/gb1796"
+        },
+        {
+          "texto": "5️⃣ Liketec Mad Rock Preto (M-ATX • Até 9 Fans • Suporta Radiador 360mm e GPU até 400mm - R$ 249,90)",
+          "url": "https://tidd.ly/4yvGMp4"
+        },
+        {
+          "texto": "6️⃣ Mancer Hemlok Preto Vidro (4 Fans ARGB • Até 330mm - R$ 289,90)",
+          "url": "https://tidd.ly/hemlok"
+        },
+        {
+          "texto": "7️⃣ Acegeek Mercury R425 Branco Aquário (6 Fans ARGB • Suporta Radiador 360mm e GPU até 360mm - R$ 389,90)",
           "url": "https://tidd.ly/mercury-r425"
+        },
+        {
+          "texto": "8️⃣ Mancer Mugen Full-Tower Preto (7 Fans ARGB • Suporta Radiador 360mm e GPU até 400mm - R$ 499,90)",
+          "url": "https://tidd.ly/mugen-ft"
         }
       ]
     }
