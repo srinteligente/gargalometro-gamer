@@ -655,6 +655,15 @@
     }
   },
   "memorias_ram": {
+    "🟡 Memórias DDR3 (Kits Xeon X79)": {
+      "cupom": "🏷️ Memória compatível com plataformas LGA-2011 / X79",
+      "itens": [
+        {
+          "texto": "⚡ Kit 16GB (2x8GB) DDR3 1600MHz Kingston HyperX (Shopee - Cupom - R$ 240,38)",
+          "url": "https://s.shopee.com.br/9APXzDWEOP?share_channel_code=1"
+        }
+      ]
+    },
     "🔴 Memórias DDR4 (AM4 / LGA 1700 DDR4)": {
       "cupom": "📦 Custo-benefício para AM4 e placas DDR4 com impostos inclusos",
       "itens": [
