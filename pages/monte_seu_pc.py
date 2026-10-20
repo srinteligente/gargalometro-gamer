@@ -33,7 +33,8 @@ def extrair_preco(texto):
 
 @st.cache_data
 def carregar_vitrine():
-    for arq in ["vitrine.json", "vitrine_3.json", "vitrine_2.json", "links.json"]:
+    # Procura prioritariamente vitrine.json e vitrine_2.json
+    for arq in ["vitrine.json", "vitrine_2.json", "vitrine_3.json", "links.json"]:
         if os.path.exists(arq):
             try:
                 with open(arq, "r", encoding="utf-8") as f:
@@ -52,7 +53,7 @@ st.title("🛠️ Monte seu PC Gamer com Validação Técnica")
 st.caption("Montagem segura com travas automáticas de RAM, VRM da Placa-Mãe, Tamanho de GPU vs Gabinete e Orçamento em tempo real!")
 
 if not vitrine:
-    st.error("⚠️ Base de dados (`vitrine.json`) não encontrada na raiz do projeto.")
+    st.error("⚠️ Base de dados (`vitrine.json` ou `vitrine_2.json`) não encontrada na raiz do projeto.")
     st.stop()
 
 def extrair_opcoes(categoria_dict):
@@ -85,21 +86,20 @@ eh_am5 = "AM5" in plataforma
 eh_intel = "Intel" in plataforma
 eh_xeon = "Xeon" in plataforma
 
-# Placas-mãe disponíveis por plataforma
-if eh_am4:
-    chave_mb = "🔴 AMD AM4 (DDR4)"
-elif eh_am5:
-    chave_mb = "🟣 AMD AM5 (DDR5)"
-elif eh_intel:
-    chave_mb = "🔵 Intel LGA 1700 (DDR4 / DDR5)"
-else:
-    chave_mb = "🟡 Kits Baratíssimos Xeon (CPU + Placa Inclusos)"
+placas_dict = vitrine.get("placas_mae", {})
 
-mbs_disp = vitrine.get("placas_mae", {}).get(chave_mb, {}).get("itens", [])
+# Busca flexível por palavras-chave para evitar incompatibilidade de emojis/espaços
+def buscar_itens_por_chave(dicionario, termo):
+    for k, v in dicionario.items():
+        if termo.upper() in k.upper():
+            return v.get("itens", []) if isinstance(v, dict) else v
+    return []
 
 c_cpu, c_mb = st.columns(2)
 
 if eh_xeon:
+    mbs_disp = buscar_itens_por_chave(placas_dict, "XEON")
+    
     with c_mb:
         st.markdown("#### 🧩 Kit Combinado (Placa-Mãe + Processador)")
         opcoes_mb = ["Selecione o kit..."] + [m["texto"] for m in mbs_disp]
@@ -112,14 +112,14 @@ if eh_xeon:
     with c_cpu:
         st.markdown("#### ⚡ Processador (CPU)")
         if mb_item:
-            st.info("💡 **Processador Incluso:** O CPU Xeon já acompanha a placa-mãe selecionada!")
+            st.info("💡 **Processador Incluso:** O processador Xeon já vem instalado neste kit.")
             cpu_item = {"texto": f"Processador Incluso no {mb_item['texto'].split('(')[0].strip()} (R$ 0,00)", "url": ""}
         else:
             st.caption("👈 Escolha primeiro o Kit Xeon ao lado.")
             cpu_item = None
 else:
-    chave_cpu = "🔴 AMD AM4 (DDR4)" if eh_am4 else ("🟣 AMD AM5 (DDR5 - Nova Geração)" if eh_am5 else "🔵 Intel LGA 1700")
-    cpus_disp = vitrine.get("cpus", {}).get(chave_cpu, {}).get("itens", [])
+    chave_busca_cpu = "AM4" if eh_am4 else ("AM5" if eh_am5 else "1700")
+    cpus_disp = buscar_itens_por_chave(vitrine.get("cpus", {}), chave_busca_cpu)
 
     with c_cpu:
         st.markdown("#### ⚡ Processador (CPU)")
@@ -131,6 +131,9 @@ else:
     cpu_nome_u = (cpu_item["texto"] if cpu_item else "").upper()
     eh_am4_pesado = eh_am4 and any(x in cpu_nome_u for x in ["5700", "5800", "5900", "5950"])
     eh_am5_pesado = eh_am5 and any(x in cpu_nome_u for x in ["7700", "9700", "7800", "9800", "9900", "9950"])
+
+    chave_busca_mb = "AM4" if eh_am4 else ("AM5" if eh_am5 else "1700")
+    mbs_disp = buscar_itens_por_chave(placas_dict, chave_busca_mb)
 
     # Travas de VRM
     if eh_am4_pesado:
@@ -165,41 +168,39 @@ with c_gpu:
 
 # Identificação de placas grandes/triplo fan
 gpu_txt_u = (gpu_item[3] if gpu_item else "").upper()
-eh_gpu_gigante = any(x in gpu_txt_u for x in ["5070 TI", "5080", "9070 XT", "3070", "INFINITY 3", "VENTUS 3X", "STEEL LEGEND"])
+eh_gpu_gigante = any(x in gpu_txt_u for x in ["5070 TI", "5080", "9070 XT", "3070", "INFINITY 3", "VENTUS 3X", "STEEL LEGEND", "TRIPLE FAN"])
 
-# Lógica estrita de RAM
+# Lógica de seleção de memórias
 mems_dict = vitrine.get("memorias_ram", {})
-itens_ram_filtrados = []
+itens_ddr3 = buscar_itens_por_chave(mems_dict, "DDR3")
+itens_ddr4 = buscar_itens_por_chave(mems_dict, "DDR4")
+itens_ddr5 = buscar_itens_por_chave(mems_dict, "DDR5")
 
 if eh_xeon:
     if is_xeon_d3:
-        itens_ram_filtrados = mems_dict.get("🟡 Memórias DDR3 (Kits Xeon X79)", {}).get("itens", [])
+        itens_ram_filtrados = itens_ddr3
     elif is_xeon_d4:
-        itens_ram_filtrados = mems_dict.get("🔴 Memórias DDR4 (AM4 / LGA 1700 DDR4)", {}).get("itens", [])
+        itens_ram_filtrados = itens_ddr4
     else:
-        itens_ram_filtrados = (
-            mems_dict.get("🟡 Memórias DDR3 (Kits Xeon X79)", {}).get("itens", []) +
-            mems_dict.get("🔴 Memórias DDR4 (AM4 / LGA 1700 DDR4)", {}).get("itens", [])
-        )
+        itens_ram_filtrados = itens_ddr3 + itens_ddr4
 elif eh_am4:
-    itens_ram_filtrados = mems_dict.get("🔴 Memórias DDR4 (AM4 / LGA 1700 DDR4)", {}).get("itens", [])
+    itens_ram_filtrados = itens_ddr4
 elif eh_am5:
-    itens_ram_filtrados = mems_dict.get("🟣 Memórias DDR5 (Alta Velocidade - AM5 / LGA 1700)", {}).get("itens", [])
+    itens_ram_filtrados = itens_ddr5
 else:
     if mb_item and "DDR4" in mb_item["texto"]:
-        itens_ram_filtrados = mems_dict.get("🔴 Memórias DDR4 (AM4 / LGA 1700 DDR4)", {}).get("itens", [])
+        itens_ram_filtrados = itens_ddr4
     elif mb_item and "DDR5" in mb_item["texto"]:
-        itens_ram_filtrados = mems_dict.get("🟣 Memórias DDR5 (Alta Velocidade - AM5 / LGA 1700)", {}).get("itens", [])
+        itens_ram_filtrados = itens_ddr5
     else:
-        for subcat in mems_dict.values():
-            itens_ram_filtrados.extend(subcat.get("itens", []))
+        itens_ram_filtrados = itens_ddr4 + itens_ddr5
 
 with c_ram:
     st.markdown("#### ⚡ Memória RAM")
     if eh_xeon and is_xeon_d3:
-        st.caption("🔒 **Filtro:** Exibindo apenas memórias **DDR3** compatíveis com o kit Xeon X79.")
+        st.caption("🔒 **Filtro:** Exibindo apenas memórias **DDR3** para o kit Xeon X79.")
     elif eh_xeon and is_xeon_d4:
-        st.caption("🔒 **Filtro:** Exibindo apenas memórias **DDR4** compatíveis com o kit Xeon X99.")
+        st.caption("🔒 **Filtro:** Exibindo apenas memórias **DDR4** para o kit Xeon X99.")
     elif eh_am4:
         st.caption("🔒 **Filtro:** Exibindo apenas memórias **DDR4** para AM4.")
     elif eh_am5:
@@ -243,7 +244,6 @@ with c_fonte:
     sel_fonte_txt = st.selectbox("Selecione a Fonte:", [op[0] for op in opcoes_fonte])
     fonte_item = next((op for op in opcoes_fonte if op[0] == sel_fonte_txt and op[1]), None)
 
-# Filtro de gabinetes por clearance de GPU
 todos_gabinetes = extrair_opcoes(vitrine.get("gabinetes", {}))
 if eh_gpu_gigante:
     gabinetes_filtrados = [g for g in todos_gabinetes if any(m in g[0].upper() for m in ["320MM", "330MM", "360MM", "400MM"]) or g[1] == ""]
