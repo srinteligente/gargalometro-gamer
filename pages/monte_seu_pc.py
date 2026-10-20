@@ -244,16 +244,36 @@ with c_fonte:
     sel_fonte_txt = st.selectbox("Selecione a Fonte:", [op[0] for op in opcoes_fonte])
     fonte_item = next((op for op in opcoes_fonte if op[0] == sel_fonte_txt and op[1]), None)
 
+# --- Verificação de compatibilidade física (Water Cooler 360mm e GPU Longa) ---
+cooler_nome_u = (cooler_item[3] if cooler_item else "").upper()
+eh_wc_360 = "360" in cooler_nome_u
+
 todos_gabinetes = extrair_opcoes(vitrine.get("gabinetes", {}))
+gabinetes_filtrados = todos_gabinetes
+
+# Trava 1: Se escolheu Water Cooler de 360mm, restringe aos gabinetes que aceitam 360mm
+if eh_wc_360:
+    gabinetes_filtrados = [
+        g for g in gabinetes_filtrados 
+        if "360MM" in g[0].upper() or "360" in g[0].upper() or g[1] == ""
+    ]
+
+# Trava 2: Se escolheu GPU triplo fan / gigante, restringe gabinetes compactos
 if eh_gpu_gigante:
-    gabinetes_filtrados = [g for g in todos_gabinetes if any(m in g[0].upper() for m in ["320MM", "330MM", "360MM", "400MM"]) or g[1] == ""]
-else:
-    gabinetes_filtrados = todos_gabinetes
+    gabinetes_filtrados = [
+        g for g in gabinetes_filtrados 
+        if any(m in g[0].upper() for m in ["320MM", "330MM", "360MM", "400MM"]) or g[1] == ""
+    ]
 
 with c_gab:
     st.markdown("#### 📦 Gabinete Gamer")
-    if eh_gpu_gigante:
-        st.warning("⚠️ **GPU Triplo Fan Selecionada:** Gabinetes compactos foram ocultados para assegurar espaço interno suficiente.")
+    if eh_wc_360 and eh_gpu_gigante:
+        st.warning("⚠️ **Travas Ativas (WC 360mm + GPU Longa):** Exibindo apenas gabinetes compatíveis com radiador de 360mm e placas de vídeo compridas.")
+    elif eh_wc_360:
+        st.warning("⚠️ **Trava de Water Cooler Ativa:** Gabinetes compactos foram ocultados. Exibindo apenas modelos com suporte a radiadores de 360mm.")
+    elif eh_gpu_gigante:
+        st.warning("⚠️ **Trava de GPU Ativa:** Gabinetes compactos foram ocultados para assegurar espaço interno suficiente.")
+
     sel_gab_txt = st.selectbox("Selecione o Gabinete:", [g[0] for g in gabinetes_filtrados])
     gab_item = next((g for g in gabinetes_filtrados if g[0] == sel_gab_txt and g[1]), None)
 
