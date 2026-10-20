@@ -295,8 +295,12 @@
   },
   "gpus": {
     "⚡ Custo-Benefício (1080p Alto/Ultra)": {
-      "cupom": "🎯 Melhores opções até R$ 2.000: Ideal para rodar tudo em Full HD com alta taxa de FPS.",
+      "cupom": "🎯 Melhores opções até R$ 2.700: Alto desempenho em Full HD / 1440p com cupons ativos",
       "itens": [
+        {
+          "texto": "📦 Veineda AMD Radeon RX 580 8GB GDDR5 256-bit (AliExpress - R$ 688,52)",
+          "url": "https://s.click.aliexpress.com/e/_mNuKvwf"
+        },
         {
           "texto": "🔥 RX 7600 Biostar 8GB (Shopee - PROMO R$ 1.812,40)",
           "url": "https://s.shopee.com.br/70L1bpjf2Z?share_channel_code=1"
@@ -310,8 +314,16 @@
           "url": "https://s.shopee.com.br/50ZuNKgIbi?share_channel_code=1"
         },
         {
+          "texto": "🎮 Zotac RTX 5060 Twin Edge 8GB GDDR7 (Mercado Livre - Cupom TOPMELI - R$ 2.599,00)",
+          "url": "https://meli.la/19nd7gv"
+        },
+        {
           "texto": "🎮 MSI RTX 5060 Shadow 2X OC 8GB (Amazon - R$ 2.589,00)",
           "url": "https://link.amazon/B0cIU83OT"
+        },
+        {
+          "texto": "🎮 Gigabyte RTX 5060 EAGLE MAX OC 8GB GDDR7 (KaBuM! - Cupons ZAFAGAIN10/CHAPAQUENTE10 - R$ 2.699,00)",
+          "url": "https://tidd.ly/4z1q16t"
         }
       ]
     },
