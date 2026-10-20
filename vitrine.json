@@ -181,6 +181,19 @@
     }
   },
   "placas_mae": {
+    "🟡 Kits Baratíssimos Xeon (CPU + Placa Inclusos)": {
+      "cupom": "📦 Custo extremo: Processador e Placa-mãe juntos no mesmo pacote!",
+      "itens": [
+        {
+          "texto": "⚡ Kit Xeon X99 D4 + E5-2680 V4 14/28 (AliExpress - R$ 397,86)",
+          "url": "https://s.click.aliexpress.com/e/_mNIC6QT"
+        },
+        {
+          "texto": "⚡ Kit Xeon X79 LGA-2011 + E5-2680 V2 10/20 DDR3 (AliExpress - R$ 349,00)",
+          "url": "https://s.click.aliexpress.com/e/_mNIC6QT"
+        }
+      ]
+    },
     "🔴 AMD AM4 (DDR4)": {
       "cupom": "🏷️ Use MELIOFERTAS no Mercado Livre ou CHEGOUMSI na KaBuM!",
       "itens": [
