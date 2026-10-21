@@ -44,18 +44,21 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def carregar_dados():
-    # 1. Carrega os dados de Hardware
     dados_hw = {}
-    arq_hw = "hardware.json" if os.path.exists("hardware.json") else "dados.json"
-    if os.path.exists(arq_hw):
-        try:
-            with open(arq_hw, "r", encoding="utf-8") as f:
-                dados_hw = json.load(f)
-        except Exception as e:
-            st.error(f"Erro ao ler {arq_hw}: {e}")
+    dados_vitrine = {}
+
+    # 1. Procura o arquivo de hardware por ordem de prioridade
+    arquivos_hw_possiveis = ["hardware.json", "dados.json", "banco.json", "cpus_gpus.json"]
+    for nome_arq in arquivos_hw_possiveis:
+        if os.path.exists(nome_arq):
+            try:
+                with open(nome_arq, "r", encoding="utf-8") as f:
+                    dados_hw = json.load(f)
+                break
+            except Exception as e:
+                st.error(f"Erro ao ler {nome_arq}: {e}")
 
     # 2. Carrega os dados da Vitrine
-    dados_vitrine = {}
     arq_vitrine = "vitrine.json" if os.path.exists("vitrine.json") else "links.json"
     if os.path.exists(arq_vitrine):
         try:
