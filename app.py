@@ -43,50 +43,40 @@ st.markdown("""
     </head>
 """, unsafe_allow_html=True)
 
-def carregar_dados():
-    # Estrutura base com listas vazias para evitar KeyError fatal
-    dados_hw = {"cpus": [], "gpus": []}
-    dados_vitrine = {}
-
-    # 1. Lista de nomes comuns para procurar
-    arquivos_hw_possiveis = [
-        "hardware.json", "dados.json", "banco.json", 
-        "cpus_gpus.json", "database.json", "base_dados.json", "dados_hardware.json"
+# 1. Hardware pesado fica em cache para o site abrir rápido
+@st.cache_data
+def carregar_hardware():
+    arquivos_hw = [
+        "banco_hardware_completo.json",
+        "hardware.json",
+        "dados.json",
+        "banco.json",
+        "cpus_gpus.json"
     ]
-    
-    # Adiciona qualquer outro ficheiro .json que esteja na raiz (exceto vitrine e links)
-    for f in os.listdir("."):
-        if f.endswith(".json") and f not in ["vitrine.json", "links.json"] and f not in arquivos_hw_possiveis:
-            arquivos_hw_possiveis.append(f)
-
-    # 2. Varredura do arquivo que contém os dados de CPUs e GPUs
-    for nome_arq in arquivos_hw_possiveis:
-        if os.path.exists(nome_arq):
+    for nome in arquivos_hw:
+        if os.path.exists(nome):
             try:
-                with open(nome_arq, "r", encoding="utf-8") as arq_lido:
-                    conteudo = json.load(arq_lido)
-                    # Valida se é o ficheiro correto de hardware
-                    if isinstance(conteudo, dict) and ("cpus" in conteudo or "gpus" in conteudo):
-                        dados_hw = conteudo
-                        # Garante a existência das chaves fundamentais
-                        dados_hw.setdefault("cpus", [])
-                        dados_hw.setdefault("gpus", [])
-                        break
+                with open(nome, "r", encoding="utf-8") as f:
+                    dados = json.load(f)
+                    if isinstance(dados, dict) and "gpus" in dados and "cpus" in dados:
+                        return dados
             except Exception as e:
-                st.error(f"Erro ao ler {nome_arq}: {e}")
+                st.error(f"Erro ao ler {nome}: {e}")
+    return {"gpus": [], "cpus": []}
 
-    # 3. Carrega os dados da Vitrine de Afiliados
-    arq_vitrine = "vitrine.json" if os.path.exists("vitrine.json") else "links.json"
-    if os.path.exists(arq_vitrine):
-        try:
-            with open(arq_vitrine, "r", encoding="utf-8") as f:
-                dados_vitrine = json.load(f)
-        except Exception as e:
-            st.error(f"Erro ao ler {arq_vitrine}: {e}")
-            
-    return dados_hw, dados_vitrine
+# 2. Vitrine SEM cache para atualizar no F5 sempre que você mudar o vitrine.json
+def carregar_vitrine():
+    for nome in ["vitrine.json", "vitrine_4.json", "links.json"]:
+        if os.path.exists(nome):
+            try:
+                with open(nome, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception as e:
+                st.error(f"Erro ao ler {nome}: {e}")
+    return {}
 
-db, VITRINE = carregar_dados()
+db = carregar_hardware()
+VITRINE = carregar_vitrine()
 
 def renderizar_botoes_em_colunas(itens):
     """Gera botões organizados automaticamente em 2 colunas"""
@@ -194,7 +184,6 @@ with header_col1:
 with header_col2:
     st.title("Gargalômetro Gamer")
     
-    # 📱 Link do TikTok logo abaixo da palavra Gargalômetro Gamer
     st.markdown(
         """
         <div style="margin-top: -10px; margin-bottom: 8px;">
@@ -206,59 +195,16 @@ with header_col2:
         unsafe_allow_html=True
     )
     
-    st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db['gpus'])} GPUs e {len(db['cpus'])} CPUs")
+    st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db.get('gpus', []))} GPUs e {len(db.get('cpus', []))} CPUs")
 
-# 🚀 BOTÃO DE NAVEGAÇÃO GIGANTE & DESTACADO
-st.markdown("""
-    <style>
-        /* Aumenta o texto do link */
-        div[data-testid="stPageLink-NavLink"] p,
-        div[data-testid="stPageLink-NavLink"] span {
-            font-size: 1.65rem !important;
-            font-weight: 900 !important;
-            line-height: 1.4 !important;
-        }
-        /* Aumenta o ícone nativo */
-        div[data-testid="stPageLink-NavLink"] svg,
-        div[data-testid="stPageLink-NavLink"] img {
-            width: 2rem !important;
-            height: 2rem !important;
-        }
-        /* Aumenta a área de clique, espaçamento e dá destaque */
-        div[data-testid="stPageLink-NavLink"] {
-            padding: 14px 20px !important;
-            background: linear-gradient(90deg, #1e293b, #0f172a) !important;
-            border: 2px solid #3b82f6 !important;
-            border-radius: 12px !important;
-            text-align: center !important;
-            justify-content: center !important;
-            transition: all 0.2s ease-in-out !important;
-        }
-        div[data-testid="stPageLink-NavLink"]:hover {
-            border-color: #60a5fa !important;
-            transform: scale(1.01) !important;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4) !important;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-st.page_link(
-    "pages/monte_seu_pc.py", 
-    label="🛠️🎯 MONTE SEU PC GAMER NO GARGALOMETRO!", 
-    use_container_width=True
-)
-st.divider()
-
-# ---------------------------------------------------------
-# BANNER DE ALTO DESTAQUE: MONTE SEU PC GAMER
-# ---------------------------------------------------------
+# 🚀 BANNER DE ALTO DESTAQUE: MONTE SEU PC GAMER
 st.markdown("""
 <div style="
     background: linear-gradient(135deg, rgba(255, 75, 75, 0.15) 0%, rgba(30, 30, 45, 0.9) 100%);
     border: 2px solid #ff4b4b;
     border-radius: 14px;
     padding: 22px 20px;
-    margin: 15px 0 25px 0;
+    margin: 15px 0 20px 0;
     box-shadow: 0 0 20px rgba(255, 75, 75, 0.25);
     text-align: center;
 ">
@@ -283,7 +229,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Botão largo em destaque logo abaixo do banner
 col_btn1, col_btn2, col_btn3 = st.columns([1, 2.5, 1])
 with col_btn2:
     st.page_link(
@@ -324,25 +269,25 @@ with col_left:
     eh_notebook = tipo_dispositivo == "💻 Notebook"
 
     if eh_notebook:
-        gpu_lista = [g["nome"] for g in db["gpus"] if g.get("notebook", False)]
+        gpu_lista = [g["nome"] for g in db.get("gpus", []) if g.get("notebook", False)]
         gpu_opcoes = ["Nenhuma (Gráficos Integrados / APU)"] + gpu_lista
         padrao_gpu_idx = next((i for i, n in enumerate(gpu_opcoes) if "RTX 4080 Mobile" in n or "4080" in n or "4060" in n), 0)
     else:
-        gpu_lista = [g["nome"] for g in db["gpus"] if g.get("desktop", True)]
+        gpu_lista = [g["nome"] for g in db.get("gpus", []) if g.get("desktop", True)]
         gpu_opcoes = ["Nenhuma (Gráficos Integrados / APU)"] + gpu_lista
         padrao_gpu_idx = next((i for i, n in enumerate(gpu_opcoes) if "RTX 5060" in n or "RTX 4060" in n), 0)
 
-    gpu_sel = st.selectbox("Placa de Vídeo (GPU)", gpu_opcoes, index=padrao_gpu_idx)
+    gpu_sel = st.selectbox("Placa de Vídeo (GPU)", gpu_opcoes, index=padrao_gpu_idx if padrao_gpu_idx < len(gpu_opcoes) else 0)
 
     if eh_notebook:
-        cpu_lista = [c["nome"] for c in db["cpus"] if c.get("notebook", False)]
+        cpu_lista = [c["nome"] for c in db.get("cpus", []) if c.get("notebook", False)]
         padrao_cpu_idx = next((i for i, n in enumerate(cpu_lista) if "13700H" in n or "Ryzen 7 170" in n or "7735" in n), 0)
     else:
-        cpu_lista = [c["nome"] for c in db["cpus"] if c.get("desktop", True)]
+        cpu_lista = [c["nome"] for c in db.get("cpus", []) if c.get("desktop", True)]
         padrao_cpu_idx = next((i for i, n in enumerate(cpu_lista) if "Ryzen 5 5600" in n and "5600G" not in n), 0)
 
-    cpu_sel = st.selectbox("Processador (CPU)", cpu_lista, index=padrao_cpu_idx)
-    cpu_obj = next(c for c in db["cpus"] if c["nome"] == cpu_sel)
+    cpu_sel = st.selectbox("Processador (CPU)", cpu_lista, index=padrao_cpu_idx if padrao_cpu_idx < len(cpu_lista) else 0)
+    cpu_obj = next((c for c in db.get("cpus", []) if c["nome"] == cpu_sel), {"nome": cpu_sel, "nota": 5.0, "tdp": 65})
 
     resolucao_sel = st.radio(
         "Resolução Principal de Jogo",
@@ -402,7 +347,7 @@ if usando_igpu:
     else:
         gpu_obj = {"nome": "SEM VÍDEO (Processador não possui iGPU)", "nota": 0.5, "tdp": 0}
 else:
-    gpu_obj = next(g for g in db["gpus"] if g["nome"] == gpu_sel)
+    gpu_obj = next((g for g in db.get("gpus", []) if g["nome"] == gpu_sel), {"nome": gpu_sel, "nota": 5.0, "tdp": 120})
 
 # ========================================================
 # ⚖️ CÁLCULO DE NOTA RECALIBRADO (DESKTOP & NOTEBOOK)
