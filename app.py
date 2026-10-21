@@ -43,13 +43,20 @@ st.markdown("""
     </head>
 """, unsafe_allow_html=True)
 
-# Removeu o @st.cache_data daqui:
 def carregar_dados():
-    # ... código do carregamento de hardware mantido normalmente ...
+    # 1. Carrega os dados de Hardware
+    dados_hw = {}
+    arq_hw = "hardware.json" if os.path.exists("hardware.json") else "dados.json"
+    if os.path.exists(arq_hw):
+        try:
+            with open(arq_hw, "r", encoding="utf-8") as f:
+                dados_hw = json.load(f)
+        except Exception as e:
+            st.error(f"Erro ao ler {arq_hw}: {e}")
 
+    # 2. Carrega os dados da Vitrine
     dados_vitrine = {}
-    # Deixa apontando direto e limpo para o vitrine.json
-    arq_vitrine = "vitrine.json"
+    arq_vitrine = "vitrine.json" if os.path.exists("vitrine.json") else "links.json"
     if os.path.exists(arq_vitrine):
         try:
             with open(arq_vitrine, "r", encoding="utf-8") as f:
