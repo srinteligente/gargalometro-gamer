@@ -197,37 +197,15 @@ with header_col2:
     
     st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db.get('gpus', []))} GPUs e {len(db.get('cpus', []))} CPUs")
 
-# 🚀 BANNER DE ALTO DESTAQUE: MONTE SEU PC GAMER
-st.markdown("""
-<div style="
-    background: linear-gradient(135deg, rgba(255, 75, 75, 0.15) 0%, rgba(30, 30, 45, 0.9) 100%);
-    border: 2px solid #ff4b4b;
-    border-radius: 14px;
-    padding: 22px 20px;
-    margin: 15px 0 20px 0;
-    box-shadow: 0 0 20px rgba(255, 75, 75, 0.25);
-    text-align: center;
-">
-    <h2 style="
-        color: #ff4b4b; 
-        margin: 0 0 8px 0; 
-        font-size: 1.6rem; 
-        font-weight: 800; 
-        text-transform: uppercase; 
-        letter-spacing: 1px;
-    ">
-        🛠️🎯 MONTE SEU PC GAMER NO GARGALÔMETRO!
-    </h2>
-    <p style="
-        color: #e0e0e0; 
-        font-size: 1.05rem; 
-        margin: 0 0 16px 0;
-        line-height: 1.4;
-    ">
-        Travas automáticas de compatibilidade física (Water Cooler 360mm & GPU triplo fan), travas de VRM para AMD/Intel e cálculo de orçamento em tempo real!
-    </p>
-</div>
-""", unsafe_allow_html=True)
+# Botão direto e elegante para a ferramenta de montagem
+st.page_link(
+    "pages/monte_seu_pc.py", 
+    label="🛠️ Monte seu PC Gamer no Gargalômetro (com travas de compatibilidade)", 
+    icon="🎯",
+    use_container_width=True
+)
+st.caption("⚡ Assistente de montagem com validação física de Water Cooler 360mm, GPUs longas e cálculo de orçamento.")
+st.markdown("<br>", unsafe_allow_html=True)
 
 col_btn1, col_btn2, col_btn3 = st.columns([1, 2.5, 1])
 with col_btn2:
