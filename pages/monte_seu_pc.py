@@ -57,6 +57,7 @@ if not vitrine:
     st.error("⚠️ Base de dados (`vitrine.json`) não encontrada na raiz do projeto.")
     st.stop()
 
+# Função otimizada para mobile: exibe apenas o texto do produto sem o prefixo [Categoria]
 def extrair_opcoes(categoria_dict):
     opcoes = [("Selecione uma opção...", "", "")]
     if not isinstance(categoria_dict, dict):
@@ -64,7 +65,8 @@ def extrair_opcoes(categoria_dict):
     for subcat, dados in categoria_dict.items():
         itens = dados.get("itens", []) if isinstance(dados, dict) else dados
         for it in itens:
-            opcoes.append((f"[{subcat}] {it['texto']}", it["url"], subcat, it["texto"]))
+            # Layout clean: exibe direto it["texto"] sem prefixos longos
+            opcoes.append((it["texto"], it["url"], subcat, it["texto"]))
     return opcoes
 
 # Busca flexível por palavras-chave para evitar incompatibilidade de emojis/espaços
@@ -244,7 +246,7 @@ with c_fonte:
     sel_fonte_txt = st.selectbox("Selecione a Fonte:", [op[0] for op in opcoes_fonte])
     fonte_item = next((op for op in opcoes_fonte if op[0] == sel_fonte_txt and op[1]), None)
 
-# Identificação se escolheu Water Cooler de 360mm
+# Identificação de Water Cooler de 360mm
 cooler_nome_u = (cooler_item[3] if cooler_item else "").upper()
 eh_wc_360 = "360" in cooler_nome_u
 
