@@ -31,7 +31,6 @@ def extrair_preco(texto):
             return 0.0
     return 0.0
 
-@st.cache_data
 def carregar_vitrine():
     caminho = "vitrine.json"
     if os.path.exists(caminho):
