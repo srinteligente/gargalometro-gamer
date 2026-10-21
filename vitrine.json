@@ -1,6 +1,24 @@
 {
   "achados_do_dia": [
     {
+      "titulo": "👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler MACH1 240mm",
+      "descricao": "R$ 1.519 no PIX • Cupom CASADINHO • Combo fechado com Placa WiFi 6E, CPU 8/16 e Water Cooler!",
+      "texto_botao": "🛒 Garantir Kit R7 5700X + B550M + WC (R$ 1.519)",
+      "url": "https://tidd.ly/3TXWsn6"
+    },
+    {
+      "titulo": "🔥 Kit R5 5500F + MSI A520M + Air Cooler MACH1 ARTIC",
+      "descricao": "R$ 849,99 • Cupom CASADIN • Custo-benefício extremo com cooler torre de alto fluxo!",
+      "texto_botao": "📦 Garantir Kit R5 5500F + Artic (R$ 849,99)",
+      "url": "https://tidd.ly/4jZfG6b"
+    },
+    {
+      "titulo": "⚡ Kit R5 5500F + MSI A520M + Cooler Rise Mode G700",
+      "descricao": "R$ 849,99 • Cupom CASADIN • Combo completo com cooler eficiente e pronto para uso!",
+      "texto_botao": "🚀 Garantir Kit R5 5500F + G700 (R$ 849,99)",
+      "url": "https://tidd.ly/47oNTVy"
+    },
+    {
       "titulo": "🔥 ASRock RX 7600 Challenger PRO OC 8GB (Triple Fan)",
       "descricao": "R$ 1.763 • Use o cupom ZAFAGAIN10 ou CHAPAQUENTE10 • Triple Fan com resfriamento pesado!",
       "texto_botao": "🛒 Garantir RX 7600 Triple Fan (R$ 1.763)",
@@ -27,15 +45,15 @@
   ],
   "kits_upgrade": [
     {
-      "texto": "🔥 Kit R5 5500F (PCIe 4.0) + MSI A520M + Cooler MACH1 (R$ 1.150,00)",
+      "texto": "🔥 Kit R5 5500F (PCIe 4.0) + MSI A520M + Cooler MACH1 ARTIC (KaBuM! - Cupom CASADIN - R$ 849,99)",
       "url": "https://tidd.ly/4jZfG6b"
     },
     {
-      "texto": "⚡ Kit R5 5500F (PCIe 4.0) + MSI A520M + Rise Mode G700 (R$ 1.189,00)",
+      "texto": "⚡ Kit R5 5500F (PCIe 4.0) + MSI A520M + Rise Mode G700 (KaBuM! - Cupom CASADIN - R$ 849,99)",
       "url": "https://tidd.ly/47oNTVy"
     },
     {
-      "texto": "👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler 240mm (R$ 2.190,00)",
+      "texto": "👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler MACH1 240mm (KaBuM! - Cupom CASADINHO - R$ 1.519,00)",
       "url": "https://tidd.ly/3TXWsn6"
     }
   ],
@@ -181,6 +199,23 @@
     }
   },
   "placas_mae": {
+    "🔥 Kits Completos Upgrade (Placa + CPU + Cooler Inclusos)": {
+      "cupom": "📦 Use o cupom CASADINHO ou CASADIN na KaBuM!",
+      "itens": [
+        {
+          "texto": "⚡ Kit R5 5500F + MSI A520M + Air Cooler MACH1 ARTIC (KaBuM! - Cupom CASADIN - R$ 849,99)",
+          "url": "https://tidd.ly/4jZfG6b"
+        },
+        {
+          "texto": "⚡ Kit R5 5500F + MSI A520M + Rise Mode G700 (KaBuM! - Cupom CASADIN - R$ 849,99)",
+          "url": "https://tidd.ly/47oNTVy"
+        },
+        {
+          "texto": "👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler MACH1 240mm (KaBuM! - Cupom CASADINHO - R$ 1.519,00)",
+          "url": "https://tidd.ly/3TXWsn6"
+        }
+      ]
+    },
     "🟡 Kits Baratíssimos Xeon (CPU + Placa Inclusos)": {
       "cupom": "📦 Custo extremo: Processador e Placa-mãe juntos no mesmo pacote!",
       "itens": [
@@ -447,7 +482,7 @@
     }
   },
   "fontes": {
-   "⚡ 500W a 550W (Entrada / GPUs Econômicas)": {
+    "⚡ 500W a 550W (Entrada / GPUs Econômicas)": {
       "cupom": "🏷️ KaBuM!: Cupom KABUM10 para 10% OFF em modelos selecionados",
       "itens": [
         {
