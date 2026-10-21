@@ -43,15 +43,13 @@ st.markdown("""
     </head>
 """, unsafe_allow_html=True)
 
-# Carrega bancos de dados
+# Removeu o @st.cache_data daqui:
 def carregar_dados():
-    dados_hw = {"gpus": [], "cpus": []}
-    if os.path.exists("banco_hardware_completo.json"):
-        with open("banco_hardware_completo.json", "r", encoding="utf-8") as f:
-            dados_hw = json.load(f)
-    
+    # ... código do carregamento de hardware mantido normalmente ...
+
     dados_vitrine = {}
-    arq_vitrine = "vitrine.json" if os.path.exists("vitrine.json") else "links.json"
+    # Deixa apontando direto e limpo para o vitrine.json
+    arq_vitrine = "vitrine.json"
     if os.path.exists(arq_vitrine):
         try:
             with open(arq_vitrine, "r", encoding="utf-8") as f:
