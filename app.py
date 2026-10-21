@@ -197,24 +197,42 @@ with header_col2:
     
     st.caption(f"Avaliador de Equilíbrio & Ranking (0 a 10) • Base: {len(db.get('gpus', []))} GPUs e {len(db.get('cpus', []))} CPUs")
 
-# Botão direto e elegante para a ferramenta de montagem
+st.divider()
+
+# BOTÃO ÚNICO E DESTACADO: MONTE SEU PC GAMER
+st.markdown("""
+    <style>
+        div[data-testid="stPageLink-NavLink"] {
+            background: linear-gradient(90deg, #1e293b, #0f172a) !important;
+            border: 2px solid #ff4b4b !important;
+            border-radius: 12px !important;
+            padding: 16px 20px !important;
+            text-align: center !important;
+            justify-content: center !important;
+            box-shadow: 0 4px 15px rgba(255, 75, 75, 0.25) !important;
+            transition: all 0.2s ease-in-out !important;
+        }
+        div[data-testid="stPageLink-NavLink"]:hover {
+            border-color: #ff2b2b !important;
+            box-shadow: 0 0 22px rgba(255, 75, 75, 0.45) !important;
+            transform: scale(1.01) !important;
+        }
+        div[data-testid="stPageLink-NavLink"] p,
+        div[data-testid="stPageLink-NavLink"] span {
+            font-size: 1.4rem !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 st.page_link(
     "pages/monte_seu_pc.py", 
-    label="🛠️ Monte seu PC Gamer no Gargalômetro (com travas de compatibilidade)", 
-    icon="🎯",
+    label="🛠️🎯 Monte seu PC GAMER no GARGALÔMETRO", 
     use_container_width=True
 )
-st.caption("⚡ Assistente de montagem com validação física de Water Cooler 360mm, GPUs longas e cálculo de orçamento.")
-st.markdown("<br>", unsafe_allow_html=True)
 
-col_btn1, col_btn2, col_btn3 = st.columns([1, 2.5, 1])
-with col_btn2:
-    st.page_link(
-        "pages/monte_seu_pc.py", 
-        label="🚀 ENTRAR NO ASSISTENTE DE MONTAGEM", 
-        icon="🛠️", 
-        use_container_width=True
-    )
+st.divider()
 
 st.markdown("<br>", unsafe_allow_html=True)
 
