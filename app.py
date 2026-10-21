@@ -224,13 +224,51 @@ st.page_link(
 )
 st.divider()
 
-# ========================================================
-# 📢 DESTAQUE: LIVEPIX (FURAR FILA NA LIVE)
-# ========================================================
-with st.container(border=True):
-    st.markdown("##### 🎙️ Quer furar a fila na Live?")
-    st.caption("Envie sua dúvida por mensagem de áudio em tempo real na tela da transmissão!")
-    st.link_button("⚡ Mandar Mensagem de Voz (LivePix)", "https://livepix.gg/srinteligente", use_container_width=True)
+# ---------------------------------------------------------
+# BANNER DE ALTO DESTAQUE: MONTE SEU PC GAMER
+# ---------------------------------------------------------
+st.markdown("""
+<div style="
+    background: linear-gradient(135deg, rgba(255, 75, 75, 0.15) 0%, rgba(30, 30, 45, 0.9) 100%);
+    border: 2px solid #ff4b4b;
+    border-radius: 14px;
+    padding: 22px 20px;
+    margin: 15px 0 25px 0;
+    box-shadow: 0 0 20px rgba(255, 75, 75, 0.25);
+    text-align: center;
+">
+    <h2 style="
+        color: #ff4b4b; 
+        margin: 0 0 8px 0; 
+        font-size: 1.6rem; 
+        font-weight: 800; 
+        text-transform: uppercase; 
+        letter-spacing: 1px;
+    ">
+        🛠️🎯 MONTE SEU PC GAMER NO GARGALÔMETRO!
+    </h2>
+    <p style="
+        color: #e0e0e0; 
+        font-size: 1.05rem; 
+        margin: 0 0 16px 0;
+        line-height: 1.4;
+    ">
+        Travas automáticas de compatibilidade física (Water Cooler 360mm & GPU triplo fan), travas de VRM para AMD/Intel e cálculo de orçamento em tempo real!
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+# Botão largo em destaque logo abaixo do banner
+col_btn1, col_btn2, col_btn3 = st.columns([1, 2.5, 1])
+with col_btn2:
+    st.page_link(
+        "pages/monte_seu_pc.py", 
+        label="🚀 ENTRAR NO ASSISTENTE DE MONTAGEM", 
+        icon="🛠️", 
+        use_container_width=True
+    )
+
+st.markdown("<br>", unsafe_allow_html=True)
 
 # ========================================================
 # 🚨 ACHADOS DO DIA DINÂMICOS (LÊ VITRINE.JSON)
