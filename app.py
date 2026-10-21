@@ -44,21 +44,38 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def carregar_dados():
-    dados_hw = {}
+    # Estrutura base com listas vazias para evitar KeyError fatal
+    dados_hw = {"cpus": [], "gpus": []}
     dados_vitrine = {}
 
-    # 1. Procura o arquivo de hardware por ordem de prioridade
-    arquivos_hw_possiveis = ["hardware.json", "dados.json", "banco.json", "cpus_gpus.json"]
+    # 1. Lista de nomes comuns para procurar
+    arquivos_hw_possiveis = [
+        "hardware.json", "dados.json", "banco.json", 
+        "cpus_gpus.json", "database.json", "base_dados.json", "dados_hardware.json"
+    ]
+    
+    # Adiciona qualquer outro ficheiro .json que esteja na raiz (exceto vitrine e links)
+    for f in os.listdir("."):
+        if f.endswith(".json") and f not in ["vitrine.json", "links.json"] and f not in arquivos_hw_possiveis:
+            arquivos_hw_possiveis.append(f)
+
+    # 2. Varredura do arquivo que contém os dados de CPUs e GPUs
     for nome_arq in arquivos_hw_possiveis:
         if os.path.exists(nome_arq):
             try:
-                with open(nome_arq, "r", encoding="utf-8") as f:
-                    dados_hw = json.load(f)
-                break
+                with open(nome_arq, "r", encoding="utf-8") as arq_lido:
+                    conteudo = json.load(arq_lido)
+                    # Valida se é o ficheiro correto de hardware
+                    if isinstance(conteudo, dict) and ("cpus" in conteudo or "gpus" in conteudo):
+                        dados_hw = conteudo
+                        # Garante a existência das chaves fundamentais
+                        dados_hw.setdefault("cpus", [])
+                        dados_hw.setdefault("gpus", [])
+                        break
             except Exception as e:
                 st.error(f"Erro ao ler {nome_arq}: {e}")
 
-    # 2. Carrega os dados da Vitrine
+    # 3. Carrega os dados da Vitrine de Afiliados
     arq_vitrine = "vitrine.json" if os.path.exists("vitrine.json") else "links.json"
     if os.path.exists(arq_vitrine):
         try:
