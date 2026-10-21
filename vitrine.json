@@ -656,36 +656,34 @@
       ]
     }
   },
-  "armazenamento": {
-    "💾 1. SSDs SATA III 2.5\" (Econômico / Entrada)": {
-      "cupom": "📦 Opções mais baratas para quem quer gastar pouco ou ter espaço extra",
+    "armazenamento": {
+    "💾 Armazenamento (SATA / NVMe)": {
+      "cupom": "🚀 SSDs SATA e M.2 NVMe de alta velocidade com estoque nacional e cupons ativos",
       "itens": [
         {
           "texto": "📦 SSD SATA III Kootion 256GB (AliExpress Brasil - R$ 210,85)",
           "url": "https://s.click.aliexpress.com/e/_msby17h"
         },
         {
-          "texto": "📦 SSD SATA III Kootion X12 512GB (AliExpress - R$ 478,44)",
-          "url": "https://s.click.aliexpress.com/e/_mtKSuUX"
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 256GB (AliExpress Brasil - R$ 259,22)",
+          "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
         },
         {
           "texto": "📦 SSD SATA III CUSU 512GB (AliExpress - R$ 417,38)",
           "url": "https://s.click.aliexpress.com/e/_mrTrOX9"
-        }
-      ]
-    },
-    "⚡ 2. SSDs M.2 NVMe (Custo-Benefício 512GB)": {
-      "cupom": "🏷️ Use o cupom KT0240 no AliExpress para desconto com frete grátis",
-      "itens": [
+        },
         {
-          "texto": "⚡ SSD NVMe Kootion X15 Lite 512GB 2100MB/s (AliExpress - R$ 423,35)",
-          "url": "https://s.click.aliexpress.com/e/_m0x8qkP"
-        }
-      ]
-    },
-    "🚀 3. SSDs M.2 NVMe Alta Velocidade & Capacidade (1TB / 2TB)": {
-      "cupom": "🏷️ Cupons Mercado Livre: SITE150TODO ou OFFHOJENOML",
-      "itens": [
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 512GB (AliExpress Brasil - R$ 422,94)",
+          "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
+        },
+        {
+          "texto": "📦 SSD SATA III Kootion X12 512GB (AliExpress - R$ 478,44)",
+          "url": "https://s.click.aliexpress.com/e/_mtKSuUX"
+        },
+        {
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 1TB (AliExpress Brasil - R$ 715,00)",
+          "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
+        },
         {
           "texto": "🚀 SSD WD SN3000 1TB PCIe 4.0 5000MB/s (ML - R$ 801,90)",
           "url": "https://meli.la/1NV45Pt"
