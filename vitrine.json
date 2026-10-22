@@ -125,12 +125,8 @@
       "cupom": "🚀 Plataforma AMD AM5 com memória DDR5, alto IPC e processadores X3D",
       "itens": [
         {
-          "texto": "🔥 Ryzen 5 8400F 6/12 (ML - Último em Estoque R$ 688,50)",
-          "url": "https://meli.la/2rzk1sT"
-        },
-        {
-          "texto": "⚡ Ryzen 5 8400F 6/12 (Amazon Prime - R$ 719,00)",
-          "url": "https://link.amazon/B0eC4IwGQ"
+          "texto": "⚡ Ryzen 5 8400F 6/12 (Amazon - R$ 759,88)",
+          "url": "https://link.amazon/B0dUPYGks"
         },
         {
           "texto": "🔥 Ryzen 5 7600X OEM 6/12 5.3GHz (Shopee - R$ 868,00 c/ Cupom R$100)",
@@ -772,7 +768,7 @@
           "url": "https://link.amazon/B06JCFBwH"
         },
         {
-          "texto": "⚡ Anubis UP Gamer 16GB DDR5 6000MHz c/ Dissipador (ML - R$ 1.699,99)",
+          "texto": "⚡ Anubis UP Gamer 16GB DDR5 6000MHz c/ Dissipador (ML - R$ 1.529,99)",
           "url": "https://meli.la/1BrKyKg"
         },
         {
@@ -786,10 +782,6 @@
         {
           "texto": "❄️ Kit XPG Lancer Blade 32GB (2x16GB) DDR5 6000MHz BRANCO (KaBuM! - R$ 3.959,99)",
           "url": "https://tidd.ly/4scRFL3"
-        },
-        {
-          "texto": "❄️ Kit Corsair Vengeance RGB 32gb 2x16gb DDR5 6000mhz (ML - R$ 3.988,99)",
-          "url": "https://meli.la/1kyMf2h"
         }
       ]
     }
