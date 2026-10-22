@@ -49,7 +49,7 @@ st.page_link("app.py", label="⬅️ Voltar para o Gargalômetro", icon="🖥️
 st.divider()
 
 st.title("🛠️ Monte seu PC Gamer com Validação Técnica")
-st.caption("Montagem segura com travas automáticas de RAM, Kits Fechados, Tamanho de GPU vs Gabinete e Orçamento em tempo real!")
+st.caption("Montagem segura com travas automáticas de RAM, Kits Fechados, Suporte a Vídeo Integrado, Tamanho de GPU vs Gabinete e Orçamento em tempo real!")
 
 if not vitrine:
     st.error("⚠️ Base de dados (`vitrine.json`) não encontrada na raiz do projeto.")
@@ -108,7 +108,7 @@ if eh_combo_am4:
         st.markdown("#### ⚡ Processador (CPU)")
         if mb_item:
             st.info("💡 **CPU Inclusa:** O processador Ryzen já faz parte do combo selecionado!")
-            cpu_item = {"texto": f"Processador Incluso no Combo (R$ 0,00)", "url": ""}
+            cpu_item = {"texto": "Processador Incluso no Combo (R$ 0,00)", "url": ""}
         else:
             st.caption("👈 Selecione o Combo ao lado primeiro.")
             cpu_item = None
@@ -165,6 +165,12 @@ else:
         sel_mb = st.selectbox("Placas-Mãe Recomendadas:", opcoes_mb)
         mb_item = next((m for m in mbs_disp if m["texto"] == sel_mb), None)
 
+# Checagem de Vídeo Integrado
+cpu_tem_video_integrado = False
+if cpu_item:
+    cpu_txt_u = cpu_item["texto"].upper()
+    cpu_tem_video_integrado = any(k in cpu_txt_u for k in ["8500G", "8600G", "8700G", "VÍDEO INTEGRADO", "RADEON GRAPHICS"])
+
 st.divider()
 
 # ----------------------------------------------------
@@ -176,11 +182,21 @@ c_gpu, c_ram = st.columns(2)
 opcoes_gpu = extrair_opcoes(vitrine.get("gpus", {}))
 with c_gpu:
     st.markdown("#### 🎮 Placa de Vídeo (GPU)")
-    sel_gpu_txt = st.selectbox("Selecione a Placa de Vídeo:", [op[0] for op in opcoes_gpu])
-    gpu_item = next((op for op in opcoes_gpu if op[0] == sel_gpu_txt and op[1]), None)
+    
+    lista_opcoes_gpu = [op[0] for op in opcoes_gpu]
+    if cpu_tem_video_integrado:
+        st.info("💡 **Vídeo Integrado Detectado:** O processador escolhido possui placa de vídeo Radeon integrada. A compra de uma placa dedicada é opcional!")
+        lista_opcoes_gpu = ["🖥️ Usar Vídeo Integrado do Processador (Sem Placa Dedicada)"] + lista_opcoes_gpu
+
+    sel_gpu_txt = st.selectbox("Selecione a Placa de Vídeo:", lista_opcoes_gpu)
+
+    if sel_gpu_txt == "🖥️ Usar Vídeo Integrado do Processador (Sem Placa Dedicada)":
+        gpu_item = ("Vídeo Integrado Radeon (R$ 0,00)", "", "", "Vídeo Integrado Radeon (R$ 0,00)")
+    else:
+        gpu_item = next((op for op in opcoes_gpu if op[0] == sel_gpu_txt and op[1]), None)
 
 gpu_txt_u = (gpu_item[3] if gpu_item else "").upper()
-eh_gpu_gigante = any(x in gpu_txt_u for x in ["5070 TI", "5080", "9070 XT", "3070", "INFINITY 3", "VENTUS 3X", "STEEL LEGEND", "TRIPLE FAN"])
+eh_gpu_gigante = any(x in gpu_txt_u for x in ["5070 TI", "5080", "5090", "9070 XT", "3070", "GAMEROCK", "INFINITY 3", "VENTUS 3X", "STEEL LEGEND", "TRIPLE FAN"])
 
 mems_dict = vitrine.get("memorias_ram", {})
 itens_ddr3 = buscar_itens_por_chave(mems_dict, "DDR3")
@@ -274,17 +290,17 @@ if eh_wc_360:
 if eh_gpu_gigante:
     gabinetes_filtrados = [
         g for g in gabinetes_filtrados 
-        if any(m in g[0].upper() for m in ["320MM", "330MM", "360MM", "400MM"]) or g[1] == ""
+        if any(m in g[0].upper() for m in ["330MM", "360MM", "400MM", "410MM"]) or g[1] == ""
     ]
 
 with c_gab:
     st.markdown("#### 📦 Gabinete Gamer")
     if eh_wc_360 and eh_gpu_gigante:
-        st.warning("⚠️ **Travas Ativas (WC 360mm + GPU Longa):** Exibindo apenas gabinetes compatíveis com radiador de 360mm e placas de vídeo compridas.")
+        st.warning("⚠️ **Travas Ativas (WC 360mm + GPU Longa/Série 50):** Exibindo apenas gabinetes de grande porte compatíveis com radiador de 360mm e GPUs compridas.")
     elif eh_wc_360:
         st.warning("⚠️ **Trava de Water Cooler Ativa:** Gabinetes compactos foram ocultados. Exibindo apenas modelos com suporte a radiadores de 360mm.")
     elif eh_gpu_gigante:
-        st.warning("⚠️ **Trava de GPU Ativa:** Gabinetes compactos foram ocultados para assegurar espaço interno suficiente.")
+        st.warning("⚠️ **Trava de GPU Ativa:** Gabinetes compactos foram ocultados para assegurar espaço interno suficiente para a placa de vídeo selecionada.")
 
     sel_gab_txt = st.selectbox("Selecione o Gabinete:", [g[0] for g in gabinetes_filtrados])
     gab_item = next((g for g in gabinetes_filtrados if g[0] == sel_gab_txt and g[1]), None)
@@ -335,6 +351,8 @@ with st.container(border=True):
                     preco_badge = "*(Incluso no Combo)*"
                 elif cat == "Refrigeração" and eh_combo_am4:
                     preco_badge = "*(Incluso no Combo)*"
+                elif cat == "Placa de Vídeo (GPU)" and "Vídeo Integrado" in nome:
+                    preco_badge = "*(Incluso na CPU)*"
                 
                 c_desc, c_val, c_btn = st.columns([3, 1, 1])
                 with c_desc:
