@@ -1,12 +1,6 @@
 {
   "achados_do_dia": [
     {
-      "titulo": "📦 Gabinete Gamer c/ 4 Fans RGB Inclusas",
-      "descricao": "R$ 199,23 no Mercado Livre • Excelente fluxo de ar e iluminação RGB com preço imbatível!",
-      "texto_botao": "🛒 Garantir Gabinete 4 Fans RGB (R$ 199,23)",
-      "url": "https://meli.la/2Co1VP5"
-    },
-    {
       "titulo": "👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler MACH1 240mm",
       "descricao": "R$ 1.519 no PIX • Cupom CASADINHO • Combo fechado com Placa WiFi 6E, CPU 8/16 e Water Cooler!",
       "texto_botao": "🛒 Garantir Kit R7 5700X + B550M + WC (R$ 1.519)",
@@ -19,16 +13,16 @@
       "url": "https://tidd.ly/47oNTVy"
     },
     {
+      "titulo": "📦 Gabinete Gamer c/ 4 Fans RGB Inclusas",
+      "descricao": "R$ 199,23 no Mercado Livre • Excelente fluxo de ar e iluminação RGB com preço imbatível!",
+      "texto_botao": "🛒 Garantir Gabinete 4 Fans RGB (R$ 199,23)",
+      "url": "https://meli.la/2Co1VP5"
+    },
+    {
       "titulo": "🚀 SSD NVMe Kootion X15 Lite 1TB (Estoque no Brasil)",
       "descricao": "R$ 715,00 com cupom da loja • Estoque nacional com frete rápido e zero taxas!",
       "texto_botao": "📦 Garantir SSD 1TB no Brasil (Cupom Loja)",
       "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
-    },
-    {
-      "titulo": "⚡ Fonte Gigabyte P650G PG5 650W 80 PLUS Gold",
-      "descricao": "R$ 240,65 no PIX na Amazon • Padrão PG5 / PCIe 5.0, alta eficiência Gold e PFC Ativo!",
-      "texto_botao": "🛒 Garantir Gigabyte 650W Gold (R$ 240,65)",
-      "url": "https://link.amazon/B05ItnMeL"
     },
     {
       "titulo": "👑 Processador AMD Ryzen 7 9800X3D AM5 (Entrega Rápida - Hoje)",
@@ -37,16 +31,16 @@
       "url": "https://link.amazon/B01s6XXqP"
     },
     {
-      "titulo": "⚡ Memória RAM Macrovip 8GB DDR5 5600MHz UDIMM",
-      "descricao": "R$ 871,41 no Mercado Livre • Excelente porta de entrada de baixo custo para setups DDR5 / AM5!",
-      "texto_botao": "📦 Garantir RAM DDR5 8GB (R$ 871,41)",
-      "url": "https://meli.la/2dRLgQZ"
+      "titulo": "🔥 ASRock RX 7600 Challenger PRO OC 8GB (Triple Fan)",
+      "descricao": "R$ 1.763 • Use o cupom ZAFADINHO10 • Triple Fan com resfriamento pesado!",
+      "texto_botao": "🛒 Garantir RX 7600 Triple Fan (R$ 1.763)",
+      "url": "https://tidd.ly/4iaXR1J"
     },
     {
-      "titulo": "💥 Gabinete Gamer Aquário Vidro Com 4 Fans Preto Gb1796 Hayom",
-      "descricao": "R$ 210,90",
-      "texto_botao": "Oferta Relâmpago",
-      "url": "https://vt.tiktok.com/ZS9y1Vua866N6-TpB4Y/"
+      "titulo": "💥 Gigabyte RTX 5060 Ti EAGLE OC ICE 8GB GDDR7",
+      "descricao": "R$ 3.059 • Use o cupom ZAFADINHO10 • Linha ICE branca, DLSS e Ray Tracing!",
+      "texto_botao": "🚀 Garantir RTX 5060 Ti ICE (R$ 3.059)",
+      "url": "https://tidd.ly/4i3pzxe"
     }
   ],
   "kits_upgrade": [
@@ -68,8 +62,16 @@
       "cupom": "🏷️ Cupons Shopee: resgate aqui https://s.shopee.com.br/2VscFbQS1o?share_channel_code=1 | Cupons ML: SITE50, OFFHOJE, VAIBARATO",
       "itens": [
         {
-          "texto": "📦 Ryzen 5 5500 6/12 (Amazon Prime - R$ 529,99)",
-          "url": "https://link.amazon/B06s8VuxA"
+          "texto": "🔥 Ryzen 5 5500 6/12 (Mercado Livre - R$ 589,00)",
+          "url": "https://meli.la/2QN5Pgh"
+        },
+        {
+          "texto": "📦 Ryzen 5 5500 6/12 (KaBuM! - R$ 599,99)",
+          "url": "https://tidd.ly/4dLyVMO"
+        },
+        {
+          "texto": "📦 Ryzen 5 5500 6/12 (Amazon Prime - R$ 605,00)",
+          "url": "https://link.amazon/B0arOOyDV"
         },
         {
           "texto": "⚡ Ryzen 5 5600X 6/12 (Amazon - R$ 899,00)",
@@ -226,8 +228,8 @@
           "url": "https://s.click.aliexpress.com/e/_mNIC6QT"
         },
         {
-          "texto": "⚡ Kit Xeon X79 LGA-2011 + E5-2680 V2 10/20 DDR3 (AliExpress - R$ 305,24)",
-          "url": "https://s.click.aliexpress.com/e/_msGTBqP"
+          "texto": "⚡ Kit Xeon X79 LGA-2011 + E5-2680 V2 10/20 DDR3 (AliExpress - R$ 349,00)",
+          "url": "https://s.click.aliexpress.com/e/_mNIC6QT"
         }
       ]
     },
@@ -235,7 +237,7 @@
       "cupom": "🏷️ Use MELIOFERTAS no Mercado Livre ou CHEGOUMSI na KaBuM!",
       "itens": [
         {
-          "texto": "📦 MSI A520M-A PRO (KaBuM! - R$ 376,99)",
+          "texto": "📦 MSI A520M-A PRO (KaBuM! - R$ 389,99)",
           "url": "https://tidd.ly/4ywdUNX"
         },
         {
@@ -264,7 +266,7 @@
       "cupom": "🚀 Plataforma Moderna AM5 com suporte a memória DDR5 • Use o cupom MELIHOJE no Mercado Livre",
       "itens": [
         {
-          "texto": "🔥 MSI Pro B840M-B AM5 (ML - R$ 523,84)",
+          "texto": "🔥 MSI Pro B840M-B AM5 (ML - Cupom MELIHOJE R$ 477,48)",
           "url": "https://meli.la/1w3FWwd"
         },
         {
@@ -352,8 +354,12 @@
           "url": "https://meli.la/25wwi8e"
         },
         {
-          "texto": "⚡ ASRock RX 7600 Challenger 8GB (KABUM - R$ 1.899,99)",
-          "url": "https://tidd.ly/4yxA5mS"
+          "texto": "🔥 RX 7600 Biostar 8GB (Shopee - PROMO R$ 1.812,40)",
+          "url": "https://s.shopee.com.br/70L1bpjf2Z?share_channel_code=1"
+        },
+        {
+          "texto": "⚡ ASRock RX 7600 Challenger 8GB (Amazon Prime - R$ 1.849,00)",
+          "url": "https://link.amazon/B06yxGnXR"
         },
         {
           "texto": "🔥 MSI NVIDIA RTX 5050 8GB (Shopee - R$ 1.999,00)",
@@ -445,47 +451,43 @@
       "cupom": "🎯 Modelos com ventoinhas inclusas, excelente airflow e suporte a radiadores e placas grandes",
       "itens": [
         {
-          "texto": "1️⃣ Gabinete Gamer Husky Dome 10 - CUPOM: DESCONTO15GAB - R$ 126,77)",
-          "url": "https://tidd.ly/4yDxEie"
+          "texto": "1️⃣ Pichau Atom X Preto (Compacto M-ATX • Sem Fans • Até 280mm - R$ 149,90)",
+          "url": "https://tidd.ly/atom-x"
         },
         {
           "texto": "2️⃣ Aigo Darkflash Durin D275M Branco (Compacto M-ATX • Sem Fans • Até 290mm - R$ 179,90)",
           "url": "https://meli.la/durin-d275m"
         },
         {
-          "texto": "3️⃣ Gabinete Gamer Aquário  Gb1796 Hayom (3 Fans RGB • Até 310mm - R$ 210,90)",
-          "url": "https://vt.tiktok.com/ZS9y1Vua866N6-TpB4Y/"
+          "texto": "3️⃣ Gabinete Gamer c/ 4 Fans RGB Inclusas Lateral Vidro (Mercado Livre - R$ 199,23)",
+          "url": "https://meli.la/2Co1VP5"
         },
         {
-          "texto": "3️⃣ Mancer CV100 Branco (3 Fans RGB • Até 310mm - R$ 219,90)",
+          "texto": "4️⃣ Mancer CV100 Branco (3 Fans RGB • Até 310mm - R$ 219,90)",
           "url": "https://tidd.ly/cv100-purple"
         },
         {
-          "texto": "3️⃣ Gabinete Gamer Aquário  Gb1796 Hayom (3 Fans RGB • Até 310mm - R$ 210,90)",
-          "url": "https://vt.tiktok.com/ZS9y1Vua866N6-TpB4Y/"
-        },
-        {
-          "texto": "4️⃣ Hayom GB1796 Mesh Preto (4 Fans RGB • Até 310mm - R$ 239,90)",
+          "texto": "5️⃣ Hayom GB1796 Mesh Preto (4 Fans RGB • Até 310mm - R$ 239,90)",
           "url": "https://link.amazon/gb1796"
         },
         {
-          "texto": "5️⃣ Liketec Mad Rock Preto (M-ATX • Até 9 Fans • Suporta Radiador 360mm e GPU até 400mm - R$ 249,90)",
+          "texto": "6️⃣ Liketec Mad Rock Preto (M-ATX • Até 9 Fans • Suporta Radiador 360mm e GPU até 400mm - R$ 249,90)",
           "url": "https://tidd.ly/4yvGMp4"
         },
         {
-          "texto": "6️⃣ Mancer Hemlok Preto Vidro (4 Fans ARGB • Até 330mm - R$ 289,90)",
+          "texto": "7️⃣ Mancer Hemlok Preto Vidro (4 Fans ARGB • Até 330mm - R$ 289,90)",
           "url": "https://tidd.ly/hemlok"
         },
         {
-          "texto": "7️⃣ Mancer Mugen Full-Tower Preto (3 Fans Inclusas • Suporta Radiador 360mm e GPU até 400mm - R$ 358,00)",
+          "texto": "8️⃣ Mancer Mugen Full-Tower Preto (3 Fans Inclusas • Suporta Radiador 360mm e GPU até 400mm - R$ 358,00)",
           "url": "https://meli.la/2r1aWVD"
         },
         {
-          "texto": "8️⃣ Acegeek Mercury R425 Branco Aquário (6 Fans ARGB • Suporta Radiador 360mm e GPU até 360mm - R$ 389,90)",
+          "texto": "9️⃣ Acegeek Mercury R425 Branco Aquário (6 Fans ARGB • Suporta Radiador 360mm e GPU até 360mm - R$ 389,90)",
           "url": "https://tidd.ly/mercury-r425"
         },
         {
-          "texto": "9️⃣ Vingar Misterium Aquário Mid-Tower Preto (10 Fans ARGB + Controladora • Suporta Radiador 360mm e GPU até 410mm - R$ 659,99)",
+          "texto": "🔟 Vingar Misterium Aquário Mid-Tower Preto (10 Fans ARGB + Controladora • Suporta Radiador 360mm e GPU até 410mm - R$ 659,99)",
           "url": "https://tidd.ly/4ibXqEa"
         }
       ]
@@ -496,8 +498,12 @@
       "cupom": "🏷️ KaBuM!: Cupom KABUM10 para 10% OFF em modelos selecionados",
       "itens": [
         {
-          "texto": "📦 Rise Mode Zeus 500W Bronze (CUPOM: KaBuM10 - R$ 199,99)",
+          "texto": "📦 Rise Mode Zeus 500W Bronze (KaBuM! - R$ 199,99)",
           "url": "https://tidd.ly/4iw4ufh"
+        },
+        {
+          "texto": "🛡️ Rise Mode Zeus 500W Selo TecLab (Amazon - R$ 249,00)",
+          "url": "https://link.amazon/zeus-500w-teclab"
         },
         {
           "texto": "❄️ Husky Sledger 550W White Bivolt (KaBuM! - R$ 259,99)",
@@ -509,12 +515,8 @@
       "cupom": "🏷️ Cupons KaBuM!: KABUM10 | Mercado Livre: OFFHOJENOML",
       "itens": [
         {
-          "texto": "🔥 Rise Mode Elektra 650W Bronze (Amazon - R$ 237,57)",
+          "texto": "🔥 Rise Mode Elektra 650W Bronze (Amazon - R$ 214,34 no PIX)",
           "url": "https://link.amazon/B00jHaqZd"
-        },
-        {
-          "texto": "⚡ Gigabyte P650G PG5 650W 80 Plus Gold (Amazon - R$ 240,65 no PIX)",
-          "url": "https://link.amazon/B05ItnMeL"
         },
         {
           "texto": "📦 Gamemax GP650 650W Bronze (Amazon - R$ 299,00)",
@@ -683,15 +685,11 @@
       "cupom": "🚀 SSDs SATA e M.2 NVMe com estoque nacional e cupons ativos",
       "itens": [
         {
-          "texto": "📦 SSD NETAC 256GB (AliExpress Brasil - R$ 226,02)",
-          "url": "https://s.click.aliexpress.com/e/_mLxdFgT"
+          "texto": "📦 SSD SATA III Kootion 256GB (AliExpress Brasil - R$ 210,85)",
+          "url": "https://s.click.aliexpress.com/e/_msby17h"
         },
         {
-          "texto": "📦 SSD KOOTION 256GB (AliExpress Brasil - R$ 274,90)",
-          "url": "https://s.click.aliexpress.com/e/_mLxdFgT"
-        },
-        {
-          "texto": "⚡ SSD NVMe Kootion X15 Lite 256GB (AliExpress Brasil - R$ 283,67)",
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 256GB (AliExpress Brasil - R$ 259,22)",
           "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
         },
         {
@@ -759,10 +757,6 @@
     "🟣 Memórias DDR5 (Alta Velocidade - AM5 / LGA 1700)": {
       "cupom": "🚀 Módulos modernos de alta frequência (5200MHz / 5600MHz / 6000MHz) para máxima performance",
       "itens": [
-        {
-          "texto": "⚡ Macrovip 8GB DDR5 5600MHz UDIMM Desktop (Mercado Livre - R$ 871,41)",
-          "url": "https://meli.la/2dRLgQZ"
-        },
         {
           "texto": "⚡ Corsair Vengeance 16GB DDR5 5200MHz (Amazon - R$ 1.470,09)",
           "url": "https://link.amazon/B04VYUIhm"
