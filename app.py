@@ -21,11 +21,52 @@ st.set_page_config(
     layout="wide"
 )
 
-# Ocultar o menu lateral de páginas do Streamlit
+# Estilização: Ocultar menu lateral + Auto-adaptação para Monitor Vertical (900x1600) e Mobile
 st.markdown("""
     <style>
+        /* 1. Ocultar o menu lateral de navegação nativo do Streamlit */
         [data-testid="stSidebarNav"] {
             display: none !important;
+        }
+
+        /* 2. Responsividade para Monitor Vertical (900px de largura) e Telas Estreitas */
+        @media (max-width: 1050px) {
+            /* Remove as margens gigantescas do Streamlit para aproveitar a tela útil */
+            .block-container {
+                padding-top: 1.5rem !important;
+                padding-bottom: 2rem !important;
+                padding-left: 0.8rem !important;
+                padding-right: 0.8rem !important;
+                max-width: 100% !important;
+            }
+
+            /* Empilha colunas lado a lado para evitar elementos espremidos */
+            div[data-testid="column"] {
+                min-width: 100% !important;
+                margin-bottom: 0.6rem !important;
+            }
+
+            /* Ajuste de fontes de títulos */
+            h1 { font-size: 1.6rem !important; }
+            h2 { font-size: 1.3rem !important; }
+            h3 { font-size: 1.15rem !important; }
+
+            /* Botões e links preenchem a largura da coluna no monitor vertical */
+            .stButton button, .stLinkButton a {
+                width: 100% !important;
+                font-size: 0.95rem !important;
+                padding: 0.5rem 0.75rem !important;
+            }
+
+            /* Métricas e valores destacados */
+            div[data-testid="stMetricValue"] {
+                font-size: 1.4rem !important;
+            }
+        }
+
+        /* 3. Evita que apareça barra de rolagem horizontal quebrada */
+        html, body, [data-testid="stAppViewContainer"] {
+            overflow-x: hidden !important;
         }
     </style>
 """, unsafe_allow_html=True)
