@@ -1,3 +1,26 @@
+import streamlit as st
+import json
+import os
+import re
+import urllib.request
+import urllib.parse
+
+nome_icone = None
+for arq in [
+    "gargalo_detectado_ampliado.webp",
+    "gargalo detectado.webp",
+    "gargalo_detectado.webp"
+]:
+    if os.path.exists(arq):
+        nome_icone = arq
+        break
+        
+st.set_page_config(
+    page_title="Gargalômetro Gamer - Calculadora de Gargalo de PC e Setup",
+    page_icon=nome_icone if nome_icone else "🖥️",
+    layout="wide"
+)
+
 # Estilização: Ocultar menu lateral + Auto-adaptação para Monitor Vertical (900x1600) e Mobile
 st.markdown("""
     <style>
@@ -39,6 +62,19 @@ st.markdown("""
             overflow-x: hidden !important;
         }
     </style>
+""", unsafe_allow_html=True)
+
+# Injeção de Meta Tags de SEO e Google Search Console
+st.markdown("""
+    <head>
+        <meta name="description" content="Descubra se o seu processador limita sua placa de vídeo. Calculadora precisa de gargalo (bottleneck) para PC Desktop e Notebook Gamer.">
+        <meta name="keywords" content="calculadora de gargalo, bottleneck calculator pc, gargalômetro, teste gargalo gpu cpu, gta vi requisitos pc">
+        <meta name="robots" content="index, follow">
+        <meta property="og:title" content="Gargalômetro Gamer - Calculadora de Gargalo CPU e GPU">
+        <meta property="og:description" content="Avalie o equilíbrio do seu setup gamer de 0 a 10 e veja testes de prontidão para jogos pesados.">
+        <meta property="og:url" content="https://gargalometro.com.br/">
+        <meta property="og:type" content="website">
+    </head>
 """, unsafe_allow_html=True)
 
 # 1. Hardware pesado fica em cache para o site abrir rápido
