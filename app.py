@@ -21,45 +21,41 @@ st.set_page_config(
     layout="wide"
 )
 
-# Estilização: Ocultar menu lateral + Auto-adaptação para Monitor Vertical (900x1600) e Mobile
+# Estilização limpa e adaptada para monitor vertical / telas estreitas
 st.markdown("""
     <style>
-        /* 1. Ocultar o menu nativo lateral e o botão de recolha/expansão */
+        /* 1. Oculta menus nativos indesejados */
         [data-testid="stSidebarNav"], 
         button[data-testid="stSidebarCollapseButton"] {
             display: none !important;
         }
 
-        /* 2. Responsividade para Monitor Vertical (largura <= 1050px) */
+        /* 2. Garante que nada estoure a largura da tela vertical */
+        html, body, [data-testid="stAppViewContainer"], .main {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+        }
+
+        /* 3. Ajuste de margens e fontes para monitores até 1050px */
         @media (max-width: 1050px) {
-            /* Aproveita toda a largura útil de 900px sem margens gigantes */
             .block-container {
-                padding-top: 1.5rem !important;
+                padding-top: 1rem !important;
                 padding-bottom: 2rem !important;
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
+                padding-left: 0.8rem !important;
+                padding-right: 0.8rem !important;
                 max-width: 100% !important;
             }
 
-            /* Empilha com segurança apenas os blocos de colunas horizontais */
-            [data-testid="stHorizontalBlock"] {
-                flex-wrap: wrap !important;
-            }
-            [data-testid="stHorizontalBlock"] > div {
-                flex: 1 1 100% !important;
-                min-width: 100% !important;
-                margin-bottom: 0.5rem !important;
-            }
+            /* Reduz títulos para não quebrarem ou estourarem a tela */
+            h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.2rem !important; }
+            h3 { font-size: 1.05rem !important; }
 
-            /* Botões preenchem a largura no ecrã vertical */
+            /* Textos e botões ajustados */
             .stButton button, .stLinkButton a {
                 width: 100% !important;
+                font-size: 0.9rem !important;
             }
-        }
-
-        /* 3. Previne barras de deslocação horizontais indesejadas */
-        html, body, [data-testid="stAppViewContainer"] {
-            overflow-x: hidden !important;
         }
     </style>
 """, unsafe_allow_html=True)
