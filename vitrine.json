@@ -1,46 +1,28 @@
 {
   "achados_do_dia": [
     {
-      "titulo": "👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler MACH1 240mm",
-      "descricao": "R$ 1.519 no PIX • Cupom CASADINHO • Combo fechado com Placa WiFi 6E, CPU 8/16 e Water Cooler!",
-      "texto_botao": "🛒 Garantir Kit R7 5700X + B550M + WC (R$ 1.519)",
-      "url": "https://tidd.ly/3TXWsn6"
+      "titulo": "⚡ Fonte Gamer Rise Mode Elektra 650W Bronze Full Modular",
+      "descricao": "R$ 252,70 na Shopee • Use o cupom 11D011400FF • Full Modular, PFC Ativo e cabos pretos flat!",
+      "texto_botao": "🛒 Garantir Fonte 650W Modular (R$ 252,70)",
+      "url": "https://s.shopee.com.br/BUvzu6scB?share_channel_code=1"
     },
     {
-      "titulo": "⚡ Kit R5 5500F + MSI A520M + Cooler Rise Mode G700",
-      "descricao": "R$ 849,99 • Cupom CASADIN • Combo completo com cooler eficiente e pronto para uso!",
-      "texto_botao": "🚀 Garantir Kit R5 5500F + G700 (R$ 849,99)",
-      "url": "https://tidd.ly/47oNTVy"
+      "titulo": "👑 Processador AMD Ryzen 7 9700X AM5 (8 Cores / 16 Threads)",
+      "descricao": "R$ 1.379,08 na Shopee • Use o cupom 3SQU3NT411 • Arquitetura Zen 5 com 40MB Cache!",
+      "texto_botao": "🚀 Garantir Ryzen 7 9700X (R$ 1.379,08)",
+      "url": "https://s.shopee.com.br/3B8XZXFO1F?share_channel_code=1"
     },
     {
-      "titulo": "📦 Gabinete Gamer c/ 4 Fans RGB Inclusas",
-      "descricao": "R$ 199,23 no Mercado Livre • Excelente fluxo de ar e iluminação RGB com preço imbatível!",
-      "texto_botao": "🛒 Garantir Gabinete 4 Fans RGB (R$ 199,23)",
-      "url": "https://meli.la/2Co1VP5"
+      "titulo": "🔥 Placa de Vídeo INNO3D GeForce RTX 5050 Twin X2 8GB",
+      "descricao": "R$ 2.156,37 na Shopee • Use o cupom 3SQU3NT411 • Nova arquitetura Blackwell com DLSS e RT!",
+      "texto_botao": "🎮 Garantir RTX 5050 Twin X2 (R$ 2.156,37)",
+      "url": "https://s.shopee.com.br/2BG0NoB0Ji?share_channel_code=1"
     },
     {
-      "titulo": "🚀 SSD NVMe Kootion X15 Lite 1TB (Estoque no Brasil)",
-      "descricao": "R$ 715,00 com cupom da loja • Estoque nacional com frete rápido e zero taxas!",
-      "texto_botao": "📦 Garantir SSD 1TB no Brasil (Cupom Loja)",
-      "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
-    },
-    {
-      "titulo": "👑 Processador AMD Ryzen 7 9800X3D AM5 (Entrega Rápida - Hoje)",
-      "descricao": "R$ 2.199,99 na Amazon • O melhor processador gamer do mundo com entrega expressa para hoje!",
-      "texto_botao": "🚀 Garantir Ryzen 7 9800X3D (R$ 2.199,99)",
-      "url": "https://link.amazon/B01s6XXqP"
-    },
-    {
-      "titulo": "🔥 ASRock RX 7600 Challenger PRO OC 8GB (Triple Fan)",
-      "descricao": "R$ 1.763 • Use o cupom ZAFADINHO10 • Triple Fan com resfriamento pesado!",
-      "texto_botao": "🛒 Garantir RX 7600 Triple Fan (R$ 1.763)",
-      "url": "https://tidd.ly/4iaXR1J"
-    },
-    {
-      "titulo": "💥 Gigabyte RTX 5060 Ti EAGLE OC ICE 8GB GDDR7",
-      "descricao": "R$ 3.059 • Use o cupom ZAFADINHO10 • Linha ICE branca, DLSS e Ray Tracing!",
-      "texto_botao": "🚀 Garantir RTX 5060 Ti ICE (R$ 3.059)",
-      "url": "https://tidd.ly/4i3pzxe"
+      "titulo": "💥 Placa de Vídeo INNO3D GeForce RTX 5060 Twin X2 8GB GDDR7",
+      "descricao": "R$ 2.651,00 na Shopee • Use o cupom 3SQU3NT411 • Memórias ultra-rápidas GDDR7 e dual fan!",
+      "texto_botao": "🚀 Garantir RTX 5060 GDDR7 (R$ 2.651,00)",
+      "url": "https://s.shopee.com.br/1qd9zIwB2C?share_channel_code=1"
     }
   ],
   "kits_upgrade": [
@@ -137,6 +119,10 @@
         {
           "texto": "📦 Ryzen 7 8700G 8/16 c/ Vídeo Integrado Radeon 780M (KaBuM! - R$ 1.399,99)",
           "url": "https://tidd.ly/4sl0xOW"
+        },
+        {
+          "texto": "👑 Ryzen 7 9700X Zen 5 8/16 (Shopee - R$ 1.379,08 c/ Cupom 3SQU3NT411)",
+          "url": "https://s.shopee.com.br/3B8XZXFO1F?share_channel_code=1"
         },
         {
           "texto": "⚡ Ryzen 5 7600X 6/12 (KaBuM! - R$ 1.389,99)",
@@ -366,8 +352,12 @@
           "url": "https://s.shopee.com.br/50ZuNKgIbi?share_channel_code=1"
         },
         {
-          "texto": "🎮 MSI GeForce RTX 5060 Ventus 2X OC 8GB Blackwell (Shopee - R$ 2.667,08 c/ Cupons)",
-          "url": "https://s.shopee.com.br/5LCsWiBSlA?share_channel_code=1"
+          "texto": "🎮 INNO3D GeForce RTX 5050 Twin X2 8GB (Shopee - R$ 2.156,37 c/ Cupom 3SQU3NT411)",
+          "url": "https://s.shopee.com.br/2BG0NoB0Ji?share_channel_code=1"
+        },
+        {
+          "texto": "🎮 INNO3D GeForce RTX 5060 Twin X2 8GB GDDR7 (Shopee - R$ 2.651,00 c/ Cupom 3SQU3NT411)",
+          "url": "https://s.shopee.com.br/1qd9zIwB2C?share_channel_code=1"
         },
         {
           "texto": "🎮 Zotac RTX 5060 Twin Edge 8GB GDDR7 (ML - R$ 2.699 em 10x s/ juros Cupom TOPOFERTA)",
@@ -463,12 +453,12 @@
           "url": "https://meli.la/2Co1VP5"
         },
         {
-          "texto": "4️⃣ Mancer CV100 Branco (3 Fans RGB • Até 310mm - R$ 219,90)",
-          "url": "https://tidd.ly/cv100-purple"
+          "texto": "4️⃣ Hayom GB1796 Mesh Preto (4 Fans RGB • Até 310mm - R$ 210,90)",
+          "url": "https://vt.tiktok.com/ZS9yS6cRvoQw6-7pCS4/"
         },
         {
-          "texto": "5️⃣ Hayom GB1796 Mesh Preto (4 Fans RGB • Até 310mm - R$ 239,90)",
-          "url": "https://link.amazon/gb1796"
+          "texto": "5️⃣ Mancer CV100 Branco (3 Fans RGB • Até 310mm - R$ 219,90)",
+          "url": "https://tidd.ly/cv100-purple"
         },
         {
           "texto": "6️⃣ Liketec Mad Rock Preto (M-ATX • Até 9 Fans • Suporta Radiador 360mm e GPU até 400mm - R$ 249,90)",
@@ -515,8 +505,12 @@
       "cupom": "🏷️ Cupons KaBuM!: KABUM10 | Mercado Livre: OFFHOJENOML",
       "itens": [
         {
-          "texto": "🔥 Rise Mode Elektra 650W Bronze (Amazon - R$ 214,34 no PIX)",
+          "texto": "🔥 Rise Mode Elektra 650W Bronze (Amazon - R$ 237,57)",
           "url": "https://link.amazon/B00jHaqZd"
+        },
+        {
+          "texto": "⚡ Rise Mode Elektra 650W Bronze Full Modular (Shopee - R$ 252,70 c/ Cupom 11D011400FF)",
+          "url": "https://s.shopee.com.br/BUvzu6scB?share_channel_code=1"
         },
         {
           "texto": "📦 Gamemax GP650 650W Bronze (Amazon - R$ 299,00)",
@@ -641,7 +635,7 @@
           "url": "https://tidd.ly/4kggGTw"
         },
         {
-          "texto": "🌪️ Air Cooler MACH1 BOREAL Digital 120mm 220W TDP (KaBuM! - R$ 113,99)",
+          "texto": "🌪️ Air Cooler MACH1 BOREAL Digital 120mm 220W TDP (KaBuM! - R$ 114,99)",
           "url": "https://tidd.ly/4yUaTYo"
         },
         {
@@ -705,7 +699,7 @@
           "url": "https://s.click.aliexpress.com/e/_mtKSuUX"
         },
         {
-          "texto": "⚡ SSD NVMe Kootion X15 Lite 1TB (AliExpress Brasil - R$ 715,00 c/ Cupom Loja)",
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 1TB (AliExpress Brasil - R$ 748,51 c/ Cupom Loja)",
           "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
         },
         {
@@ -764,10 +758,6 @@
         {
           "texto": "⚡ Transcend 16GB DDR5 5600MHz UDIMM (Amazon - R$ 1.499,99)",
           "url": "https://link.amazon/B06JCFBwH"
-        },
-        {
-          "texto": "⚡ Anubis UP Gamer 16GB DDR5 6000MHz c/ Dissipador (ML - R$ 1.529,99)",
-          "url": "https://meli.la/1BrKyKg"
         },
         {
           "texto": "⚡ Corsair Vengeance RGB 16GB DDR5 5600MHz (ML - R$ 1.978,00)",
