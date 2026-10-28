@@ -1,87 +1,44 @@
-import streamlit as st
-import json
-import os
-import re
-import urllib.request
-import urllib.parse
-
-nome_icone = None
-for arq in [
-    "gargalo_detectado_ampliado.webp",
-    "gargalo detectado.webp",
-    "gargalo_detectado.webp"
-]:
-    if os.path.exists(arq):
-        nome_icone = arq
-        break
-        
-st.set_page_config(
-    page_title="Gargalômetro Gamer - Calculadora de Gargalo de PC e Setup",
-    page_icon=nome_icone if nome_icone else "🖥️",
-    layout="wide"
-)
-
 # Estilização: Ocultar menu lateral + Auto-adaptação para Monitor Vertical (900x1600) e Mobile
 st.markdown("""
     <style>
-        /* 1. Ocultar o menu lateral de navegação nativo do Streamlit */
-        [data-testid="stSidebarNav"] {
+        /* 1. Ocultar o menu nativo lateral e o botão de recolha/expansão */
+        [data-testid="stSidebarNav"], 
+        button[data-testid="stSidebarCollapseButton"] {
             display: none !important;
         }
 
-        /* 2. Responsividade para Monitor Vertical (900px de largura) e Telas Estreitas */
+        /* 2. Responsividade para Monitor Vertical (largura <= 1050px) */
         @media (max-width: 1050px) {
-            /* Remove as margens gigantescas do Streamlit para aproveitar a tela útil */
+            /* Aproveita toda a largura útil de 900px sem margens gigantes */
             .block-container {
                 padding-top: 1.5rem !important;
                 padding-bottom: 2rem !important;
-                padding-left: 0.8rem !important;
-                padding-right: 0.8rem !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
                 max-width: 100% !important;
             }
 
-            /* Empilha colunas lado a lado para evitar elementos espremidos */
-            div[data-testid="column"] {
+            /* Empilha com segurança apenas os blocos de colunas horizontais */
+            [data-testid="stHorizontalBlock"] {
+                flex-wrap: wrap !important;
+            }
+            [data-testid="stHorizontalBlock"] > div {
+                flex: 1 1 100% !important;
                 min-width: 100% !important;
-                margin-bottom: 0.6rem !important;
+                margin-bottom: 0.5rem !important;
             }
 
-            /* Ajuste de fontes de títulos */
-            h1 { font-size: 1.6rem !important; }
-            h2 { font-size: 1.3rem !important; }
-            h3 { font-size: 1.15rem !important; }
-
-            /* Botões e links preenchem a largura da coluna no monitor vertical */
+            /* Botões preenchem a largura no ecrã vertical */
             .stButton button, .stLinkButton a {
                 width: 100% !important;
-                font-size: 0.95rem !important;
-                padding: 0.5rem 0.75rem !important;
-            }
-
-            /* Métricas e valores destacados */
-            div[data-testid="stMetricValue"] {
-                font-size: 1.4rem !important;
             }
         }
 
-        /* 3. Evita que apareça barra de rolagem horizontal quebrada */
+        /* 3. Previne barras de deslocação horizontais indesejadas */
         html, body, [data-testid="stAppViewContainer"] {
             overflow-x: hidden !important;
         }
     </style>
-""", unsafe_allow_html=True)
-
-# Injeção de Meta Tags de SEO e Google Search Console
-st.markdown("""
-    <head>
-        <meta name="description" content="Descubra se o seu processador limita sua placa de vídeo. Calculadora precisa de gargalo (bottleneck) para PC Desktop e Notebook Gamer.">
-        <meta name="keywords" content="calculadora de gargalo, bottleneck calculator pc, gargalômetro, teste gargalo gpu cpu, gta vi requisitos pc">
-        <meta name="robots" content="index, follow">
-        <meta property="og:title" content="Gargalômetro Gamer - Calculadora de Gargalo CPU e GPU">
-        <meta property="og:description" content="Avalie o equilíbrio do seu setup gamer de 0 a 10 e veja testes de prontidão para jogos pesados.">
-        <meta property="og:url" content="https://gargalometro.com.br/">
-        <meta property="og:type" content="website">
-    </head>
 """, unsafe_allow_html=True)
 
 # 1. Hardware pesado fica em cache para o site abrir rápido
