@@ -23,51 +23,42 @@ st.set_page_config(
 
 st.markdown("""
     <style>
-        /* 1. Oculta menus nativos e botão de recolher */
+        /* 1. Oculta navegação lateral nativa e botões */
         [data-testid="stSidebarNav"], 
         button[data-testid="stSidebarCollapseButton"] {
             display: none !important;
         }
 
-        /* 2. Remove caixas fixas ou bordas brancas que prendem o conteúdo */
-        [data-testid="stVerticalBlockBorderWrapper"] {
+        /* 2. MATA A MOLDURA BRANCA/CINZA DO MODO EMBED */
+        .stAppEmbedded, 
+        div[data-testid="stAppViewContainer"] > section,
+        .main,
+        div[data-testid="stVerticalBlockBorderWrapper"] {
             border: none !important;
             box-shadow: none !important;
             padding: 0 !important;
+            background: transparent !important;
         }
 
-        /* 3. Permite rolagem vertical livre e remove overflow lateral */
-        html, body, [data-testid="stAppViewContainer"], .main {
-            overflow-x: hidden !important;
-            overflow-y: auto !important;
-            height: auto !important;
+        /* 3. Remove restrição de altura que cria scroll duplo */
+        iframe, body, html {
+            height: 100% !important;
         }
 
-        /* 4. Ajustes para o monitor vertical (largura <= 1050px) */
+        /* 4. Ajuste responsivo para tela vertical (<= 1050px) */
         @media (max-width: 1050px) {
             .block-container {
                 padding-top: 1rem !important;
-                padding-bottom: 3rem !important;
+                padding-bottom: 2rem !important;
                 padding-left: 0.8rem !important;
                 padding-right: 0.8rem !important;
                 max-width: 100% !important;
             }
-
-            /* Quebra as colunas suavemente para caber nos 900px */
             [data-testid="stHorizontalBlock"] {
                 flex-wrap: wrap !important;
-                gap: 0.5rem !important;
             }
-
-            /* Títulos proporcionais */
-            h1 { font-size: 1.4rem !important; }
-            h2 { font-size: 1.2rem !important; }
-            h3 { font-size: 1.05rem !important; }
-
-            /* Botões ocupam a largura do card */
             .stButton button, .stLinkButton a {
                 width: 100% !important;
-                font-size: 0.9rem !important;
             }
         }
     </style>
