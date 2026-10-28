@@ -21,37 +21,50 @@ st.set_page_config(
     layout="wide"
 )
 
-# Estilização limpa e adaptada para monitor vertical / telas estreitas
 st.markdown("""
     <style>
-        /* 1. Oculta menus nativos indesejados */
+        /* 1. Oculta menus nativos e botão de recolher */
         [data-testid="stSidebarNav"], 
         button[data-testid="stSidebarCollapseButton"] {
             display: none !important;
         }
 
-        /* 2. Garante que nada estoure a largura da tela vertical */
-        html, body, [data-testid="stAppViewContainer"], .main {
-            overflow-x: hidden !important;
-            max-width: 100vw !important;
+        /* 2. Remove caixas fixas ou bordas brancas que prendem o conteúdo */
+        [data-testid="stVerticalBlockBorderWrapper"] {
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
         }
 
-        /* 3. Ajuste de margens e fontes para monitores até 1050px */
+        /* 3. Permite rolagem vertical livre e remove overflow lateral */
+        html, body, [data-testid="stAppViewContainer"], .main {
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            height: auto !important;
+        }
+
+        /* 4. Ajustes para o monitor vertical (largura <= 1050px) */
         @media (max-width: 1050px) {
             .block-container {
                 padding-top: 1rem !important;
-                padding-bottom: 2rem !important;
+                padding-bottom: 3rem !important;
                 padding-left: 0.8rem !important;
                 padding-right: 0.8rem !important;
                 max-width: 100% !important;
             }
 
-            /* Reduz títulos para não quebrarem ou estourarem a tela */
-            h1 { font-size: 1.5rem !important; }
+            /* Quebra as colunas suavemente para caber nos 900px */
+            [data-testid="stHorizontalBlock"] {
+                flex-wrap: wrap !important;
+                gap: 0.5rem !important;
+            }
+
+            /* Títulos proporcionais */
+            h1 { font-size: 1.4rem !important; }
             h2 { font-size: 1.2rem !important; }
             h3 { font-size: 1.05rem !important; }
 
-            /* Textos e botões ajustados */
+            /* Botões ocupam a largura do card */
             .stButton button, .stLinkButton a {
                 width: 100% !important;
                 font-size: 0.9rem !important;
