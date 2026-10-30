@@ -623,7 +623,7 @@ Aguardo orientações para o Pix e início da montagem!"""
                 texto_codificado = urllib.parse.quote(texto_msg)
                 
                 # Substitua pelo seu número com DDI 55 + DDD (apenas números)
-                NUMERO_MEU_ZAP = "556198557047"
+                NUMERO_MEU_ZAP = "5561985587047"
                 
                 link_whatsapp = f"https://api.whatsapp.com/send?phone={NUMERO_MEU_ZAP}&text={texto_codificado}"
                 
