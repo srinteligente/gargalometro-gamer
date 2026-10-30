@@ -121,7 +121,7 @@ st.markdown(
         <p style="margin: 6px 0 14px 0; font-size: 14px; color: #f0fdf4;">
             Receba cupons exclusivos, bugs de preço e peças sem gargalo direto no seu zap antes de esgotar!
         </p>
-        <a href="COLE_O_LINK_DO_SEU_CANAL_AQUI" target="_blank" 
+        <a href="https://whatsapp.com/channel/0029Vb9YXwNGpLHK8OMGRw0N" target="_blank" 
            style="background-color: white; color: #075E54; font-weight: bold; 
                   padding: 10px 22px; border-radius: 8px; text-decoration: none; display: inline-block;">
             📲 Entrar no Canal VIP de Graça
