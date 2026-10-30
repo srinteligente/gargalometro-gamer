@@ -1,6 +1,12 @@
 {
   "achados_do_dia": [
     {
+      "titulo": "🔥 Placa de Vídeo ASRock RX 7600 Challenger PRO OC 8GB Triple Fan",
+      "descricao": "R$ 1.780,20 • Use o cupom ZAFADINHO10 • Edição Triple Fan com alto fluxo de ar e overclock de fábrica!",
+      "texto_botao": "🎮 Garantir RX 7600 Triple Fan (R$ 1.780,20)",
+      "url": "https://tidd.ly/4iaXR1J"
+    },
+    {
       "titulo": "⚡ Fonte Gamer Rise Mode Elektra 650W Bronze Full Modular",
       "descricao": "R$ 252,70 na Shopee • Use o cupom 11D011400FF • Full Modular, PFC Ativo e cabos pretos flat!",
       "texto_botao": "🛒 Garantir Fonte 650W Modular (R$ 228,00)",
@@ -340,6 +346,10 @@
           "url": "https://meli.la/25wwi8e"
         },
         {
+          "texto": "🔥 RX 7600 Challenger PRO OC 8GB Triple Fan (KaBuM! - Cupom ZAFADINHO10 - R$ 1.780,20)",
+          "url": "https://tidd.ly/4iaXR1J"
+        },
+        {
           "texto": "🔥 RX 7600 Biostar 8GB (Shopee - PROMO R$ 1.812,40)",
           "url": "https://s.shopee.com.br/70L1bpjf2Z?share_channel_code=1"
         },
@@ -457,27 +467,15 @@
           "url": "https://vt.tiktok.com/ZS9yS6cRvoQw6-7pCS4/"
         },
         {
-          "texto": "5️⃣ Mancer CV100 Branco (3 Fans RGB • Até 310mm - R$ 219,90)",
-          "url": "https://tidd.ly/cv100-purple"
+          "texto": "5️⃣ Liketec Mad Rock Preto (M-ATX • Até 9 Fans • Suporta Radiador 360mm e GPU até 400mm - R$ 219,99)",
+          "url": "https://tidd.ly/4ry01fQ"
         },
         {
-          "texto": "6️⃣ Liketec Mad Rock Preto (M-ATX • Até 9 Fans • Suporta Radiador 360mm e GPU até 400mm - R$ 249,90)",
-          "url": "https://tidd.ly/4yvGMp4"
-        },
-        {
-          "texto": "7️⃣ Mancer Hemlok Preto Vidro (4 Fans ARGB • Até 330mm - R$ 289,90)",
-          "url": "https://tidd.ly/hemlok"
-        },
-        {
-          "texto": "8️⃣ Mancer Mugen Full-Tower Preto (3 Fans Inclusas • Suporta Radiador 360mm e GPU até 400mm - R$ 358,00)",
-          "url": "https://meli.la/2r1aWVD"
-        },
-        {
-          "texto": "9️⃣ Acegeek Mercury R425 Branco Aquário (6 Fans ARGB • Suporta Radiador 360mm e GPU até 360mm - R$ 389,90)",
+          "texto": "6️⃣ Acegeek Mercury R425 Branco Aquário (6 Fans ARGB • Suporta Radiador 360mm e GPU até 360mm - R$ 389,90)",
           "url": "https://tidd.ly/mercury-r425"
         },
         {
-          "texto": "🔟 Vingar Misterium Aquário Mid-Tower Preto (10 Fans ARGB + Controladora • Suporta Radiador 360mm e GPU até 410mm - R$ 659,99)",
+          "texto": "7️⃣ Vingar Misterium Aquário Mid-Tower Preto (10 Fans ARGB + Controladora • Suporta Radiador 360mm e GPU até 410mm - R$ 659,99)",
           "url": "https://tidd.ly/4ibXqEa"
         }
       ]
@@ -505,8 +503,8 @@
       "cupom": "🏷️ Cupons KaBuM!: KABUM10 | Mercado Livre: OFFHOJENOML",
       "itens": [
         {
-          "texto": "🔥 Rise Mode Elektra 650W Bronze (Amazon - R$ 237,57)",
-          "url": "https://link.amazon/B00jHaqZd"
+          "texto": "🔥 Rise Mode Elektra 650W Bronze (KaBuM! - R$ 244,90)",
+          "url": "https://tidd.ly/4svAS62"
         },
         {
           "texto": "⚡ Rise Mode Elektra 650W Bronze Full Modular (Shopee - R$ 252,70 c/ Cupom 11D011400FF)",
@@ -538,7 +536,7 @@
       "cupom": "🚀 Ideal para placas com picos de consumo e novos upgrades",
       "itens": [
         {
-          "texto": "🔥 MACH1 Steady 750W Bronze (KaBuM! - Cupom KABUM10 - R$ 289,99)",
+          "texto": "🔥 MACH1 Steady 750W Bronze (KaBuM! - R$ 269,99)",
           "url": "https://tidd.ly/4i59FCj"
         },
         {
@@ -679,15 +677,15 @@
       "cupom": "🚀 SSDs SATA e M.2 NVMe com estoque nacional e cupons ativos",
       "itens": [
         {
-          "texto": "📦 SSD SATA III Kootion 256GB (AliExpress Brasil - R$ 210,85)",
+          "texto": "📦 SSD SATA III Kootion 256GB (AliExpress Brasil - R$ 378,89)",
           "url": "https://s.click.aliexpress.com/e/_msby17h"
         },
         {
-          "texto": "⚡ SSD NVMe Kootion X15 Lite 256GB (AliExpress Brasil - R$ 259,22)",
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 256GB (AliExpress Brasil - R$ 300,44)",
           "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
         },
         {
-          "texto": "📦 SSD SATA III CUSU 512GB (AliExpress - R$ 417,38)",
+          "texto": "📦 SSD SATA III CUSU 512GB (AliExpress - R$ 431,04)",
           "url": "https://s.click.aliexpress.com/e/_mrTrOX9"
         },
         {
@@ -699,7 +697,7 @@
           "url": "https://s.click.aliexpress.com/e/_mtKSuUX"
         },
         {
-          "texto": "⚡ SSD NVMe Kootion X15 Lite 1TB (AliExpress Brasil - R$ 748,51 c/ Cupom Loja)",
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 1TB (AliExpress Brasil - R$ 514,44)",
           "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
         },
         {
@@ -735,7 +733,7 @@
       "cupom": "📦 Custo-benefício para AM4 e placas DDR4 com opções avulsas e em kits",
       "itens": [
         {
-          "texto": "⚡ Kit CUSU 16GB (2x8GB) DDR4 3200MHz CL22 (AliExpress - R$ 691,03)",
+          "texto": "⚡ Kit CUSU 16GB (2x8GB) DDR4 3200MHz CL22 (AliExpress - R$ 810,65)",
           "url": "https://s.click.aliexpress.com/e/_m04M97h"
         },
         {
