@@ -112,6 +112,25 @@ def carregar_vitrine():
 db = carregar_hardware()
 VITRINE = carregar_vitrine()
 
+# BANNER CANAL DO WHATSAPP
+st.markdown(
+    """
+    <div style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); 
+                padding: 16px; border-radius: 12px; text-align: center; color: white; margin-bottom: 20px;">
+        <h3 style="margin: 0; color: white;">🔥 Entre no Canal Oficial de Ofertas no WhatsApp!</h3>
+        <p style="margin: 6px 0 14px 0; font-size: 14px; color: #f0fdf4;">
+            Receba cupons exclusivos, bugs de preço e peças sem gargalo direto no seu zap antes de esgotar!
+        </p>
+        <a href="COLE_O_LINK_DO_SEU_CANAL_AQUI" target="_blank" 
+           style="background-color: white; color: #075E54; font-weight: bold; 
+                  padding: 10px 22px; border-radius: 8px; text-decoration: none; display: inline-block;">
+            📲 Entrar no Canal VIP de Graça
+        </a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 def renderizar_botoes_em_colunas(itens):
     """Gera botões organizados automaticamente em 2 colunas"""
     if not itens:
