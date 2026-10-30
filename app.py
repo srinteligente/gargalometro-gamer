@@ -571,7 +571,7 @@ with col_right:
                 renderizar_botoes_em_colunas(dados.get("itens", []))
 
 # ========================================================
-# 💼 CONSULTORIA PERSONALIZADA DE SETUP (R$ 20,00)
+# 💼 CONSULTORIA PERSONALIZADA DE SETUP (R$ 20,00) VIA WHATSAPP
 # ========================================================
 st.markdown("---")
 st.subheader("🎯 Consultoria VIP para Montagem de PC")
@@ -591,12 +591,12 @@ with st.container(border=True):
         st.info(
             "📱 **Como funciona:**\n\n"
             "1. Preencha seus dados ao lado.\n"
-            "2. Envie o formulário.\n"
-            "3. Você será chamado diretamente no WhatsApp para iniciarmos a montagem!"
+            "2. Clique em **Gerar Pedido no WhatsApp**.\n"
+            "3. O WhatsApp abrirá com tudo preenchido para iniciarmos a montagem!"
         )
 
     with col_form:
-        with st.form("form_consultoria", clear_on_submit=True):
+        with st.form("form_consultoria_zap"):
             nome_cli = st.text_input("Seu Nome:")
             zap_cli = st.text_input("Seu WhatsApp (com DDD):", placeholder="(61) 99999-9999")
             orcamento_cli = st.text_input("Quanto pretende investir no total (R$)?", placeholder="Ex: R$ 3.500,00")
@@ -605,47 +605,32 @@ with st.container(border=True):
                 placeholder="Ex: Quero jogar Warzone e GTA VI em 1080p, preciso apenas do gabinete completo."
             )
             
-            btn_enviar = st.form_submit_button("🚀 Solicitar Consultoria (R$ 20,00)", use_container_width=True)
+            btn_gerar = st.form_submit_button("🚀 Gerar Pedido de Consultoria (R$ 20,00)", use_container_width=True)
             
-            if btn_enviar:
-                if not zap_cli.strip() or not orcamento_cli.strip():
-                    st.warning("⚠️ Por favor, informe pelo menos o seu WhatsApp e o orçamento disponível.")
-                else:
-                    url_endpoint = "https://formsubmit.co/ajax/dwdistrito@gmail.com"
-                    payload = {
-                        "name": nome_cli if nome_cli.strip() else "Não informado",
-                        "whatsapp": zap_cli,
-                        "orcamento": orcamento_cli,
-                        "mensagem": msg_cli if msg_cli.strip() else "Não detalhado",
-                        "_subject": f"🔥 Nova Consultoria Solicitada: {zap_cli} (R$ {orcamento_cli})",
-                        "_captcha": "false",
-                        "_template": "table"
-                    }
-                    
-                    try:
-                        data_bytes = json.dumps(payload).encode("utf-8")
-                        req = urllib.request.Request(
-                            url_endpoint,
-                            data=data_bytes,
-                            headers={
-                                "Content-Type": "application/json",
-                                "Accept": "application/json",
-                                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                                "Origin": "https://formsubmit.co",
-                                "Referer": "https://formsubmit.co/"
-                            }
-                        )
-                        
-                        with urllib.request.urlopen(req, timeout=15) as resp:
-                            resposta = json.loads(resp.read().decode("utf-8"))
-                            
-                            # Verifica se o FormSubmit devolveu sucesso
-                            if resp.status == 200 and str(resposta.get("success")).lower() == "true":
-                                st.success("✅ **Pedido enviado com sucesso!** Em breve entraremos em contato via WhatsApp.")
-                            else:
-                                st.warning("⚠️ O pedido foi recebido, mas confirme se recebeu notificação no seu e-mail.")
-                                
-                    except urllib.error.HTTPError as err:
-                        st.error(f"Erro no envio ({err.code}). O serviço recusou temporariamente a requisição.")
-                    except Exception:
-                        st.error("Falha de comunicação no envio. Tente novamente.")
+        if btn_gerar:
+            if not zap_cli.strip() or not orcamento_cli.strip():
+                st.warning("⚠️ Por favor, informe pelo menos o seu WhatsApp e o orçamento disponível.")
+            else:
+                texto_msg = f"""Olá Sr. Inteligente! Gostaria de contratar a Consultoria VIP (R$ 20,00):
+━━━━━━━━━━━━━━━━━━━━
+👤 *Nome:* {nome_cli.strip() if nome_cli.strip() else 'Não informado'}
+📱 *WhatsApp:* {zap_cli.strip()}
+💰 *Orçamento:* {orcamento_cli.strip()}
+🎯 *Foco / Jogos:* {msg_cli.strip() if msg_cli.strip() else 'Gabinete completo'}
+━━━━━━━━━━━━━━━━━━━━
+Aguardo orientações para o Pix e início da montagem!"""
+                
+                texto_codificado = urllib.parse.quote(texto_msg)
+                
+                # Substitua pelo seu número com DDI 55 + DDD (apenas números)
+                NUMERO_MEU_ZAP = "556198557047"
+                
+                link_whatsapp = f"https://api.whatsapp.com/send?phone={NUMERO_MEU_ZAP}&text={texto_codificado}"
+                
+                st.success("✅ Pedido pronto! Clique no botão abaixo para enviar no WhatsApp:")
+                st.link_button(
+                    "📲 Enviar Pedido no WhatsApp do Sr. Inteligente", 
+                    link_whatsapp, 
+                    type="primary", 
+                    use_container_width=True
+                )
