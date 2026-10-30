@@ -1,0 +1,798 @@
+{
+"achados_do_dia": [
+    {
+      "titulo": "⚡ Memória RAM Macrovip Max 16GB DDR4 3200MHz CL16",
+      "descricao": "R$ 622,89 no Mercado Livre • 1x 16GB UDIMM com dissipador de calor e latência baixa CL16 para jogos e multitarefa!",
+      "texto_botao": "🛒 Garantir Memória 16GB DDR4 (R$ 622,89)",
+      "url": "https://meli.la/1VCbqqX"
+    },
+    {
+      "titulo": "⚡ Fonte Gamer Rise Mode Zeus 500W Preto (Selo TecLab)",
+      "descricao": "R$ 111,00 no PIX na Amazon • Use o cupom OUTLETPRIME (exclusivo Prime) • PFC Ativo e certificação Teclab!",
+      "texto_botao": "🛒 Garantir Fonte Zeus 500W (R$ 111,00)",
+      "url": "https://link.amazon/B0cHl2VER"
+    },
+    {
+      "titulo": "🔥 Placa de Vídeo ASRock RX 7600 Challenger PRO OC 8GB Triple Fan",
+      "descricao": "R$ 1.780,20 • Use o cupom ZAFADINHO10 • Edição Triple Fan com alto fluxo de ar e overclock de fábrica!",
+      "texto_botao": "🎮 Garantir RX 7600 Triple Fan (R$ 1.780,20)",
+      "url": "https://tidd.ly/4iaXR1J"
+    },
+    {
+      "titulo": "⚡ Fonte Gamer Rise Mode Elektra 650W Bronze Full Modular",
+      "descricao": "R$ 252,70 na Shopee • Use o cupom 11D011400FF • Full Modular, PFC Ativo e cabos pretos flat!",
+      "texto_botao": "🛒 Garantir Fonte 650W Modular (R$ 228,00)",
+      "url": "https://s.shopee.com.br/BUvzu6scB?share_channel_code=1"
+    },
+    {
+      "titulo": "👑 Processador AMD Ryzen 7 9700X AM5 (8 Cores / 16 Threads)",
+      "descricao": "R$ 1.379,08 na Shopee • Use o cupom 3SQU3NT411 • Arquitetura Zen 5 com 40MB Cache!",
+      "texto_botao": "🚀 Garantir Ryzen 7 9700X (R$ 1.329,00)",
+      "url": "https://s.shopee.com.br/3B8XZXFO1F?share_channel_code=1"
+    },
+    {
+      "titulo": "🔥 Placa de Vídeo INNO3D GeForce RTX 5050 Twin X2 8GB",
+      "descricao": "R$ 2.156,37 na Shopee • Use o cupom 3SQU3NT411 • Nova arquitetura Blackwell com DLSS e RT!",
+      "texto_botao": "🎮 Garantir RTX 5050 Twin X2 (R$ 2.110,00)",
+      "url": "https://s.shopee.com.br/2BG0NoB0Ji?share_channel_code=1"
+    },
+    {
+      "titulo": "💥 Placa de Vídeo INNO3D GeForce RTX 5060 Twin X2 8GB GDDR7",
+      "descricao": "R$ 2.651,00 na Shopee • Use o cupom 3SQU3NT411 • Memórias ultra-rápidas GDDR7 e dual fan!",
+      "texto_botao": "🚀 Garantir RTX 5060 GDDR7 (R$ 2.651,00)",
+      "url": "https://s.shopee.com.br/1qd9zIwB2C?share_channel_code=1"
+    }
+  ],
+  "kits_upgrade": [
+    {
+      "texto": "🔥 Kit R5 5500F (PCIe 4.0) + MSI A520M + Cooler MACH1 ARTIC (KaBuM! - Cupom CASADIN - R$ 849,99)",
+      "url": "https://tidd.ly/4jZfG6b"
+    },
+    {
+      "texto": "⚡ Kit R5 5500F (PCIe 4.0) + MSI A520M + Rise Mode G700 (KaBuM! - Cupom CASADIN - R$ 849,99)",
+      "url": "https://tidd.ly/47oNTVy"
+    },
+    {
+      "texto": "👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler MACH1 240mm (KaBuM! - Cupom CASADINHO - R$ 1.519,00)",
+      "url": "https://tidd.ly/3TXWsn6"
+    }
+  ],
+  "cpus": {
+    "🔴 AMD AM4 (DDR4)": {
+      "cupom": "🏷️ Cupons Shopee: resgate aqui https://s.shopee.com.br/2VscFbQS1o?share_channel_code=1 | Cupons ML: SITE50, OFFHOJE, VAIBARATO",
+      "itens": [
+        {
+          "texto": "🔥 Ryzen 5 5500 6/12 (Mercado Livre - R$ 589,00)",
+          "url": "https://meli.la/2QN5Pgh"
+        },
+        {
+          "texto": "📦 Ryzen 5 5500 6/12 (KaBuM! - R$ 599,99)",
+          "url": "https://tidd.ly/4dLyVMO"
+        },
+        {
+          "texto": "📦 Ryzen 5 5500 6/12 (Amazon Prime - R$ 605,00)",
+          "url": "https://link.amazon/B0arOOyDV"
+        },
+        {
+          "texto": "⚡ Ryzen 5 5600X 6/12 (Amazon - R$ 899,00)",
+          "url": "https://link.amazon/B0eGWwc2v"
+        },
+        {
+          "texto": "🏷️ Ryzen 5 5500X3D Cache 3D (Shopee - R$ 789,00)",
+          "url": "https://s.shopee.com.br/7fafWPpbIM?share_channel_code=1"
+        },
+        {
+          "texto": "🔥 Ryzen 5 5500X3D Cache 3D (Mercado Livre - R$ 799,00)",
+          "url": "https://meli.la/1auyhNC"
+        },
+        {
+          "texto": "🔥 Ryzen 7 5700 8/16 (ML - Promo R$ 936,99)",
+          "url": "https://meli.la/1kdoiYp"
+        },
+        {
+          "texto": "🏷️ Ryzen 7 5700 8/16 (Shopee - R$ 949,00)",
+          "url": "https://s.shopee.com.br/80DVu4Gy5Z?share_channel_code=1"
+        },
+        {
+          "texto": "⚡ Ryzen 7 5700X 8/16 (Amazon - R$ 1.089,00)",
+          "url": "https://link.amazon/B089kG1h5"
+        },
+        {
+          "texto": "💳 Ryzen 7 5700X 8/16 (KaBuM! - R$ 1.099,99)",
+          "url": "https://tidd.ly/4jsw27b"
+        },
+        {
+          "texto": "🔥 Ryzen 7 5800XT 8/16 (KaBuM! - R$ 1.349,99)",
+          "url": "https://tidd.ly/4yYLn4m"
+        },
+        {
+          "texto": "👑 Ryzen 7 5800X3D O Rei do AM4 (Mercado Livre - R$ 1.890,00)",
+          "url": "https://meli.la/1MKXidT"
+        },
+        {
+          "texto": "👑 Ryzen 7 5800X3D O Rei do AM4 (Shopee - R$ 1.879,00)",
+          "url": "https://s.shopee.com.br/5AtMTuN8PW?share_channel_code=1"
+        }
+      ]
+    },
+    "🟣 AMD AM5 (DDR5 - Nova Geração)": {
+      "cupom": "🚀 Plataforma AMD AM5 com memória DDR5, alto IPC e processadores X3D",
+      "itens": [
+        {
+          "texto": "⚡ Ryzen 5 8400F 6/12 (Amazon - R$ 759,88)",
+          "url": "https://link.amazon/B0dUPYGks"
+        },
+        {
+          "texto": "📦 Ryzen 5 8500G 6/12 c/ Vídeo Integrado Radeon 740M (KaBuM! - R$ 799,99)",
+          "url": "https://tidd.ly/4yXcjl3"
+        },
+        {
+          "texto": "🔥 Ryzen 5 7600X OEM 6/12 5.3GHz (Shopee - R$ 868,00 c/ Cupom R$100)",
+          "url": "https://s.shopee.com.br/30oxkGxihp?share_channel_code=1"
+        },
+        {
+          "texto": "📦 Ryzen 5 8600G 6/12 c/ Vídeo Integrado Radeon 760M (KaBuM! - R$ 999,99)",
+          "url": "https://tidd.ly/4jsrX2Y"
+        },
+        {
+          "texto": "📦 Ryzen 7 8700G 8/16 c/ Vídeo Integrado Radeon 780M (KaBuM! - R$ 1.399,99)",
+          "url": "https://tidd.ly/4sl0xOW"
+        },
+        {
+          "texto": "👑 Ryzen 7 9700X Zen 5 8/16 (Shopee - R$ 1.379,08 c/ Cupom 3SQU3NT411)",
+          "url": "https://s.shopee.com.br/3B8XZXFO1F?share_channel_code=1"
+        },
+        {
+          "texto": "⚡ Ryzen 5 7600X 6/12 (KaBuM! - R$ 1.389,99)",
+          "url": "https://tidd.ly/4dINi4z"
+        },
+        {
+          "texto": "🎯 Ryzen 5 7600X3D Cache 3D (KaBuM! - R$ 1.799,99)",
+          "url": "https://tidd.ly/4efclfC"
+        },
+        {
+          "texto": "🚀 Ryzen 5 9600X Zen 5 (KaBuM! - R$ 1.849,99)",
+          "url": "https://tidd.ly/4saXSHf"
+        },
+        {
+          "texto": "⚡ Ryzen 7 8700F 8/16 (KaBuM! - R$ 1.549,99)",
+          "url": "https://tidd.ly/4zBMmaz"
+        },
+        {
+          "texto": "📦 Ryzen 7 7700 8/16 (KaBuM! - R$ 1.999,99)",
+          "url": "https://tidd.ly/4dK8TcM"
+        },
+        {
+          "texto": "👑 Ryzen 7 7800X3D Rei do FPS (KaBuM! - R$ 1.999,99)",
+          "url": "https://tidd.ly/481AMts"
+        },
+        {
+          "texto": "👑 Ryzen 7 9800X3D O Mais Forte do Mundo (Amazon - R$ 2.199,99 - Entrega Rápida HOJE)",
+          "url": "https://link.amazon/B01s6XXqP"
+        },
+        {
+          "texto": "🚀 Ryzen 7 9700X Zen 5 8/16 (Amazon - R$ 2.489,00)",
+          "url": "https://link.amazon/B09Gryeep"
+        },
+        {
+          "texto": "👑 Ryzen 9 9900X Zen 5 12/24 (KaBuM! - R$ 3.499,99)",
+          "url": "https://tidd.ly/4saXSHf"
+        },
+        {
+          "texto": "👑 Ryzen 9 9900X3D 12/24 (KaBuM! - R$ 4.299,99)",
+          "url": "https://tidd.ly/4s8cMy6"
+        },
+        {
+          "texto": "👑 Ryzen 9 9950X Topo 16/32 (KaBuM! - R$ 4.699,99)",
+          "url": "https://tidd.ly/4s8bqU2"
+        },
+        {
+          "texto": "👑 Ryzen 9 9950X3D Extremo 16/32 5.7GHz 144MB Cache (Amazon - R$ 4.149,98 no PIX)",
+          "url": "https://link.amazon/B06f87NvD"
+        }
+      ]
+    },
+    "🔵 Intel LGA 1700": {
+      "cupom": "🏷️ Use o cupom CPUAGORA na KaBuM! para desconto nos modelos Intel K/KF",
+      "itens": [
+        {
+          "texto": "🔵 Intel Core i5-14600KF 5.3GHz (KaBuM! - R$ 1.849,99)",
+          "url": "https://tidd.ly/4BbqRit"
+        },
+        {
+          "texto": "🔵 Intel Core i5-14600K 5.3GHz (KaBuM! - R$ 1.999,99)",
+          "url": "https://tidd.ly/4hRz57N"
+        }
+      ]
+    }
+  },
+  "placas_mae": {
+    "🔥 Kits Completos Upgrade (Placa + CPU + Cooler Inclusos)": {
+      "cupom": "📦 Use o cupom CASADINHO ou CASADIN na KaBuM!",
+      "itens": [
+        {
+          "texto": "⚡ Kit R5 5500F + MSI A520M + Air Cooler MACH1 ARTIC (KaBuM! - Cupom CASADIN - R$ 849,99)",
+          "url": "https://tidd.ly/4jZfG6b"
+        },
+        {
+          "texto": "⚡ Kit R5 5500F + MSI A520M + Rise Mode G700 (KaBuM! - Cupom CASADIN - R$ 849,99)",
+          "url": "https://tidd.ly/47oNTVy"
+        },
+        {
+          "texto": "👑 Kit R7 5700X + MSI B550M WiFi6E + Water Cooler MACH1 240mm (KaBuM! - Cupom CASADINHO - R$ 1.519,00)",
+          "url": "https://tidd.ly/3TXWsn6"
+        }
+      ]
+    },
+    "🟡 Kits Baratíssimos Xeon (CPU + Placa Inclusos)": {
+      "cupom": "📦 Custo extremo: Processador e Placa-mãe juntos no mesmo pacote!",
+      "itens": [
+        {
+          "texto": "⚡ Kit Xeon X99 D4 + E5-2680 V4 14/28 (AliExpress - R$ 397,86)",
+          "url": "https://s.click.aliexpress.com/e/_mNIC6QT"
+        },
+        {
+          "texto": "⚡ Kit Xeon X79 LGA-2011 + E5-2680 V2 10/20 DDR3 (AliExpress - R$ 349,00)",
+          "url": "https://s.click.aliexpress.com/e/_mNIC6QT"
+        }
+      ]
+    },
+    "🔴 AMD AM4 (DDR4)": {
+      "cupom": "🏷️ Use MELIOFERTAS no Mercado Livre ou CHEGOUMSI na KaBuM!",
+      "itens": [
+        {
+          "texto": "📦 MSI A520M-A PRO (KaBuM! - R$ 389,99)",
+          "url": "https://tidd.ly/4ywdUNX"
+        },
+        {
+          "texto": "⚡ MSI A520M-A PRO (Amazon Prime - R$ 399,00)",
+          "url": "https://link.amazon/B025qU1Hl"
+        },
+        {
+          "texto": "🔥 Gigabyte Ultra Durable A520M (Mercado Livre - R$ 419,00)",
+          "url": "https://meli.la/1Zsaefj"
+        },
+        {
+          "texto": "🔥 Gigabyte B550M Aorus Elite c/ Dissipador VRM (ML - R$ 749,00)",
+          "url": "https://meli.la/24evsiB"
+        },
+        {
+          "texto": "⚡ Gigabyte B550M Aorus Elite c/ Dissipador VRM (Amazon - R$ 759,00)",
+          "url": "https://link.amazon/B0hZt5hGR"
+        },
+        {
+          "texto": "💳 MSI B550M Gaming Plus WiFi6E (KaBuM! - R$ 789,99)",
+          "url": "https://tidd.ly/47mjwz1"
+        }
+      ]
+    },
+    "🟣 AMD AM5 (DDR5)": {
+      "cupom": "🚀 Plataforma Moderna AM5 com suporte a memória DDR5 • Use o cupom MELIHOJE no Mercado Livre",
+      "itens": [
+        {
+          "texto": "🔥 MSI Pro B840M-B AM5 (ML - Cupom MELIHOJE R$ 477,48)",
+          "url": "https://meli.la/1w3FWwd"
+        },
+        {
+          "texto": "⚡ MSI Pro B840M-B AM5 (Amazon - R$ 478,99)",
+          "url": "https://link.amazon/B02rUjW7o"
+        },
+        {
+          "texto": "📦 ASRock B850M Pro-A AM5 4xDDR5 (KaBuM! - R$ 748,90)",
+          "url": "https://tidd.ly/4hkjUlR"
+        },
+        {
+          "texto": "🏷️ Asus B650M-AYW WiFi (Shopee - R$ 762,59)",
+          "url": "https://s.shopee.com.br/7KxpKXWj84"
+        },
+        {
+          "texto": "📦 Asus B650M-AYW WiFi (KaBuM! - R$ 789,99)",
+          "url": "https://tidd.ly/4hSLA33"
+        },
+        {
+          "texto": "⚡ ASUS Prime B850-PLUS PCIe 5.0 (Amazon - R$ 1.086,80)",
+          "url": "https://link.amazon/B03MVSwip"
+        },
+        {
+          "texto": "❄️ ASRock B850M Challenger WiFi BRANCA (Amazon - R$ 1.099,00)",
+          "url": "https://link.amazon/B06qRnbxS"
+        },
+        {
+          "texto": "📦 ASRock B650 Pro RS ATX (KaBuM! - R$ 1.199,99)",
+          "url": "https://tidd.ly/3Wxrjre"
+        },
+        {
+          "texto": "👑 MSI MPG B650 Edge WIFI (KaBuM! - R$ 1.499,99)",
+          "url": "https://tidd.ly/4z0v5YS"
+        },
+        {
+          "texto": "👑 ASUS X870 MAX GAMING WiFi7 (KaBuM! - R$ 1.779,90 no PIX)",
+          "url": "https://tidd.ly/4k3ktnb"
+        },
+        {
+          "texto": "👑 ASUS X870 MAX GAMING WiFi7 BRANCA (KaBuM! - R$ 1.874,99)",
+          "url": "https://tidd.ly/4yTtHH8"
+        }
+      ]
+    },
+    "🔵 Intel LGA 1700 (DDR4 / DDR5)": {
+      "cupom": "🔵 Placas-mãe para processadores Intel 12ª, 13ª e 14ª Geração",
+      "itens": [
+        {
+          "texto": "🔥 MSI Pro B760M-P DDR4 (ML - R$ 717,59)",
+          "url": "https://meli.la/33z6D9n"
+        },
+        {
+          "texto": "🔥 MSI Pro H610M-A DDR4 (Mercado Livre - R$ 479,00)",
+          "url": "https://meli.la/2MhnnbT"
+        },
+        {
+          "texto": "📦 MSI PRO H610M-S DDR4 II (KaBuM! - R$ 489,99)",
+          "url": "https://tidd.ly/4k2IzOU"
+        },
+        {
+          "texto": "⚡ MSI PRO B760M-P DDR5 (Amazon - R$ 476,90)",
+          "url": "https://link.amazon/B0gjp1kea"
+        },
+        {
+          "texto": "⚡ MSI PRO B760M-A WIFI DDR5 (Amazon - R$ 899,00)",
+          "url": "https://link.amazon/B0gBZWtZT"
+        },
+        {
+          "texto": "🔥 Gigabyte B760M Aorus Elite DDR5 (Mercado Livre - R$ 818,93)",
+          "url": "https://meli.la/18skXpF"
+        }
+      ]
+    }
+  },
+  "gpus": {
+    "⚡ Custo-Benefício (1080p Alto/Ultra)": {
+      "cupom": "🎯 Melhores opções até R$ 2.700: Alto desempenho em Full HD / 1440p com cupons ativos",
+      "itens": [
+        {
+          "texto": "📦 Veineda AMD Radeon RX 580 8GB GDDR5 256-bit (AliExpress - R$ 688,52)",
+          "url": "https://s.click.aliexpress.com/e/_mNuKvwf"
+        },
+        {
+          "texto": "🎮 Peladn NVIDIA GTX 1660 Super 6GB GDDR6 (Mercado Livre - R$ 1.287,91)",
+          "url": "https://meli.la/25wwi8e"
+        },
+        {
+          "texto": "🔥 RX 7600 Challenger PRO OC 8GB Triple Fan (KaBuM! - Cupom ZAFADINHO10 - R$ 1.780,20)",
+          "url": "https://tidd.ly/4iaXR1J"
+        },
+        {
+          "texto": "🔥 RX 7600 Biostar 8GB (Shopee - PROMO R$ 1.812,40)",
+          "url": "https://s.shopee.com.br/70L1bpjf2Z?share_channel_code=1"
+        },
+        {
+          "texto": "⚡ ASRock RX 7600 Challenger 8GB (Amazon Prime - R$ 1.849,00)",
+          "url": "https://link.amazon/B06yxGnXR"
+        },
+        {
+          "texto": "🔥 MSI NVIDIA RTX 5050 8GB (Shopee - R$ 1.999,00)",
+          "url": "https://s.shopee.com.br/50ZuNKgIbi?share_channel_code=1"
+        },
+        {
+          "texto": "🎮 INNO3D GeForce RTX 5050 Twin X2 8GB (Shopee - R$ 2.156,37 c/ Cupom 3SQU3NT411)",
+          "url": "https://s.shopee.com.br/2BG0NoB0Ji?share_channel_code=1"
+        },
+        {
+          "texto": "🎮 INNO3D GeForce RTX 5060 Twin X2 8GB GDDR7 (Shopee - R$ 2.651,00 c/ Cupom 3SQU3NT411)",
+          "url": "https://s.shopee.com.br/1qd9zIwB2C?share_channel_code=1"
+        },
+        {
+          "texto": "🎮 Zotac RTX 5060 Twin Edge 8GB GDDR7 (ML - R$ 2.699 em 10x s/ juros Cupom TOPOFERTA)",
+          "url": "https://meli.la/1nZZ5Pn"
+        },
+        {
+          "texto": "🎮 MSI RTX 5060 Shadow 2X OC 8GB (Amazon - R$ 2.589,00)",
+          "url": "https://link.amazon/B0cIU83OT"
+        },
+        {
+          "texto": "🎮 Gigabyte RTX 5060 EAGLE MAX OC 8GB GDDR7 (KaBuM! - Cupons ZAFAGAIN10/CHAPAQUENTE10 - R$ 2.699,00)",
+          "url": "https://tidd.ly/4z1q16t"
+        }
+      ]
+    },
+    "🔥 Intermediárias (1440p Quad HD)": {
+      "cupom": "🚀 Alta Performance: Perfeitas para Quad HD (1440p) competitivo e alta fluidez.",
+      "itens": [
+        {
+          "texto": "🔥 Husky Alpha RTX 3070 8GB GDDR6 (KaBuM! - R$ 2.399,99)",
+          "url": "https://tidd.ly/3VMxBDi"
+        },
+        {
+          "texto": "⚡ PowerColor Radeon RX 9060 XT 8GB (Shopee - R$ 2.799,00)",
+          "url": "https://s.shopee.com.br/Lo4rRNbor"
+        }
+      ]
+    },
+    "👑 High-End & Entusiasta (4K / Ray Tracing)": {
+      "cupom": "🏷️ Cupom na KaBuM!: SABADACOVGA10 para 10% OFF em modelos elegíveis",
+      "itens": [
+        {
+          "texto": "🔥 ASUS PRIME RTX 5070 OC 12G (KaBuM! - R$ 4.499,99)",
+          "url": "https://tidd.ly/4z0gWuA"
+        },
+        {
+          "texto": "🔥 Palit RTX 5070 INFINITY 3 (KaBuM! - R$ 4.399,99)",
+          "url": "https://tidd.ly/4hn2pBI"
+        },
+        {
+          "texto": "❄️ ASRock Radeon RX 9070 Steel Legend (KaBuM! - R$ 4.699,99)",
+          "url": "https://tidd.ly/4scVosa"
+        },
+        {
+          "texto": "🚀 ASUS Prime Radeon RX 9070 XT OC (KaBuM! - R$ 5.399,99)",
+          "url": "https://tidd.ly/4s8UA7H"
+        },
+        {
+          "texto": "🚀 PowerColor Radeon RX 9070 XT (Shopee - R$ 5.299,00)",
+          "url": "https://s.shopee.com.br/8pmdSOvPul"
+        },
+        {
+          "texto": "👑 Palit RTX 5070 Ti GamingPro-S 16GB (Mercado Livre - R$ 6.199,00)",
+          "url": "https://meli.la/1zs27QY"
+        },
+        {
+          "texto": "👑 Palit GeForce RTX 5070 Ti 16GB (KaBuM! - R$ 6.299,99)",
+          "url": "https://tidd.ly/4k3SAeF"
+        },
+        {
+          "texto": "⚡ Zotac GAMING RTX 5070 Twin Edge OC 12GB GDDR7 (Shopee - R$ 7.121,63)",
+          "url": "https://s.shopee.com.br/113tO6TMWJ?share_channel_code=1"
+        },
+        {
+          "texto": "👑 MSI RTX 5080 Ventus 3X OC 16GB (KaBuM! - R$ 8.499,99)",
+          "url": "https://tidd.ly/4k3DW7f"
+        },
+        {
+          "texto": "👑 INNO3D GeForce RTX 5080 X3 OC 16GB 256-bit (KaBuM! - R$ 11.838,90 no PIX)",
+          "url": "https://tidd.ly/4BiIUmV"
+        },
+        {
+          "texto": "👑 Palit GeForce RTX 5090 GameRock OC 32GB GDDR7 (KaBuM! - R$ 33.990,00 • Fonte 1000W+ • Gabinete Grande 332mm)",
+          "url": "https://tidd.ly/3UbgQ3Z"
+        }
+      ]
+    }
+  },
+  "gabinetes": {
+    "📦 Gabinetes Gamer": {
+      "cupom": "🎯 Modelos com ventoinhas inclusas, excelente airflow e suporte a radiadores e placas grandes",
+      "itens": [
+        {
+          "texto": "1️⃣ Pichau Atom X Preto (Compacto M-ATX • Sem Fans • Até 280mm - R$ 149,90)",
+          "url": "https://tidd.ly/atom-x"
+        },
+        {
+          "texto": "2️⃣ Aigo Darkflash Durin D275M Branco (Compacto M-ATX • Sem Fans • Até 290mm - R$ 179,90)",
+          "url": "https://meli.la/durin-d275m"
+        },
+        {
+          "texto": "3️⃣ Gabinete Gamer c/ 4 Fans RGB Inclusas Lateral Vidro (Mercado Livre - R$ 199,23)",
+          "url": "https://meli.la/2Co1VP5"
+        },
+        {
+          "texto": "4️⃣ Hayom GB1796 Mesh Preto (4 Fans RGB • Até 310mm - R$ 210,90)",
+          "url": "https://vt.tiktok.com/ZS9yS6cRvoQw6-7pCS4/"
+        },
+        {
+          "texto": "5️⃣ Liketec Mad Rock Preto (M-ATX • Até 9 Fans • Suporta Radiador 360mm e GPU até 400mm - R$ 219,99)",
+          "url": "https://tidd.ly/4ry01fQ"
+        },
+        {
+          "texto": "6️⃣ Acegeek Mercury R425 Branco Aquário (6 Fans ARGB • Suporta Radiador 360mm e GPU até 360mm - R$ 389,90)",
+          "url": "https://tidd.ly/mercury-r425"
+        },
+        {
+          "texto": "7️⃣ Vingar Misterium Aquário Mid-Tower Preto (10 Fans ARGB + Controladora • Suporta Radiador 360mm e GPU até 410mm - R$ 659,99)",
+          "url": "https://tidd.ly/4ibXqEa"
+        }
+      ]
+    }
+  },
+  "fontes": {
+    "⚡ 500W a 550W (Entrada / GPUs Econômicas)": {
+      "cupom": "🏷️ KaBuM!: Cupom KABUM10 para 10% OFF em modelos selecionados",
+      "itens": [
+        {
+          "texto": "📦 Rise Mode Zeus 500W Bronze (KaBuM! - R$ 199,99)",
+          "url": "https://tidd.ly/4iw4ufh"
+        },
+        {
+          "texto": "🛡️ Rise Mode Zeus 500W Selo TecLab (Amazon - R$ 249,00)",
+          "url": "https://link.amazon/zeus-500w-teclab"
+        },
+        {
+          "texto": "❄️ Husky Sledger 550W White Bivolt (KaBuM! - R$ 259,99)",
+          "url": "https://tidd.ly/sledger-550w-white"
+        }
+      ]
+    },
+    "⚡ 650W (Ponto de Equilíbrio / Maioria dos Setups)": {
+      "cupom": "🏷️ Cupons KaBuM!: KABUM10 | Mercado Livre: OFFHOJENOML",
+      "itens": [
+        {
+          "texto": "🔥 Rise Mode Elektra 650W Bronze (KaBuM! - R$ 244,90)",
+          "url": "https://tidd.ly/4svAS62"
+        },
+        {
+          "texto": "⚡ Rise Mode Elektra 650W Bronze Full Modular (Shopee - R$ 252,70 c/ Cupom 11D011400FF)",
+          "url": "https://s.shopee.com.br/BUvzu6scB?share_channel_code=1"
+        },
+        {
+          "texto": "📦 Gamemax GP650 650W Bronze (Amazon - R$ 299,00)",
+          "url": "https://link.amazon/gp650"
+        },
+        {
+          "texto": "🛡️ Husky Sledger 650W Cybenetics Bronze (KaBuM! - R$ 319,99)",
+          "url": "https://tidd.ly/sledger-650w"
+        },
+        {
+          "texto": "⚡ Gigabyte P650G PG5 650W Gold PCIe 5.0 (KaBuM! - R$ 429,99)",
+          "url": "https://tidd.ly/p650g-pg5"
+        },
+        {
+          "texto": "🛡️ Rise Mode Elektra 650W Full Modular TecLab (ML - R$ 349,00)",
+          "url": "https://meli.la/elektra-650w-teclab"
+        },
+        {
+          "texto": "📦 MSI MAG A650BN 650W Bronze (KaBuM! - R$ 329,99)",
+          "url": "https://tidd.ly/a650bn"
+        }
+      ]
+    },
+    "🔥 750W (Intermediário-Avançado / Margem de Upgrade)": {
+      "cupom": "🚀 Ideal para placas com picos de consumo e novos upgrades",
+      "itens": [
+        {
+          "texto": "🔥 MACH1 Steady 750W Bronze (KaBuM! - R$ 269,99)",
+          "url": "https://tidd.ly/4i59FCj"
+        },
+        {
+          "texto": "📦 Gamemax GP750 750W Bronze (KaBuM! - R$ 369,99)",
+          "url": "https://tidd.ly/gp750"
+        },
+        {
+          "texto": "⚡ Cooler Master MWE 750 V3 ATX 3.1 (Mercado Livre - R$ 489,00)",
+          "url": "https://meli.la/mwe-750-v3"
+        }
+      ]
+    },
+    "👑 850W (Entusiasta / Placas de Alta Performance)": {
+      "cupom": "🚀 Suporte a placas entusiastas com conectores modernos",
+      "itens": [
+        {
+          "texto": "⚡ Redragon Charge 850W ATX 3.1 (Amazon Prime - R$ 549,00)",
+          "url": "https://link.amazon/redragon-charge-850"
+        },
+        {
+          "texto": "⚡ XPG Kyber II 850W Gold ATX 3.1 (Amazon - R$ 629,00)",
+          "url": "https://link.amazon/kyber-ii-850"
+        },
+        {
+          "texto": "📦 XPG Core Reactor II VE 850W Gold Full Modular (KaBuM! - R$ 689,99)",
+          "url": "https://tidd.ly/core-reactor-ii-850"
+        },
+        {
+          "texto": "🔥 Pichau Cluster 850W PCIe 5.0 Cybenetics Gold (Mercado Livre - R$ 599,00)",
+          "url": "https://meli.la/1hB2o6x"
+        },
+        {
+          "texto": "🛡️ Husky Sledger 850W Gold Cybenetics Full Modular (KaBuM! - R$ 589,99)",
+          "url": "https://tidd.ly/4i1A8AU"
+        },
+        {
+          "texto": "👑 VINGAR Fusion 850W Platinum TecLab Extreme (Amazon - R$ 789,00)",
+          "url": "https://link.amazon/B0dQav96E"
+        }
+      ]
+    },
+    "👑 950W a 1250W (Extremo / Workstation & White Build)": {
+      "cupom": "🏷️ KaBuM!: Cupom SUAFONTE para 950W / KABUM10 para linha Zeus",
+      "itens": [
+        {
+          "texto": "🔥 Rise Mode Zeus 1000W Platinum Full Modular Preto (KaBuM! - R$ 789,99)",
+          "url": "https://tidd.ly/488oaAJ"
+        },
+        {
+          "texto": "❄️ Rise Mode Zeus 1000W Platinum White (KaBuM! - R$ 829,99)",
+          "url": "https://tidd.ly/4sdUCLv"
+        },
+        {
+          "texto": "📦 MSI MAG A1000GLS 1000W Gold Full Modular (KaBuM! - R$ 899,99)",
+          "url": "https://tidd.ly/4shzP9Y"
+        },
+        {
+          "texto": "⚡ Cooler Master Elite 1000W Gold ATX 3.1 (Mercado Livre - R$ 849,00)",
+          "url": "https://meli.la/24yaxKj"
+        },
+        {
+          "texto": "🛡️ Husky Sledger 950W Cybenetics Platinum (KaBuM! - R$ 749,99)",
+          "url": "https://tidd.ly/4yrW3ra"
+        },
+        {
+          "texto": "⚡ MACH1 EMPOWER 1250W Cybenetics Platinum (KaBuM! - R$ 949,99)",
+          "url": "https://tidd.ly/486EEt6"
+        },
+        {
+          "texto": "👑 MSI MAG A1000PLS PCIE5 1000W Platinum Modular (KaBuM! - R$ 1.099,99)",
+          "url": "https://tidd.ly/4BgA4pK"
+        },
+        {
+          "texto": "❄️ Corsair RM1000e 2025 Cybenetics Gold WHITE (KaBuM! - R$ 1.189,99)",
+          "url": "https://tidd.ly/4BfghHg"
+        },
+        {
+          "texto": "👑 VINGAR Fusion 1250W Platinum TecLab Extreme (Amazon - R$ 1.299,00)",
+          "url": "https://link.amazon/B09uqqn3p"
+        },
+        {
+          "texto": "👑 Husky Sledger 1200W Platinum Cybenetics (Amazon - R$ 1.199,00)",
+          "url": "https://link.amazon/B059Xb7DV"
+        }
+      ]
+    }
+  },
+  "coolers": {
+    "🌪️ Air Coolers de Alta Performance": {
+      "cupom": "🚀 Dissipação pesada com heatpipes e alto TDP para AMD e Intel",
+      "itens": [
+        {
+          "texto": "🌪️ Air Cooler MACH1 ARTIC ARGB 120mm Preto A40 (KaBuM! - R$ 69,99)",
+          "url": "https://tidd.ly/4kggGTw"
+        },
+        {
+          "texto": "🌪️ Air Cooler MACH1 BOREAL Digital 120mm 220W TDP (KaBuM! - R$ 114,99)",
+          "url": "https://tidd.ly/4yUaTYo"
+        },
+        {
+          "texto": "🌪️ Air Cooler Rise Mode Storm 8 Black ARGB 280W TDP (KaBuM! - R$ 179,99)",
+          "url": "https://tidd.ly/4yEDvVr"
+        }
+      ]
+    },
+    "💧 Water Coolers com Display LCD / ARGB": {
+      "cupom": "❄️ Máxima performance térmica e visual com radiadores de 240mm e 360mm",
+      "itens": [
+        {
+          "texto": "💧 Water Cooler Gigabyte Gaming 360 ARGB (KaBuM! - R$ 399,99)",
+          "url": "https://tidd.ly/4i79CpB"
+        },
+        {
+          "texto": "💧 Water Cooler Kalkan Aura LCD 240 ARGB Preto (KaBuM! - R$ 429,99)",
+          "url": "https://tidd.ly/4dsJ019"
+        },
+        {
+          "texto": "💧 Water Cooler Kalkan Aura LCD 360 ARGB Preto (Mercado Livre - R$ 419,00)",
+          "url": "https://meli.la/2vGn2YM"
+        },
+        {
+          "texto": "💧 Water Cooler MACH1 POLAR ARGB 360mm Preto (KaBuM! - Cupom POLAR15 - R$ 688,00)",
+          "url": "https://tidd.ly/47qrDum"
+        },
+        {
+          "texto": "❄️ Water Cooler MACH1 POLAR ARGB 360mm Branco (KaBuM! - Cupom POLAR15 - R$ 688,00)",
+          "url": "https://tidd.ly/3W0yOXC"
+        },
+        {
+          "texto": "👑 Water Cooler Round5 Notus 360 ARGB Tela 3.5\" Preto/Branco (ML - R$ 649,00)",
+          "url": "https://meli.la/1jTfY2q"
+        }
+      ]
+    }
+  },
+  "armazenamento": {
+    "💾 Armazenamento (SATA / NVMe)": {
+      "cupom": "🚀 SSDs SATA e M.2 NVMe com estoque nacional e cupons ativos",
+      "itens": [
+        {
+          "texto": "📦 SSD SATA III Kootion 256GB (AliExpress Brasil - R$ 378,89)",
+          "url": "https://s.click.aliexpress.com/e/_msby17h"
+        },
+        {
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 256GB (AliExpress Brasil - R$ 300,44)",
+          "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
+        },
+        {
+          "texto": "📦 SSD SATA III CUSU 512GB (AliExpress - R$ 431,04)",
+          "url": "https://s.click.aliexpress.com/e/_mrTrOX9"
+        },
+        {
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 512GB (AliExpress Brasil - R$ 422,94 - Cupom KT0225 + IFPGXW5K/IFPGCGBG/IFPIGKJ2)",
+          "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
+        },
+        {
+          "texto": "📦 SSD SATA III Kootion X12 512GB (AliExpress - R$ 478,44)",
+          "url": "https://s.click.aliexpress.com/e/_mtKSuUX"
+        },
+        {
+          "texto": "⚡ SSD NVMe Kootion X15 Lite 1TB (AliExpress Brasil - R$ 514,44)",
+          "url": "https://s.click.aliexpress.com/e/_mNvqPDd"
+        },
+        {
+          "texto": "🚀 SSD WD SN3000 1TB PCIe 4.0 5000MB/s (ML - R$ 1.066,00)",
+          "url": "https://meli.la/1NV45Pt"
+        },
+        {
+          "texto": "🚀 SSD Kingston NV3 1TB PCIe 4.0 6000MB/s (ML - R$ 849,00)",
+          "url": "https://meli.la/2vEmbrU"
+        },
+        {
+          "texto": "⚡ SSD Kingston NV3 1TB PCIe 4.0 NVMe (Amazon Prime - R$ 978,49)",
+          "url": "https://link.amazon/B07A6Uj5J"
+        },
+        {
+          "texto": "📦 SSD WD Green SN350 2TB NVMe M.2 3200MB/s (ML - R$ 1.539,00)",
+          "url": "https://meli.la/1DZTq6k"
+        }
+      ]
+    }
+  },
+  "memorias_ram": {
+    "🟡 Memórias DDR3 (Kits Xeon X79)": {
+      "cupom": "🏷️ Memória compatível com plataformas LGA-2011 / X79",
+      "itens": [
+        {
+          "texto": "⚡ Kit 16GB (2x8GB) DDR3 1600MHz Kingston HyperX (Shopee - Cupom - R$ 240,38)",
+          "url": "https://s.shopee.com.br/9APXzDWEOP?share_channel_code=1"
+        }
+      ]
+    },
+    "🔴 Memórias DDR4 (AM4 / LGA 1700 DDR4)": {
+      "cupom": "📦 Custo-benefício para AM4 e placas DDR4 com opções avulsas e em kits",
+      "itens": [
+        {
+          "texto": "⚡ Kit CUSU 16GB (2x8GB) DDR4 3200MHz CL22 (AliExpress - R$ 810,65)",
+          "url": "https://s.click.aliexpress.com/e/_m04M97h"
+        },
+        {
+          "texto": "⚡ Spectrum Blitz 16GB (1x16GB) DDR4 3200MHz Preto (Shopee - R$ 795,80)",
+          "url": "https://s.shopee.com.br/1gJaBTeeLF?share_channel_code=1"
+        },
+        {
+          "texto": "🔥 Memória Macrovip Max RGB 16GB (1x16GB) DDR4 3200MHz Desktop (ML - R$ 814,90)",
+          "url": "https://meli.la/1CrKE4A"
+        }
+      ]
+    },
+    "🟣 Memórias DDR5 (Alta Velocidade - AM5 / LGA 1700)": {
+      "cupom": "🚀 Módulos modernos de alta frequência (5200MHz / 5600MHz / 6000MHz) para máxima performance",
+      "itens": [
+        {
+          "texto": "⚡ Corsair Vengeance 16GB DDR5 5200MHz (Amazon - R$ 1.470,09)",
+          "url": "https://link.amazon/B04VYUIhm"
+        },
+        {
+          "texto": "⚡ Transcend 16GB DDR5 5600MHz UDIMM (Amazon - R$ 1.499,99)",
+          "url": "https://link.amazon/B06JCFBwH"
+        },
+        {
+          "texto": "⚡ Corsair Vengeance RGB 16GB DDR5 5600MHz (ML - R$ 1.978,00)",
+          "url": "https://meli.la/13De1Wc"
+        },
+        {
+          "texto": "⚡ XPG Lancer Blade RGB 16GB DDR5 6000MHz CL48 (KaBuM! - R$ 2.079,99)",
+          "url": "https://tidd.ly/4ytMJCW"
+        },
+        {
+          "texto": "❄️ Kit XPG Lancer Blade 32GB (2x16GB) DDR5 6000MHz BRANCO (KaBuM! - R$ 3.959,99)",
+          "url": "https://tidd.ly/4scRFL3"
+        }
+      ]
+    }
+  },
+  "perifericos": {
+    "🎧 Periféricos & Acessórios (@srinteligente.shop)": {
+      "cupom": "🔥 Mouses, teclados mecânicos, headsets, microfones e webcams na TikTok Shop",
+      "itens": [
+        {
+          "texto": "📱 Vitrine Completa TikTok Shop (Mouses, Teclados, Headsets e Webcams)",
+          "url": "https://vt.tiktok.com/ZS9UXjfYhhqnB-PcwuJ/"
+        }
+      ]
+    }
+  }
+}
