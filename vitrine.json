@@ -1,48 +1,4 @@
 {
-"achados_do_dia": [
-    {
-      "titulo": "⚡ Memória RAM Macrovip Max 16GB DDR4 3200MHz CL16",
-      "descricao": "R$ 622,89 no Mercado Livre • 1x 16GB UDIMM com dissipador de calor e latência baixa CL16 para jogos e multitarefa!",
-      "texto_botao": "🛒 Garantir Memória 16GB DDR4 (R$ 622,89)",
-      "url": "https://meli.la/1VCbqqX"
-    },
-    {
-      "titulo": "⚡ Fonte Gamer Rise Mode Zeus 500W Preto (Selo TecLab)",
-      "descricao": "R$ 111,00 no PIX na Amazon • Use o cupom OUTLETPRIME (exclusivo Prime) • PFC Ativo e certificação Teclab!",
-      "texto_botao": "🛒 Garantir Fonte Zeus 500W (R$ 111,00)",
-      "url": "https://link.amazon/B0cHl2VER"
-    },
-    {
-      "titulo": "🔥 Placa de Vídeo ASRock RX 7600 Challenger PRO OC 8GB Triple Fan",
-      "descricao": "R$ 1.780,20 • Use o cupom ZAFADINHO10 • Edição Triple Fan com alto fluxo de ar e overclock de fábrica!",
-      "texto_botao": "🎮 Garantir RX 7600 Triple Fan (R$ 1.780,20)",
-      "url": "https://tidd.ly/4iaXR1J"
-    },
-    {
-      "titulo": "⚡ Fonte Gamer Rise Mode Elektra 650W Bronze Full Modular",
-      "descricao": "R$ 252,70 na Shopee • Use o cupom 11D011400FF • Full Modular, PFC Ativo e cabos pretos flat!",
-      "texto_botao": "🛒 Garantir Fonte 650W Modular (R$ 228,00)",
-      "url": "https://s.shopee.com.br/BUvzu6scB?share_channel_code=1"
-    },
-    {
-      "titulo": "👑 Processador AMD Ryzen 7 9700X AM5 (8 Cores / 16 Threads)",
-      "descricao": "R$ 1.379,08 na Shopee • Use o cupom 3SQU3NT411 • Arquitetura Zen 5 com 40MB Cache!",
-      "texto_botao": "🚀 Garantir Ryzen 7 9700X (R$ 1.329,00)",
-      "url": "https://s.shopee.com.br/3B8XZXFO1F?share_channel_code=1"
-    },
-    {
-      "titulo": "🔥 Placa de Vídeo INNO3D GeForce RTX 5050 Twin X2 8GB",
-      "descricao": "R$ 2.156,37 na Shopee • Use o cupom 3SQU3NT411 • Nova arquitetura Blackwell com DLSS e RT!",
-      "texto_botao": "🎮 Garantir RTX 5050 Twin X2 (R$ 2.110,00)",
-      "url": "https://s.shopee.com.br/2BG0NoB0Ji?share_channel_code=1"
-    },
-    {
-      "titulo": "💥 Placa de Vídeo INNO3D GeForce RTX 5060 Twin X2 8GB GDDR7",
-      "descricao": "R$ 2.651,00 na Shopee • Use o cupom 3SQU3NT411 • Memórias ultra-rápidas GDDR7 e dual fan!",
-      "texto_botao": "🚀 Garantir RTX 5060 GDDR7 (R$ 2.651,00)",
-      "url": "https://s.shopee.com.br/1qd9zIwB2C?share_channel_code=1"
-    }
-  ],
   "kits_upgrade": [
     {
       "texto": "🔥 Kit R5 5500F (PCIe 4.0) + MSI A520M + Cooler MACH1 ARTIC (KaBuM! - Cupom CASADIN - R$ 849,99)",
@@ -502,8 +458,8 @@
           "url": "https://tidd.ly/4iw4ufh"
         },
         {
-          "texto": "🛡️ Rise Mode Zeus 500W Selo TecLab (Amazon - R$ 249,00)",
-          "url": "https://link.amazon/zeus-500w-teclab"
+          "texto": "🛡️ Rise Mode Zeus 500W Selo TecLab (Amazon - Cupom OUTLETPRIME - R$ 111,00 no PIX)",
+          "url": "https://link.amazon/B0cHl2VER"
         },
         {
           "texto": "❄️ Husky Sledger 550W White Bivolt (KaBuM! - R$ 259,99)",
@@ -747,6 +703,10 @@
         {
           "texto": "⚡ Kit CUSU 16GB (2x8GB) DDR4 3200MHz CL22 (AliExpress - R$ 810,65)",
           "url": "https://s.click.aliexpress.com/e/_m04M97h"
+        },
+        {
+          "texto": "🔥 Memória Macrovip Max 16GB (1x16GB) DDR4 3200MHz CL16 c/ Dissipador (ML - R$ 622,89)",
+          "url": "https://meli.la/1VCbqqX"
         },
         {
           "texto": "⚡ Spectrum Blitz 16GB (1x16GB) DDR4 3200MHz Preto (Shopee - R$ 795,80)",
