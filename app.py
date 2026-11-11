@@ -112,19 +112,22 @@ def carregar_vitrine():
 db = carregar_hardware()
 VITRINE = carregar_vitrine()
 
-# BANNER CANAL DO WHATSAPP
+# BANNER OFERTAS FRENÉTICAS (ACHADOS.ME + WHATSAPP)
 st.markdown(
     """
     <div style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); 
-                padding: 16px; border-radius: 12px; text-align: center; color: white; margin-bottom: 20px;">
-        <h3 style="margin: 0; color: white;">🔥 Entre no Canal Oficial de Ofertas no WhatsApp!</h3>
-        <p style="margin: 6px 0 14px 0; font-size: 14px; color: #f0fdf4;">
-            Receba cupons exclusivos, bugs de preço e peças sem gargalo direto no seu zap antes de esgotar!
+                padding: 18px; border-radius: 12px; text-align: center; color: white; margin-bottom: 20px;
+                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
+        <h2 style="margin: 0; color: white; font-size: 22px;">🔥 GRUPO DE PROMOS DO SR INTELIGENTE 🎮🔥</h2>
+        <p style="margin: 8px 0 14px 0; font-size: 15px; color: #f0fdf4;">
+            As melhores promoções de hardware e periféricos duram poucos minutos. 
+            Aceda à nossa vitrine frenética e receba cupons antes de esgotarem!
         </p>
-        <a href="https://whatsapp.com/channel/0029Vb9YXwNGpLHK8OMGRw0N" target="_blank" 
-           style="background-color: white; color: #075E54; font-weight: bold; 
-                  padding: 10px 22px; border-radius: 8px; text-decoration: none; display: inline-block;">
-            📲 Entrar no Canal VIP de Graça
+        <a href="https://achados.me/srinteligente" target="_blank" 
+           style="background-color: white; color: #075E54; font-weight: bold; font-size: 15px;
+                  padding: 10px 24px; border-radius: 8px; text-decoration: none; display: inline-block;
+                  box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+            💬 Entrar no Grupo & Ver Vitrine em Tempo Real
         </a>
     </div>
     """,
@@ -284,24 +287,6 @@ st.page_link(
     label="🛠️🎯 Monte seu PC GAMER no GARGALÔMETRO", 
     use_container_width=True
 )
-
-st.divider()
-
-st.markdown("<br>", unsafe_allow_html=True)
-
-# ========================================================
-# 🚨 ACHADOS DO DIA DINÂMICOS (LÊ VITRINE.JSON)
-# ========================================================
-achados = VITRINE.get("achados_do_dia", [])
-if achados:
-    st.markdown("#### ⚡ Achados do Dia com Menor Preço Histórico:")
-    colunas_achados = st.columns(len(achados))
-    for idx, achado in enumerate(achados):
-        with colunas_achados[idx]:
-            with st.container(border=True):
-                st.markdown(f"##### {achado.get('titulo', 'Oferta Imperdível')}")
-                st.caption(achado.get('descricao', ''))
-                st.link_button(achado.get('texto_botao', 'Conferir Oferta'), achado.get('url', '#'), use_container_width=True)
 
 st.divider()
 
@@ -641,7 +626,7 @@ Aguardo orientações para o Pix e início da montagem!"""
                 
                 texto_codificado = urllib.parse.quote(texto_msg)
                 
-                # Substitua pelo seu número com DDI 55 + DDD (apenas números)
+                # Número com DDI 55 + DDD (apenas números)
                 NUMERO_MEU_ZAP = "5561985587047"
                 
                 link_whatsapp = f"https://api.whatsapp.com/send?phone={NUMERO_MEU_ZAP}&text={texto_codificado}"
